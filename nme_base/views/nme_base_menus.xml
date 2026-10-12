@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Root of the whole ERP: the other Nusantara modules add their own
+         sections (Sales, Purchase, Inventory...) under this menu. -->
+    <menuitem
+        id="nme_menu_root"
+        name="Nusantara ERP"
+        web_icon="nme_base,static/description/icon.png"
+        sequence="20"
+    />
+
+    <menuitem
+        id="nme_menu_master_data"
+        name="Master Data"
+        parent="nme_menu_root"
+        sequence="80"
+    />
+    <menuitem
+        id="nme_product_menu"
+        name="Products"
+        parent="nme_menu_master_data"
+        action="nme_product_action"
+        sequence="10"
+    />
+    <menuitem
+        id="nme_product_category_menu"
+        name="Product Categories"
+        parent="nme_menu_master_data"
+        action="nme_product_category_action"
+        sequence="20"
+    />
+    <menuitem
+        id="nme_partner_customer_menu"
+        name="Customers"
+        parent="nme_menu_master_data"
+        action="nme_partner_customer_action"
+        sequence="30"
+    />
+    <menuitem
+        id="nme_partner_vendor_menu"
+        name="Vendors"
+        parent="nme_menu_master_data"
+        action="nme_partner_vendor_action"
+        sequence="40"
+    />
+
+    <menuitem
+        id="nme_menu_configuration"
+        name="Configuration"
+        parent="nme_menu_root"
+        sequence="100"
+        groups="nme_group_master_data_manager,base.group_system"
+    />
+    <menuitem
+        id="nme_settings_menu"
+        name="Settings"
+        parent="nme_menu_configuration"
+        action="nme_settings_action"
+        sequence="1"
+        groups="base.group_system"
+    />
+    <menuitem
+        id="nme_uom_menu"
+        name="Units of Measure"
+        parent="nme_menu_configuration"
+        action="nme_uom_action"
+        sequence="20"
+    />
+    <menuitem
+        id="nme_tax_menu"
+        name="Taxes"
+        parent="nme_menu_configuration"
+        action="nme_tax_action"
+        sequence="30"
+    />
+    <menuitem
+        id="nme_payment_term_menu"
+        name="Payment Terms"
+        parent="nme_menu_configuration"
+        action="nme_payment_term_action"
+        sequence="40"
+    />
+</odoo>

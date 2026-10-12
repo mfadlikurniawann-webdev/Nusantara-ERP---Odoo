@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_categ_staples" model="nme.product.category">
+        <field name="name">Staples</field>
+    </record>
+    <record id="nme_categ_rice" model="nme.product.category">
+        <field name="name">Rice</field>
+        <field name="parent_id" ref="nme_categ_staples" />
+    </record>
+    <record id="nme_categ_oil" model="nme.product.category">
+        <field name="name">Cooking Oil</field>
+        <field name="parent_id" ref="nme_categ_staples" />
+    </record>
+    <record id="nme_categ_sugar" model="nme.product.category">
+        <field name="name">Sugar</field>
+        <field name="parent_id" ref="nme_categ_staples" />
+    </record>
+    <record id="nme_categ_eggs" model="nme.product.category">
+        <field name="name">Eggs</field>
+        <field name="parent_id" ref="nme_categ_staples" />
+    </record>
+    <record id="nme_categ_noodles" model="nme.product.category">
+        <field name="name">Instant Noodles</field>
+    </record>
+    <record id="nme_categ_services" model="nme.product.category">
+        <field name="name">Services</field>
+    </record>
+</odoo>

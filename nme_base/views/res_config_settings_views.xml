@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.nme.base</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="60" />
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app
+                    data-string="Nusantara ERP"
+                    string="Nusantara ERP"
+                    name="nme_base"
+                    groups="base.group_system"
+                >
+                    <block title="Defaults" id="nme_defaults">
+                        <setting
+                            id="nme_default_sale_tax"
+                            string="Default Sales Tax"
+                            company_dependent="1"
+                            help="Proposed on new products. Leave empty when most goods are VAT exempt."
+                        >
+                            <field
+                                name="nme_sale_tax_id"
+                                domain="[('type_tax_use', '=', 'sale'), ('company_id', '=', company_id)]"
+                                options="{'no_create': True}"
+                            />
+                        </setting>
+                        <setting
+                            id="nme_default_purchase_tax"
+                            string="Default Purchase Tax"
+                            company_dependent="1"
+                            help="Proposed on new products for purchases."
+                        >
+                            <field
+                                name="nme_purchase_tax_id"
+                                domain="[('type_tax_use', '=', 'purchase'), ('company_id', '=', company_id)]"
+                                options="{'no_create': True}"
+                            />
+                        </setting>
+                        <setting
+                            id="nme_default_payment_term"
+                            string="Default Payment Terms"
+                            company_dependent="1"
+                            help="Used when the partner has no payment terms of their own."
+                        >
+                            <field
+                                name="nme_payment_term_id"
+                                domain="[('company_id', 'in', [company_id, False])]"
+                                options="{'no_create': True}"
+                            />
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="nme_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'module': 'nme_base'}</field>
+    </record>
+</odoo>

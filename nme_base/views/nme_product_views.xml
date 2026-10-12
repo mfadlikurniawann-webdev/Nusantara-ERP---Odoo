@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_product_view_search" model="ir.ui.view">
+        <field name="name">nme.product.view.search</field>
+        <field name="model">nme.product</field>
+        <field name="arch" type="xml">
+            <search string="Products">
+                <field
+                    name="name"
+                    string="Product"
+                    filter_domain="['|', '|', ('name', 'ilike', self), ('default_code', 'ilike', self), ('barcode', 'ilike', self)]"
+                />
+                <field name="categ_id" operator="child_of" />
+                <filter
+                    name="filter_goods"
+                    string="Goods"
+                    domain="[('type', '=', 'goods')]"
+                />
+                <filter
+                    name="filter_services"
+                    string="Services"
+                    domain="[('type', '=', 'service')]"
+                />
+                <separator />
+                <filter
+                    name="inactive"
+                    string="Archived"
+                    domain="[('active', '=', False)]"
+                />
+                <group>
+                    <filter
+                        name="group_by_categ"
+                        string="Category"
+                        context="{'group_by': 'categ_id'}"
+                    />
+                    <filter
+                        name="group_by_type"
+                        string="Product Type"
+                        context="{'group_by': 'type'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="nme_product_view_list" model="ir.ui.view">
+        <field name="name">nme.product.view.list</field>
+        <field name="model">nme.product</field>
+        <field name="arch" type="xml">
+            <list string="Products" sample="1">
+                <field name="currency_id" column_invisible="True" />
+                <field name="default_code" optional="show" />
+                <field name="name" />
+                <field name="categ_id" optional="show" />
+                <field name="type" optional="hide" />
+                <field name="uom_id" optional="show" />
+                <field name="list_price" widget="monetary" />
+                <field name="purchase_price" widget="monetary" optional="show" />
+                <field
+                    name="company_id"
+                    groups="base.group_multi_company"
+                    optional="hide"
+                />
+            </list>
+        </field>
+    </record>
+
+    <record id="nme_product_view_kanban" model="ir.ui.view">
+        <field name="name">nme.product.view.kanban</field>
+        <field name="model">nme.product</field>
+        <field name="arch" type="xml">
+            <kanban sample="1">
+                <field name="currency_id" />
+                <templates>
+                    <t t-name="card">
+                        <field name="name" class="fw-bold fs-5" />
+                        <field name="default_code" class="text-muted" />
+                        <div class="d-flex mt-2">
+                            <field name="categ_id" class="text-muted small" />
+                            <field
+                                name="list_price"
+                                widget="monetary"
+                                class="ms-auto fw-bold"
+                            />
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="nme_product_view_form" model="ir.ui.view">
+        <field name="name">nme.product.view.form</field>
+        <field name="model">nme.product</field>
+        <field name="arch" type="xml">
+            <form string="Product">
+                <sheet>
+                    <div class="oe_button_box" name="button_box" />
+                    <widget
+                        name="web_ribbon"
+                        title="Archived"
+                        bg_color="text-bg-danger"
+                        invisible="active"
+                    />
+                    <div class="oe_title">
+                        <label for="name" />
+                        <h1>
+                            <field name="name" placeholder="e.g. Premium Rice 5 kg" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group name="general">
+                            <field
+                                name="type"
+                                widget="radio"
+                                options="{'horizontal': true}"
+                            />
+                            <field name="default_code" />
+                            <field name="barcode" />
+                            <field name="categ_id" />
+                            <field name="uom_id" />
+                        </group>
+                        <group name="pricing">
+                            <field name="currency_id" invisible="1" />
+                            <field name="active" invisible="1" />
+                            <field name="list_price" widget="monetary" />
+                            <field name="sale_tax_ids" widget="many2many_tags" />
+                            <field name="purchase_price" widget="monetary" />
+                            <field name="purchase_tax_ids" widget="many2many_tags" />
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                                placeholder="Visible to all companies"
+                            />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Notes" name="notes">
+                            <field
+                                name="description"
+                                placeholder="Internal notes about this product..."
+                            />
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <record id="nme_product_action" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="res_model">nme.product</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create your first product</p>
+            <p>Products are shared by sales, purchase and inventory documents.</p>
+        </field>
+    </record>
+</odoo>

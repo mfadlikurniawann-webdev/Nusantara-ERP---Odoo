@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit.nme.base</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <group name="sale" position="inside">
+                <field name="nme_is_customer" />
+                <field
+                    name="nme_payment_term_id"
+                    invisible="not nme_is_customer"
+                    options="{'no_create': True}"
+                />
+            </group>
+            <group name="purchase" position="inside">
+                <field name="nme_is_vendor" />
+                <field
+                    name="nme_vendor_payment_term_id"
+                    invisible="not nme_is_vendor"
+                    options="{'no_create': True}"
+                />
+            </group>
+        </field>
+    </record>
+
+    <record id="view_res_partner_filter" model="ir.ui.view">
+        <field name="name">res.partner.select.inherit.nme.base</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter" />
+        <field name="arch" type="xml">
+            <filter name="filter_vat_set" position="before">
+                <filter
+                    name="filter_nme_customer"
+                    string="Customers"
+                    domain="[('nme_is_customer', '=', True)]"
+                />
+                <filter
+                    name="filter_nme_vendor"
+                    string="Vendors"
+                    domain="[('nme_is_vendor', '=', True)]"
+                />
+                <separator />
+            </filter>
+        </field>
+    </record>
+
+    <record id="nme_partner_customer_action" model="ir.actions.act_window">
+        <field name="name">Customers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field
+            name="context"
+        >{'search_default_filter_nme_customer': 1, 'default_nme_is_customer': True}</field>
+    </record>
+
+    <record id="nme_partner_vendor_action" model="ir.actions.act_window">
+        <field name="name">Vendors</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field
+            name="context"
+        >{'search_default_filter_nme_vendor': 1, 'default_nme_is_vendor': True}</field>
+    </record>
+</odoo>

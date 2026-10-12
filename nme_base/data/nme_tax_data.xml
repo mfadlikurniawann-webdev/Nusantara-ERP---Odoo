@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <!-- Default VAT (PPN) of the main company. Other companies configure
+         their own taxes in Settings. -->
+    <record id="nme_tax_vat_11_sale" model="nme.tax">
+        <field name="name">VAT 11%</field>
+        <field name="amount">11</field>
+        <field name="type_tax_use">sale</field>
+        <field name="company_id" ref="base.main_company" />
+    </record>
+    <record id="nme_tax_vat_11_purchase" model="nme.tax">
+        <field name="name">VAT 11% (Purchase)</field>
+        <field name="amount">11</field>
+        <field name="type_tax_use">purchase</field>
+        <field name="company_id" ref="base.main_company" />
+    </record>
+
+    <record id="base.main_company" model="res.company">
+        <field name="nme_sale_tax_id" ref="nme_tax_vat_11_sale" />
+        <field name="nme_purchase_tax_id" ref="nme_tax_vat_11_purchase" />
+        <field name="nme_payment_term_id" ref="nme_payment_term_immediate" />
+    </record>
+</odoo>

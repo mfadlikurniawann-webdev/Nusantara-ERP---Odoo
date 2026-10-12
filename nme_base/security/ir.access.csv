@@ -1,0 +1,16 @@
+id,name,model_id,group_id/id,operation,domain
+nme_uom_access_user,nme.uom user,nme.uom,base.group_user,r,
+nme_uom_access_manager,nme.uom manager,nme.uom,nme_base.nme_group_master_data_manager,crud,
+nme_product_category_access_user,nme.product.category user,nme.product.category,base.group_user,r,
+nme_product_category_access_manager,nme.product.category manager,nme.product.category,nme_base.nme_group_master_data_manager,crud,
+nme_product_access_user,nme.product user,nme.product,base.group_user,r,
+nme_product_access_manager,nme.product manager,nme.product,nme_base.nme_group_master_data_manager,crud,
+nme_product_rule_company,nme.product multi-company,nme.product,,crud,"[('company_id', 'in', company_ids + [False])]"
+nme_tax_access_user,nme.tax user,nme.tax,base.group_user,r,
+nme_tax_access_manager,nme.tax manager,nme.tax,nme_base.nme_group_master_data_manager,crud,
+nme_tax_rule_company,nme.tax multi-company,nme.tax,,crud,"[('company_id', 'in', company_ids)]"
+nme_payment_term_access_user,nme.payment.term user,nme.payment.term,base.group_user,r,
+nme_payment_term_access_manager,nme.payment.term manager,nme.payment.term,nme_base.nme_group_master_data_manager,crud,
+nme_payment_term_rule_company,nme.payment.term multi-company,nme.payment.term,,crud,"[('company_id', 'in', company_ids + [False])]"
+nme_document_cancel_access_user,nme.document.cancel user,nme.document.cancel,base.group_user,cru,
+nme_document_cancel_rule_own,nme.document.cancel own wizard,nme.document.cancel,,crud,"[('create_uid', '=', user.id)]"

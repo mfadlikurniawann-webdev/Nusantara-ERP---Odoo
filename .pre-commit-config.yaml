@@ -1,0 +1,51 @@
+default_language_version:
+  python: python3
+exclude: |
+  (?x)
+  # Generated or binary files
+  /static/description/index\.html$|
+  \.svg$|
+  ^LICENSE$|
+  \.po$|\.pot$
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: check-xml
+      - id: check-yaml
+      - id: debug-statements
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+  - repo: https://github.com/PyCQA/isort
+    rev: 9.0.2
+    hooks:
+      - id: isort
+        name: isort except __init__.py
+        # Odoo/OCA style: one "from . import x" per line in __init__.py files.
+        exclude: /__init__\.py$
+  - repo: https://github.com/psf/black
+    rev: 26.10.1
+    hooks:
+      - id: black
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.4.1
+    hooks:
+      - id: flake8
+  - repo: https://github.com/OCA/pylint-odoo
+    rev: v10.0.12
+    hooks:
+      - id: pylint_odoo
+        args: ["--rcfile=.pylintrc"]
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier (xml, js, scss, yaml, md)
+        entry: prettier --write --list-different --ignore-unknown
+        language: node
+        types_or: [xml, javascript, scss, yaml, markdown, json]
+        additional_dependencies:
+          - "prettier@3.9.10"
+          - "@prettier/plugin-xml@3.4.2"

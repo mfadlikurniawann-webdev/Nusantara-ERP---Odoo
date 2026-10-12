@@ -1,0 +1,27 @@
+[MASTER]
+load-plugins=pylint_odoo
+score=n
+
+[ODOOLINT]
+manifest-required-authors=M. Fadli Kurniawan
+manifest-required-keys=license
+valid-odoo-versions=20.0
+
+[MESSAGES CONTROL]
+disable=all
+# All pylint-odoo checks plus a few core checks that catch real bugs.
+enable=odoolint,
+    dangerous-default-value,
+    duplicate-key,
+    eval-used,
+    pointless-statement,
+    redefined-builtin,
+    reimported,
+    unreachable,
+    undefined-variable,
+    unused-variable
+
+[REPORTS]
+msg-template={path}:{line}: [{msg_id}({symbol}), {obj}] {msg}
+output-format=colorized
+reports=no

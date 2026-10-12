@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+      POSTGRES_DB: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odoo"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  odoo:
+    image: odoo:20
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      # Override with ODOO_PORT if 8069 is already taken on the host.
+      - "${ODOO_PORT:-8069}:8069"
+    environment:
+      HOST: db
+      USER: odoo
+      PASSWORD: odoo
+    volumes:
+      - ./:/mnt/extra-addons:ro
+      - ./docker/odoo.conf:/etc/odoo/odoo.conf:ro
+      - odoo-data:/var/lib/odoo
+
+volumes:
+  db-data:
+  odoo-data:

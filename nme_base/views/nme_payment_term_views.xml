@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_payment_term_view_list" model="ir.ui.view">
+        <field name="name">nme.payment.term.view.list</field>
+        <field name="model">nme.payment.term</field>
+        <field name="arch" type="xml">
+            <list string="Payment Terms" editable="bottom">
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="days" />
+                <field name="note" optional="show" />
+                <field
+                    name="company_id"
+                    groups="base.group_multi_company"
+                    optional="hide"
+                />
+                <field name="active" widget="boolean_toggle" />
+            </list>
+        </field>
+    </record>
+
+    <record id="nme_payment_term_action" model="ir.actions.act_window">
+        <field name="name">Payment Terms</field>
+        <field name="res_model">nme.payment.term</field>
+        <field name="view_mode">list</field>
+    </record>
+</odoo>

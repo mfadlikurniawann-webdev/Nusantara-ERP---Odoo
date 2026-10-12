@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_privilege_master_data" model="res.groups.privilege">
+        <field name="name">Master Data</field>
+        <field name="sequence">90</field>
+        <field name="category_id" ref="base.module_category_nusantara_erp" />
+    </record>
+
+    <record id="nme_group_master_data_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="sequence">10</field>
+        <field name="privilege_id" ref="nme_privilege_master_data" />
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+        <field
+            name="user_ids"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+        <field
+            name="comment"
+        >Creates and edits products, categories, units, taxes and payment terms.</field>
+    </record>
+</odoo>

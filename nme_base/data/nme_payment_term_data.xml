@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="nme_payment_term_immediate" model="nme.payment.term">
+        <field name="name">Immediate Payment</field>
+        <field name="days">0</field>
+        <field name="sequence">1</field>
+        <field name="note">Payment due on receipt.</field>
+    </record>
+    <record id="nme_payment_term_14_days" model="nme.payment.term">
+        <field name="name">14 Days</field>
+        <field name="days">14</field>
+        <field name="sequence">2</field>
+        <field name="note">Payment due within 14 days.</field>
+    </record>
+    <record id="nme_payment_term_30_days" model="nme.payment.term">
+        <field name="name">30 Days</field>
+        <field name="days">30</field>
+        <field name="sequence">3</field>
+        <field name="note">Payment due within 30 days.</field>
+    </record>
+</odoo>

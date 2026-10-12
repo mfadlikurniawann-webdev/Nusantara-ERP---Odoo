@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Customers: small shops around Surabaya -->
+    <record id="nme_partner_toko_makmur" model="res.partner">
+        <field name="name">Toko Makmur Jaya</field>
+        <field name="is_company" eval="True" />
+        <field name="nme_is_customer" eval="True" />
+        <field name="street">Jl. Kapas Krampung 45</field>
+        <field name="city">Surabaya</field>
+        <field name="country_id" ref="base.id" />
+        <field name="phone">+62 31 555 0101</field>
+        <field name="email">order@tokomakmur.example.com</field>
+        <field name="vat">0012345674615000</field>
+        <field name="nme_payment_term_id" ref="nme_payment_term_14_days" />
+    </record>
+    <record id="nme_partner_warung_sri" model="res.partner">
+        <field name="name">Warung Bu Sri</field>
+        <field name="is_company" eval="True" />
+        <field name="nme_is_customer" eval="True" />
+        <field name="street">Jl. Raya Waru 12</field>
+        <field name="city">Sidoarjo</field>
+        <field name="country_id" ref="base.id" />
+        <field name="phone">+62 812 3000 1111</field>
+        <field name="nme_payment_term_id" ref="nme_payment_term_immediate" />
+    </record>
+    <record id="nme_partner_minimarket_berkah" model="res.partner">
+        <field name="name">Minimarket Berkah</field>
+        <field name="is_company" eval="True" />
+        <field name="nme_is_customer" eval="True" />
+        <field name="street">Jl. Ahmad Yani 210</field>
+        <field name="city">Surabaya</field>
+        <field name="country_id" ref="base.id" />
+        <field name="email">purchasing@berkah.example.com</field>
+        <field name="vat">0023456783609000</field>
+        <field name="nme_payment_term_id" ref="nme_payment_term_30_days" />
+    </record>
+
+    <!-- Vendors -->
+    <record id="nme_partner_beras_nusantara" model="res.partner">
+        <field name="name">PT Beras Nusantara</field>
+        <field name="is_company" eval="True" />
+        <field name="nme_is_vendor" eval="True" />
+        <field name="street">Jl. Industri 8</field>
+        <field name="city">Lamongan</field>
+        <field name="country_id" ref="base.id" />
+        <field name="email">sales@berasnusantara.example.com</field>
+        <field name="vat">0034567891644000</field>
+        <field name="nme_vendor_payment_term_id" ref="nme_payment_term_30_days" />
+    </record>
+    <record id="nme_partner_sawit_indah" model="res.partner">
+        <field name="name">PT Minyak Sawit Indah</field>
+        <field name="is_company" eval="True" />
+        <field name="nme_is_vendor" eval="True" />
+        <field name="street">Kawasan Industri Rungkut Blok C</field>
+        <field name="city">Surabaya</field>
+        <field name="country_id" ref="base.id" />
+        <field name="email">order@sawitindah.example.com</field>
+        <field name="vat">0045678901606000</field>
+        <field name="nme_vendor_payment_term_id" ref="nme_payment_term_14_days" />
+    </record>
+    <record id="nme_partner_gula_manis" model="res.partner">
+        <field name="name">CV Gula Manis</field>
+        <field name="is_company" eval="True" />
+        <field name="nme_is_vendor" eval="True" />
+        <field name="nme_is_customer" eval="True" />
+        <field name="street">Jl. Pabrik Gula 3</field>
+        <field name="city">Kediri</field>
+        <field name="country_id" ref="base.id" />
+        <field name="nme_vendor_payment_term_id" ref="nme_payment_term_immediate" />
+    </record>
+</odoo>

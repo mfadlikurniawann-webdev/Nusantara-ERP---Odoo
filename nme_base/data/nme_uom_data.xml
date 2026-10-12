@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="nme_uom_unit" model="nme.uom">
+        <field name="name">Unit</field>
+        <field name="code">pcs</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="nme_uom_kg" model="nme.uom">
+        <field name="name">Kilogram</field>
+        <field name="code">kg</field>
+        <field name="sequence">2</field>
+    </record>
+    <record id="nme_uom_liter" model="nme.uom">
+        <field name="name">Liter</field>
+        <field name="code">L</field>
+        <field name="sequence">3</field>
+    </record>
+    <record id="nme_uom_sack" model="nme.uom">
+        <field name="name">Sack</field>
+        <field name="code">sack</field>
+        <field name="sequence">4</field>
+    </record>
+    <record id="nme_uom_box" model="nme.uom">
+        <field name="name">Box</field>
+        <field name="code">box</field>
+        <field name="sequence">5</field>
+    </record>
+    <record id="nme_uom_pack" model="nme.uom">
+        <field name="name">Pack</field>
+        <field name="code">pack</field>
+        <field name="sequence">6</field>
+    </record>
+</odoo>

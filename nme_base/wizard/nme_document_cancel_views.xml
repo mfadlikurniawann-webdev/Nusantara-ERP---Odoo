@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_document_cancel_view_form" model="ir.ui.view">
+        <field name="name">nme.document.cancel.view.form</field>
+        <field name="model">nme.document.cancel</field>
+        <field name="arch" type="xml">
+            <form string="Cancel Document">
+                <field name="res_model" invisible="1" />
+                <group>
+                    <field
+                        name="reason"
+                        placeholder="Why is this document cancelled?"
+                    />
+                </group>
+                <footer>
+                    <button
+                        name="action_confirm"
+                        type="object"
+                        string="Confirm Cancellation"
+                        class="btn-primary"
+                        data-hotkey="q"
+                    />
+                    <button
+                        string="Discard"
+                        special="cancel"
+                        class="btn-secondary"
+                        data-hotkey="x"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

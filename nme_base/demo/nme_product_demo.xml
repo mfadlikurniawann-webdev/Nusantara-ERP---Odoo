@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Basic staples are VAT exempt: their tax fields are emptied. -->
+    <record id="nme_product_rice_5kg" model="nme.product">
+        <field name="name">Premium Rice 5 kg</field>
+        <field name="default_code">BRS-P5</field>
+        <field name="categ_id" ref="nme_categ_rice" />
+        <field name="uom_id" ref="nme_uom_sack" />
+        <field name="list_price">78000</field>
+        <field name="purchase_price">70000</field>
+        <field name="sale_tax_ids" eval="[(5, 0, 0)]" />
+        <field name="purchase_tax_ids" eval="[(5, 0, 0)]" />
+    </record>
+    <record id="nme_product_rice_25kg" model="nme.product">
+        <field name="name">Medium Rice 25 kg</field>
+        <field name="default_code">BRS-M25</field>
+        <field name="categ_id" ref="nme_categ_rice" />
+        <field name="uom_id" ref="nme_uom_sack" />
+        <field name="list_price">325000</field>
+        <field name="purchase_price">300000</field>
+        <field name="sale_tax_ids" eval="[(5, 0, 0)]" />
+        <field name="purchase_tax_ids" eval="[(5, 0, 0)]" />
+    </record>
+    <record id="nme_product_oil_2l" model="nme.product">
+        <field name="name">Palm Cooking Oil 2 L</field>
+        <field name="default_code">MYK-2L</field>
+        <field name="categ_id" ref="nme_categ_oil" />
+        <field name="uom_id" ref="nme_uom_unit" />
+        <field name="list_price">36000</field>
+        <field name="purchase_price">32000</field>
+    </record>
+    <record id="nme_product_sugar_1kg" model="nme.product">
+        <field name="name">Granulated Sugar 1 kg</field>
+        <field name="default_code">GLA-1K</field>
+        <field name="categ_id" ref="nme_categ_sugar" />
+        <field name="uom_id" ref="nme_uom_unit" />
+        <field name="list_price">17500</field>
+        <field name="purchase_price">15500</field>
+        <field name="sale_tax_ids" eval="[(5, 0, 0)]" />
+        <field name="purchase_tax_ids" eval="[(5, 0, 0)]" />
+    </record>
+    <record id="nme_product_eggs" model="nme.product">
+        <field name="name">Chicken Eggs</field>
+        <field name="default_code">TLR-KG</field>
+        <field name="categ_id" ref="nme_categ_eggs" />
+        <field name="uom_id" ref="nme_uom_kg" />
+        <field name="list_price">29000</field>
+        <field name="purchase_price">26000</field>
+        <field name="sale_tax_ids" eval="[(5, 0, 0)]" />
+        <field name="purchase_tax_ids" eval="[(5, 0, 0)]" />
+    </record>
+    <record id="nme_product_noodles_box" model="nme.product">
+        <field name="name">Instant Fried Noodles (box of 40)</field>
+        <field name="default_code">MIE-GRG40</field>
+        <field name="categ_id" ref="nme_categ_noodles" />
+        <field name="uom_id" ref="nme_uom_box" />
+        <field name="list_price">118000</field>
+        <field name="purchase_price">108000</field>
+    </record>
+    <record id="nme_product_delivery_service" model="nme.product">
+        <field name="name">Delivery Fee</field>
+        <field name="default_code">SRV-DLV</field>
+        <field name="type">service</field>
+        <field name="categ_id" ref="nme_categ_services" />
+        <field name="uom_id" ref="nme_uom_unit" />
+        <field name="list_price">25000</field>
+        <field name="purchase_price">0</field>
+    </record>
+</odoo>

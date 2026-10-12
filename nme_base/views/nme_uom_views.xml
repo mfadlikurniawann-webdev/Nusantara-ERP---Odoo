@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_uom_view_list" model="ir.ui.view">
+        <field name="name">nme.uom.view.list</field>
+        <field name="model">nme.uom</field>
+        <field name="arch" type="xml">
+            <list string="Units of Measure" editable="bottom">
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="code" />
+                <field name="active" widget="boolean_toggle" />
+            </list>
+        </field>
+    </record>
+
+    <record id="nme_uom_action" model="ir.actions.act_window">
+        <field name="name">Units of Measure</field>
+        <field name="res_model">nme.uom</field>
+        <field name="view_mode">list</field>
+        <field name="context">{'active_test': False}</field>
+    </record>
+</odoo>

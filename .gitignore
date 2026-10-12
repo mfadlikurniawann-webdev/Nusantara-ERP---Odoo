@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Test & coverage
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Node (prettier via pre-commit)
+node_modules/
+
+# Odoo runtime
+*.log
+filestore/
+.env
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,80 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint (pre-commit)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+      - uses: pre-commit/action@v3.0.1
+
+  test:
+    name: Test (Odoo 20 + PostgreSQL 16)
+    runs-on: ubuntu-latest
+    container:
+      image: odoo:20
+      options: --user root
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: odoo
+          POSTGRES_PASSWORD: odoo
+          POSTGRES_DB: postgres
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s
+          --health-retries 10
+    defaults:
+      run:
+        # bash on GitHub Actions runs with -eo pipefail, so a failing odoo
+        # process is not hidden by the "| tee" below.
+        shell: bash
+    env:
+      MODULES: nme_base,nme_inventory,nme_sales,nme_purchase,nme_invoicing,nme_reporting
+      TEST_TAGS: /nme_base,/nme_inventory,/nme_sales,/nme_purchase,/nme_invoicing,/nme_reporting
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install coverage
+        run: apt-get update -qq && apt-get install -y -qq python3-coverage
+      - name: Install modules and run tests
+        run: |
+          python3-coverage run \
+            --source="$GITHUB_WORKSPACE" \
+            --omit='*/tests/*,*/__manifest__.py' \
+            /usr/bin/odoo \
+            --db_host=postgres --db_user=odoo --db_password=odoo \
+            --addons-path="$GITHUB_WORKSPACE" \
+            -d nme_test -i "$MODULES" \
+            --test-tags="$TEST_TAGS" \
+            --stop-after-init 2>&1 | tee odoo.log
+          # Odoo logs failed tests as ERROR; fail the job if any were logged.
+          if grep -qE " (ERROR|CRITICAL) " odoo.log; then
+            grep -E " (ERROR|CRITICAL) " odoo.log
+            exit 1
+          fi
+      - name: Coverage report
+        run: |
+          python3-coverage report -m --fail-under=80
+          python3-coverage xml -o coverage.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: odoo-test-log
+          path: |
+            odoo.log
+            coverage.xml

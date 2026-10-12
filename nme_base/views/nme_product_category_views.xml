@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_product_category_view_search" model="ir.ui.view">
+        <field name="name">nme.product.category.view.search</field>
+        <field name="model">nme.product.category</field>
+        <field name="arch" type="xml">
+            <search string="Product Categories">
+                <field name="complete_name" string="Category" />
+                <field name="parent_id" operator="child_of" />
+            </search>
+        </field>
+    </record>
+
+    <record id="nme_product_category_view_list" model="ir.ui.view">
+        <field name="name">nme.product.category.view.list</field>
+        <field name="model">nme.product.category</field>
+        <field name="arch" type="xml">
+            <list string="Product Categories">
+                <field name="complete_name" string="Category" />
+                <field name="product_count" />
+            </list>
+        </field>
+    </record>
+
+    <record id="nme_product_category_view_form" model="ir.ui.view">
+        <field name="name">nme.product.category.view.form</field>
+        <field name="model">nme.product.category</field>
+        <field name="arch" type="xml">
+            <form string="Product Category">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="%(nme_product_action)d"
+                            type="action"
+                            class="oe_stat_button"
+                            icon="fa-cubes"
+                            context="{'search_default_categ_id': id}"
+                        >
+                            <field
+                                name="product_count"
+                                widget="statinfo"
+                                string="Products"
+                            />
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" />
+                        <h1>
+                            <field name="name" placeholder="e.g. Rice" />
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="parent_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="nme_product_category_action" model="ir.actions.act_window">
+        <field name="name">Product Categories</field>
+        <field name="res_model">nme.product.category</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
