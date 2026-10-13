@@ -42,9 +42,9 @@ Credit limits are set by sales managers on the customer form
 Security
 ========
 
-* *Sales / User: Own Documents Only*: their own (or unassigned) orders.
-  They can read and create the deliveries of these orders, using the
-  ``access`` domain operator of ``ir.access`` instead of ``sudo()``.
+* *Sales / User: Own Documents Only*: their own (or unassigned) orders;
+  order lines follow their order through the ``access`` domain operator of
+  ``ir.access``. They also prepare deliveries (outgoing transfers).
 * *Sales / Manager*: every order, credit limits and limit overrides.
 * Inventory users can read sales orders to prepare deliveries.
 

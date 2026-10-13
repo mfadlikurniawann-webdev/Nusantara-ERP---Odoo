@@ -24,7 +24,9 @@ class ResPartner(models.Model):
         "Block: only a sales manager can confirm above the limit.",
     )
     nme_company_currency_id = fields.Many2one(
-        "res.currency", compute="_compute_nme_company_currency_id"
+        "res.currency",
+        string="Company Currency",
+        compute="_compute_nme_company_currency_id",
     )
     nme_credit_exposure = fields.Float(
         string="Credit Used",
@@ -32,7 +34,9 @@ class ResPartner(models.Model):
         compute="_compute_nme_credit_exposure",
         help="Amount owed or committed by the customer in the current company.",
     )
-    nme_sale_order_count = fields.Integer(compute="_compute_nme_sale_order_count")
+    nme_sale_order_count = fields.Integer(
+        string="Sales Order Count", compute="_compute_nme_sale_order_count"
+    )
 
     @api.depends_context("company")
     def _compute_nme_company_currency_id(self):

@@ -5,7 +5,7 @@ class ResPartner(models.Model):
     _inherit = "res.partner"
 
     nme_purchase_order_count = fields.Integer(
-        compute="_compute_nme_purchase_order_count"
+        string="Purchase Order Count", compute="_compute_nme_purchase_order_count"
     )
 
     def _compute_nme_purchase_order_count(self):

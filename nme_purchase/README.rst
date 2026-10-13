@@ -39,7 +39,7 @@ Security
 ========
 
 * *Purchase / User*: every purchase order of their companies, and the
-  receipts of these orders (``access`` domain operator).
+  receipts (incoming transfers).
 * *Purchase / Manager*: approves or rejects orders above the threshold.
 * Inventory users can read purchase orders to receive the goods.
 

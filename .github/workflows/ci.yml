@@ -67,6 +67,18 @@ jobs:
             grep -E " (ERROR|CRITICAL) " odoo.log
             exit 1
           fi
+      - name: Upgrade the installed modules
+        # Upgrades load the modules in another order than installs: catch
+        # rules or views that depend on a module loaded later.
+        run: |
+          /usr/bin/odoo \
+            --db_host=postgres --db_user=odoo --db_password=odoo \
+            --addons-path="$GITHUB_WORKSPACE" \
+            -d nme_test -u "$MODULES" --stop-after-init 2>&1 | tee upgrade.log
+          if grep -qE " (ERROR|CRITICAL) " upgrade.log; then
+            grep -E " (ERROR|CRITICAL) " upgrade.log
+            exit 1
+          fi
       - name: Coverage report
         run: |
           python3-coverage report -m --fail-under=80
