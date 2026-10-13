@@ -49,8 +49,11 @@ jobs:
       TEST_TAGS: /nme_base,/nme_inventory,/nme_sales,/nme_purchase,/nme_invoicing,/nme_reporting
     steps:
       - uses: actions/checkout@v5
-      - name: Install coverage
-        run: apt-get update -qq && apt-get install -y -qq python3-coverage
+      - name: Install test tools
+        # chromium and websocket-client let Odoo run the Hoot (JavaScript) tests.
+        run: |
+          apt-get update -qq
+          apt-get install -y -qq python3-coverage python3-websocket chromium
       - name: Install modules and run tests
         run: |
           python3-coverage run \
