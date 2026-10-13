@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_picking_view_search" model="ir.ui.view">
+        <field name="name">nme.picking.view.search</field>
+        <field name="model">nme.picking</field>
+        <field name="arch" type="xml">
+            <search string="Transfers">
+                <field
+                    name="name"
+                    string="Transfer"
+                    filter_domain="['|', ('name', 'ilike', self), ('origin', 'ilike', self)]"
+                />
+                <field name="partner_id" />
+                <field
+                    name="move_ids"
+                    string="Product"
+                    filter_domain="[('move_ids.product_id', 'ilike', self)]"
+                />
+                <field name="warehouse_id" />
+                <filter
+                    name="filter_draft"
+                    string="Draft"
+                    domain="[('state', '=', 'draft')]"
+                />
+                <filter
+                    name="filter_done"
+                    string="Done"
+                    domain="[('state', '=', 'done')]"
+                />
+                <separator />
+                <filter
+                    name="filter_late"
+                    string="Late"
+                    domain="[('state', '=', 'draft'), ('scheduled_date', '&lt;', context_today().strftime('%Y-%m-%d'))]"
+                />
+                <group>
+                    <filter
+                        name="group_by_type"
+                        string="Transfer Type"
+                        context="{'group_by': 'picking_type'}"
+                    />
+                    <filter
+                        name="group_by_state"
+                        string="Status"
+                        context="{'group_by': 'state'}"
+                    />
+                    <filter
+                        name="group_by_scheduled_date"
+                        string="Scheduled Date"
+                        context="{'group_by': 'scheduled_date:day'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="nme_picking_view_list" model="ir.ui.view">
+        <field name="name">nme.picking.view.list</field>
+        <field name="model">nme.picking</field>
+        <field name="arch" type="xml">
+            <list
+                string="Transfers"
+                sample="1"
+                decoration-muted="state == 'cancel'"
+                decoration-danger="state == 'draft' and scheduled_date &lt; now"
+            >
+                <field name="name" decoration-bf="1" />
+                <field name="picking_type" optional="show" />
+                <field name="partner_id" optional="show" />
+                <field name="location_id" optional="hide" />
+                <field name="location_dest_id" optional="show" />
+                <field name="scheduled_date" />
+                <field name="origin" optional="show" />
+                <field
+                    name="company_id"
+                    groups="base.group_multi_company"
+                    optional="hide"
+                />
+                <field
+                    name="state"
+                    widget="badge"
+                    decoration-info="state == 'draft'"
+                    decoration-success="state == 'done'"
+                />
+            </list>
+        </field>
+    </record>
+
+    <record id="nme_picking_view_kanban" model="ir.ui.view">
+        <field name="name">nme.picking.view.kanban</field>
+        <field name="model">nme.picking</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state" quick_create="false" sample="1">
+                <templates>
+                    <t t-name="card">
+                        <div class="d-flex">
+                            <field name="name" class="fw-bold" />
+                            <field
+                                name="picking_type"
+                                class="ms-auto text-muted small"
+                            />
+                        </div>
+                        <field name="partner_id" />
+                        <footer>
+                            <field name="scheduled_date" widget="date" />
+                            <field name="origin" class="ms-auto text-muted" />
+                        </footer>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="nme_picking_view_calendar" model="ir.ui.view">
+        <field name="name">nme.picking.view.calendar</field>
+        <field name="model">nme.picking</field>
+        <field name="arch" type="xml">
+            <calendar
+                string="Transfers"
+                date_start="scheduled_date"
+                color="picking_type"
+                mode="week"
+                event_limit="5"
+                quick_create="0"
+            >
+                <field name="picking_type" filters="1" />
+                <field name="partner_id" />
+                <field name="state" />
+            </calendar>
+        </field>
+    </record>
+
+    <record id="nme_picking_view_form" model="ir.ui.view">
+        <field name="name">nme.picking.view.form</field>
+        <field name="model">nme.picking</field>
+        <field name="arch" type="xml">
+            <form string="Transfer">
+                <header>
+                    <button
+                        name="action_validate"
+                        type="object"
+                        string="Validate"
+                        class="btn-primary"
+                        invisible="state != 'draft'"
+                        data-hotkey="v"
+                    />
+                    <button
+                        name="action_create_return"
+                        type="object"
+                        string="Return"
+                        invisible="state != 'done' or return_of_id"
+                    />
+                    <button
+                        name="nme_inventory.action_report_nme_picking"
+                        type="action"
+                        string="Print"
+                        invisible="state == 'cancel'"
+                    />
+                    <button
+                        name="action_open_cancel_wizard"
+                        type="object"
+                        string="Cancel"
+                        invisible="state != 'draft'"
+                    />
+                    <button
+                        name="action_set_draft"
+                        type="object"
+                        string="Set to Draft"
+                        invisible="state != 'cancel'"
+                    />
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,done"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="action_view_returns"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-undo"
+                            invisible="not return_count"
+                        >
+                            <field
+                                name="return_count"
+                                widget="statinfo"
+                                string="Returns"
+                            />
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group name="partner">
+                            <field
+                                name="picking_type"
+                                readonly="state != 'draft' or return_of_id"
+                            />
+                            <field name="partner_id" readonly="state != 'draft'" />
+                            <field
+                                name="warehouse_id"
+                                readonly="state != 'draft' or return_of_id"
+                                options="{'no_create': True}"
+                            />
+                            <field
+                                name="warehouse_dest_id"
+                                invisible="picking_type != 'internal'"
+                                required="picking_type == 'internal'"
+                                readonly="state != 'draft' or return_of_id"
+                                options="{'no_create': True}"
+                            />
+                            <field name="location_id" />
+                            <field name="location_dest_id" />
+                        </group>
+                        <group name="dates">
+                            <field name="scheduled_date" readonly="state != 'draft'" />
+                            <field name="date_done" invisible="state != 'done'" />
+                            <field name="origin" readonly="state != 'draft'" />
+                            <field name="return_of_id" invisible="not return_of_id" />
+                            <field name="user_id" readonly="state != 'draft'" />
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                                readonly="state != 'draft'"
+                            />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Products" name="moves">
+                            <field name="move_ids" readonly="state != 'draft'">
+                                <list editable="bottom">
+                                    <field
+                                        name="product_id"
+                                        options="{'no_create': True}"
+                                    />
+                                    <field name="name" optional="hide" />
+                                    <field name="quantity" />
+                                    <field name="uom_id" />
+                                    <field name="state" column_invisible="True" />
+                                    <field name="currency_id" column_invisible="True" />
+                                    <field
+                                        name="value"
+                                        widget="monetary"
+                                        optional="show"
+                                        column_invisible="parent.state != 'done'"
+                                    />
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="note" placeholder="Delivery instructions..." />
+                        </page>
+                        <page
+                            string="Cancellation"
+                            name="cancellation"
+                            invisible="not cancel_reason"
+                        >
+                            <field name="cancel_reason" />
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <record id="nme_picking_action" model="ir.actions.act_window">
+        <field name="name">All Transfers</field>
+        <field name="res_model">nme.picking</field>
+        <field name="view_mode">list,kanban,form,calendar</field>
+    </record>
+
+    <record id="nme_picking_action_receipts" model="ir.actions.act_window">
+        <field name="name">Receipts</field>
+        <field name="res_model">nme.picking</field>
+        <field name="view_mode">list,kanban,form,calendar</field>
+        <field name="domain">[('picking_type', '=', 'incoming')]</field>
+        <field name="context">{'default_picking_type': 'incoming'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a receipt</p>
+            <p>Receipts bring goods from vendors into a warehouse.</p>
+        </field>
+    </record>
+
+    <record id="nme_picking_action_deliveries" model="ir.actions.act_window">
+        <field name="name">Deliveries</field>
+        <field name="res_model">nme.picking</field>
+        <field name="view_mode">list,kanban,form,calendar</field>
+        <field name="domain">[('picking_type', '=', 'outgoing')]</field>
+        <field name="context">{'default_picking_type': 'outgoing'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Create a delivery</p>
+            <p>Deliveries take goods out of a warehouse to customers.</p>
+        </field>
+    </record>
+
+    <record id="nme_picking_action_internal" model="ir.actions.act_window">
+        <field name="name">Internal Transfers</field>
+        <field name="res_model">nme.picking</field>
+        <field name="view_mode">list,kanban,form,calendar</field>
+        <field name="domain">[('picking_type', '=', 'internal')]</field>
+        <field name="context">{'default_picking_type': 'internal'}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Move goods between warehouses</p>
+        </field>
+    </record>
+
+    <record id="nme_picking_action_validate" model="ir.actions.server">
+        <field name="name">Validate Transfers</field>
+        <field name="model_id" ref="model_nme_picking" />
+        <field name="binding_model_id" ref="model_nme_picking" />
+        <field name="binding_view_types">list</field>
+        <field name="group_ids" eval="[(4, ref('nme_group_inventory_user'))]" />
+        <field name="state">code</field>
+        <field
+            name="code"
+        >records.filtered(lambda p: p.state == 'draft').action_validate()</field>
+    </record>
+</odoo>

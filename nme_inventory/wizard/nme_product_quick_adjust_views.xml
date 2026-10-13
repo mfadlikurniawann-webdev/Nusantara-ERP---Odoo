@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_product_quick_adjust_view_form" model="ir.ui.view">
+        <field name="name">nme.product.quick.adjust.view.form</field>
+        <field name="model">nme.product.quick.adjust</field>
+        <field name="arch" type="xml">
+            <form string="Update Quantity">
+                <group>
+                    <group>
+                        <field name="product_id" readonly="1" />
+                        <field name="company_id" invisible="1" />
+                        <field name="currency_id" invisible="1" />
+                        <field name="warehouse_id" options="{'no_create': True}" />
+                        <field name="current_qty" />
+                    </group>
+                    <group>
+                        <field name="counted_qty" />
+                        <field
+                            name="unit_cost"
+                            widget="monetary"
+                            invisible="counted_qty &lt;= current_qty"
+                        />
+                        <field name="reason_id" options="{'no_create': True}" />
+                    </group>
+                </group>
+                <footer>
+                    <button
+                        name="action_apply"
+                        type="object"
+                        string="Apply"
+                        class="btn-primary"
+                        data-hotkey="q"
+                    />
+                    <button
+                        string="Discard"
+                        special="cancel"
+                        class="btn-secondary"
+                        data-hotkey="x"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="nme_product_quick_adjust_action" model="ir.actions.act_window">
+        <field name="name">Update Quantity</field>
+        <field name="res_model">nme.product.quick.adjust</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

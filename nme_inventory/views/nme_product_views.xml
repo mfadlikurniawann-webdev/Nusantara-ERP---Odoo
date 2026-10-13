@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_product_view_form" model="ir.ui.view">
+        <field name="name">nme.product.view.form.inherit.nme.inventory</field>
+        <field name="model">nme.product</field>
+        <field name="inherit_id" ref="nme_base.nme_product_view_form" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button
+                    name="action_view_stock_moves"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-cubes"
+                    invisible="type != 'goods'"
+                >
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="qty_available" nolabel="1" />
+                            <field
+                                name="uom_id"
+                                nolabel="1"
+                                options="{'no_open': True}"
+                            />
+                        </span>
+                        <span class="o_stat_text">On Hand</span>
+                    </div>
+                </button>
+            </div>
+            <page name="notes" position="before">
+                <page string="Inventory" name="inventory" invisible="type != 'goods'">
+                    <group>
+                        <group name="stock">
+                            <label for="qty_available" />
+                            <div class="o_row">
+                                <field name="qty_available" />
+                                <button
+                                    name="%(nme_inventory.nme_product_quick_adjust_action)d"
+                                    type="action"
+                                    string="Update Quantity"
+                                    class="btn-link"
+                                    icon="fa-pencil"
+                                    invisible="not id"
+                                    groups="nme_inventory.nme_group_inventory_manager"
+                                />
+                            </div>
+                            <field name="min_qty" />
+                            <field name="is_below_min" invisible="1" />
+                        </group>
+                        <group name="valuation">
+                            <field
+                                name="avg_cost"
+                                widget="monetary"
+                                options="{'currency_field': 'currency_id'}"
+                            />
+                            <field name="stock_value" widget="monetary" />
+                        </group>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="nme_product_view_list" model="ir.ui.view">
+        <field name="name">nme.product.view.list.inherit.nme.inventory</field>
+        <field name="model">nme.product</field>
+        <field name="inherit_id" ref="nme_base.nme_product_view_list" />
+        <field name="arch" type="xml">
+            <field name="uom_id" position="before">
+                <field
+                    name="qty_available"
+                    optional="show"
+                    decoration-danger="is_below_min"
+                />
+                <field name="is_below_min" column_invisible="True" />
+            </field>
+            <field name="purchase_price" position="after">
+                <field
+                    name="avg_cost"
+                    widget="monetary"
+                    options="{'currency_field': 'currency_id'}"
+                    optional="hide"
+                />
+                <field name="stock_value" widget="monetary" optional="hide" />
+            </field>
+        </field>
+    </record>
+
+    <record id="nme_product_view_search" model="ir.ui.view">
+        <field name="name">nme.product.view.search.inherit.nme.inventory</field>
+        <field name="model">nme.product</field>
+        <field name="inherit_id" ref="nme_base.nme_product_view_search" />
+        <field name="arch" type="xml">
+            <filter name="filter_services" position="after">
+                <separator />
+                <filter
+                    name="filter_in_stock"
+                    string="In Stock"
+                    domain="[('qty_available', '&gt;', 0)]"
+                />
+                <filter
+                    name="filter_below_min"
+                    string="Below Minimum Stock"
+                    domain="[('is_below_min', '=', True)]"
+                />
+            </filter>
+        </field>
+    </record>
+
+    <record id="nme_product_action_stock" model="ir.actions.act_window">
+        <field name="name">Products</field>
+        <field name="res_model">nme.product</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="context">{'search_default_filter_goods': 1}</field>
+    </record>
+</odoo>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_location_view_search" model="ir.ui.view">
+        <field name="name">nme.location.view.search</field>
+        <field name="model">nme.location</field>
+        <field name="arch" type="xml">
+            <search string="Locations">
+                <field name="complete_name" string="Location" />
+                <field name="warehouse_id" />
+                <filter
+                    name="filter_internal"
+                    string="Internal"
+                    domain="[('usage', '=', 'internal')]"
+                />
+                <filter
+                    name="filter_virtual"
+                    string="Virtual"
+                    domain="[('usage', '!=', 'internal')]"
+                />
+                <group>
+                    <filter
+                        name="group_by_usage"
+                        string="Type"
+                        context="{'group_by': 'usage'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="nme_location_view_list" model="ir.ui.view">
+        <field name="name">nme.location.view.list</field>
+        <field name="model">nme.location</field>
+        <field name="arch" type="xml">
+            <list string="Locations">
+                <field name="complete_name" string="Location" />
+                <field name="usage" />
+                <field name="warehouse_id" />
+                <field name="company_id" groups="base.group_multi_company" />
+            </list>
+        </field>
+    </record>
+
+    <record id="nme_location_view_form" model="ir.ui.view">
+        <field name="name">nme.location.view.form</field>
+        <field name="model">nme.location</field>
+        <field name="arch" type="xml">
+            <form string="Location">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" />
+                        <h1>
+                            <field name="name" placeholder="e.g. Rack A" />
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="usage" />
+                        <field
+                            name="warehouse_id"
+                            required="usage == 'internal'"
+                            invisible="usage != 'internal'"
+                        />
+                        <field
+                            name="company_id"
+                            groups="base.group_multi_company"
+                            required="usage == 'internal'"
+                        />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="nme_location_action" model="ir.actions.act_window">
+        <field name="name">Locations</field>
+        <field name="res_model">nme.location</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_filter_internal': 1}</field>
+    </record>
+</odoo>

@@ -1,0 +1,24 @@
+id,name,model_id,group_id/id,operation,domain
+nme_warehouse_access_user,nme.warehouse user,nme.warehouse,base.group_user,r,
+nme_warehouse_access_manager,nme.warehouse manager,nme.warehouse,nme_inventory.nme_group_inventory_manager,crud,
+nme_warehouse_rule_company,nme.warehouse multi-company,nme.warehouse,,crud,"[('company_id', 'in', company_ids)]"
+nme_location_access_user,nme.location user,nme.location,base.group_user,r,
+nme_location_access_manager,nme.location manager,nme.location,nme_inventory.nme_group_inventory_manager,crud,
+nme_location_rule_company,nme.location multi-company,nme.location,,crud,"[('company_id', 'in', company_ids + [False])]"
+nme_stock_move_access_user,nme.stock.move user,nme.stock.move,base.group_user,r,
+nme_stock_move_access_inventory,nme.stock.move inventory user,nme.stock.move,nme_inventory.nme_group_inventory_user,cru,
+nme_stock_move_access_manager,nme.stock.move inventory manager,nme.stock.move,nme_inventory.nme_group_inventory_manager,crud,
+nme_stock_move_rule_company,nme.stock.move multi-company,nme.stock.move,,crud,"[('company_id', 'in', company_ids)]"
+nme_picking_access_inventory,nme.picking inventory user,nme.picking,nme_inventory.nme_group_inventory_user,cru,
+nme_picking_access_manager,nme.picking inventory manager,nme.picking,nme_inventory.nme_group_inventory_manager,crud,
+nme_picking_rule_company,nme.picking multi-company,nme.picking,,crud,"[('company_id', 'in', company_ids)]"
+nme_stock_adjustment_access_inventory,nme.stock.adjustment inventory user,nme.stock.adjustment,nme_inventory.nme_group_inventory_user,cru,
+nme_stock_adjustment_access_manager,nme.stock.adjustment inventory manager,nme.stock.adjustment,nme_inventory.nme_group_inventory_manager,crud,
+nme_stock_adjustment_rule_company,nme.stock.adjustment multi-company,nme.stock.adjustment,,crud,"[('company_id', 'in', company_ids)]"
+nme_stock_adjustment_line_access_inventory,nme.stock.adjustment.line inventory user,nme.stock.adjustment.line,nme_inventory.nme_group_inventory_user,crud,"[('adjustment_id.state', '=', 'draft')]"
+nme_stock_adjustment_line_access_read,nme.stock.adjustment.line read,nme.stock.adjustment.line,nme_inventory.nme_group_inventory_user,r,
+nme_stock_adjustment_line_rule_company,nme.stock.adjustment.line multi-company,nme.stock.adjustment.line,,crud,"[('company_id', 'in', company_ids)]"
+nme_stock_adjustment_reason_access_user,nme.stock.adjustment.reason user,nme.stock.adjustment.reason,base.group_user,r,
+nme_stock_adjustment_reason_access_manager,nme.stock.adjustment.reason manager,nme.stock.adjustment.reason,nme_inventory.nme_group_inventory_manager,crud,
+nme_product_quick_adjust_access_manager,nme.product.quick.adjust manager,nme.product.quick.adjust,nme_inventory.nme_group_inventory_manager,cru,
+nme_product_quick_adjust_rule_own,nme.product.quick.adjust own wizard,nme.product.quick.adjust,,crud,"[('create_uid', '=', user.id)]"

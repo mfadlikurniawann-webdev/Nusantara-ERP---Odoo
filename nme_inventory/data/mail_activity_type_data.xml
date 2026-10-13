@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="mail_activity_type_low_stock" model="mail.activity.type">
+        <field name="name">Low Stock</field>
+        <field name="summary">Replenish this product</field>
+        <field name="res_model">nme.product</field>
+        <field name="icon">fa-cubes</field>
+        <field name="delay_count">1</field>
+    </record>
+</odoo>

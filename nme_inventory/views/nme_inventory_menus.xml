@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        id="nme_menu_inventory"
+        name="Inventory"
+        parent="nme_base.nme_menu_root"
+        sequence="30"
+        groups="nme_group_inventory_user"
+    />
+    <menuitem
+        id="nme_picking_menu_receipts"
+        name="Receipts"
+        parent="nme_menu_inventory"
+        action="nme_picking_action_receipts"
+        sequence="10"
+    />
+    <menuitem
+        id="nme_picking_menu_deliveries"
+        name="Deliveries"
+        parent="nme_menu_inventory"
+        action="nme_picking_action_deliveries"
+        sequence="20"
+    />
+    <menuitem
+        id="nme_picking_menu_internal"
+        name="Internal Transfers"
+        parent="nme_menu_inventory"
+        action="nme_picking_action_internal"
+        sequence="30"
+    />
+    <menuitem
+        id="nme_stock_adjustment_menu"
+        name="Stock Adjustments"
+        parent="nme_menu_inventory"
+        action="nme_stock_adjustment_action"
+        sequence="40"
+    />
+    <menuitem
+        id="nme_product_menu_stock"
+        name="Products"
+        parent="nme_menu_inventory"
+        action="nme_product_action_stock"
+        sequence="50"
+    />
+    <menuitem
+        id="nme_stock_move_menu"
+        name="Stock Ledger"
+        parent="nme_menu_inventory"
+        action="nme_stock_move_action"
+        sequence="60"
+    />
+
+    <menuitem
+        id="nme_warehouse_menu"
+        name="Warehouses"
+        parent="nme_base.nme_menu_configuration"
+        action="nme_warehouse_action"
+        sequence="50"
+        groups="nme_group_inventory_manager"
+    />
+    <menuitem
+        id="nme_location_menu"
+        name="Locations"
+        parent="nme_base.nme_menu_configuration"
+        action="nme_location_action"
+        sequence="51"
+        groups="nme_group_inventory_manager"
+    />
+    <menuitem
+        id="nme_stock_adjustment_reason_menu"
+        name="Adjustment Reasons"
+        parent="nme_base.nme_menu_configuration"
+        action="nme_stock_adjustment_reason_action"
+        sequence="52"
+        groups="nme_group_inventory_manager"
+    />
+</odoo>

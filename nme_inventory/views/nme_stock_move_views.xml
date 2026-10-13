@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_stock_move_view_search" model="ir.ui.view">
+        <field name="name">nme.stock.move.view.search</field>
+        <field name="model">nme.stock.move</field>
+        <field name="arch" type="xml">
+            <search string="Stock Moves">
+                <field name="product_id" />
+                <field name="reference" />
+                <field name="location_id" />
+                <field name="location_dest_id" />
+                <filter
+                    name="filter_incoming"
+                    string="Incoming"
+                    domain="[('location_dest_usage', '=', 'internal'), ('location_usage', '!=', 'internal')]"
+                />
+                <filter
+                    name="filter_outgoing"
+                    string="Outgoing"
+                    domain="[('location_usage', '=', 'internal'), ('location_dest_usage', '!=', 'internal')]"
+                />
+                <separator />
+                <filter
+                    name="filter_done"
+                    string="Done"
+                    domain="[('state', '=', 'done')]"
+                />
+                <filter name="filter_date" string="Date" date="date" />
+                <group>
+                    <filter
+                        name="group_by_product"
+                        string="Product"
+                        context="{'group_by': 'product_id'}"
+                    />
+                    <filter
+                        name="group_by_location_dest"
+                        string="Destination"
+                        context="{'group_by': 'location_dest_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="nme_stock_move_view_list" model="ir.ui.view">
+        <field name="name">nme.stock.move.view.list</field>
+        <field name="model">nme.stock.move</field>
+        <field name="arch" type="xml">
+            <list
+                string="Stock Moves"
+                create="false"
+                edit="false"
+                delete="false"
+                decoration-success="location_dest_usage == 'internal' and location_usage != 'internal'"
+                decoration-danger="location_usage == 'internal' and location_dest_usage != 'internal'"
+            >
+                <field name="date" />
+                <field name="reference" />
+                <field name="product_id" />
+                <field name="location_id" />
+                <field name="location_dest_id" />
+                <field name="location_usage" column_invisible="True" />
+                <field name="location_dest_usage" column_invisible="True" />
+                <field name="quantity" sum="Total" />
+                <field name="uom_id" />
+                <field name="currency_id" column_invisible="True" />
+                <field name="unit_cost" widget="monetary" optional="show" />
+                <field name="value" widget="monetary" optional="show" />
+                <field name="state" optional="hide" />
+                <field
+                    name="company_id"
+                    groups="base.group_multi_company"
+                    optional="hide"
+                />
+            </list>
+        </field>
+    </record>
+
+    <record id="nme_stock_move_view_pivot" model="ir.ui.view">
+        <field name="name">nme.stock.move.view.pivot</field>
+        <field name="model">nme.stock.move</field>
+        <field name="arch" type="xml">
+            <pivot string="Stock Moves" sample="1">
+                <field name="product_id" type="row" />
+                <field name="date" interval="month" type="col" />
+                <field name="quantity" type="measure" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="nme_stock_move_action" model="ir.actions.act_window">
+        <field name="name">Stock Ledger</field>
+        <field name="res_model">nme.stock.move</field>
+        <field name="view_mode">list,pivot</field>
+        <field name="context">{'search_default_filter_done': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No stock move yet</p>
+            <p
+            >Every validated receipt, delivery, transfer or adjustment appears here.</p>
+        </field>
+    </record>
+</odoo>

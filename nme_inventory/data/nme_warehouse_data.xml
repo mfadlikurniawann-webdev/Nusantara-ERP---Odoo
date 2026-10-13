@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <!-- Companies created later get their warehouse automatically
+         (see res.company create). -->
+    <record id="nme_warehouse_main" model="nme.warehouse">
+        <field name="name">Main Warehouse</field>
+        <field name="code">WH</field>
+        <field name="company_id" ref="base.main_company" />
+    </record>
+</odoo>

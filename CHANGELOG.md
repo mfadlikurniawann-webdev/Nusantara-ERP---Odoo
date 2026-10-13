@@ -13,3 +13,7 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 - `nme_base`: products, product categories, units of measure, taxes, payment terms,
   customer/vendor flags, company settings, document mixins (numbering, state machine,
   cancellation with reason, totals) and a generic cancellation wizard.
+- `nme_inventory`: warehouses and locations, receipts/deliveries/internal transfers,
+  immutable stock move ledger with average cost (AVCO) per company, full returns,
+  stock adjustments validated by managers, quick quantity update wizard, minimum stock
+  scheduled action with "Low Stock" activities and a printable delivery slip.

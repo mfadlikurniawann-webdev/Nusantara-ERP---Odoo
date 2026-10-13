@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Minimum stock levels -->
+    <record id="nme_base.nme_product_rice_5kg" model="nme.product">
+        <field name="min_qty">40</field>
+    </record>
+    <record id="nme_base.nme_product_oil_2l" model="nme.product">
+        <field name="min_qty">60</field>
+    </record>
+    <record id="nme_base.nme_product_sugar_1kg" model="nme.product">
+        <field name="min_qty">100</field>
+    </record>
+    <record id="nme_base.nme_product_eggs" model="nme.product">
+        <field name="min_qty">30</field>
+    </record>
+
+    <!-- Opening balance of the Surabaya warehouse -->
+    <record id="nme_adjustment_opening_sby" model="nme.stock.adjustment">
+        <field name="warehouse_id" ref="nme_warehouse_main" />
+        <field name="reason_id" ref="nme_adjustment_reason_opening" />
+        <field
+            name="line_ids"
+            eval="[
+                (0, 0, {'product_id': ref('nme_base.nme_product_rice_5kg'), 'counted_qty': 120, 'unit_cost': 70000}),
+                (0, 0, {'product_id': ref('nme_base.nme_product_rice_25kg'), 'counted_qty': 35, 'unit_cost': 300000}),
+                (0, 0, {'product_id': ref('nme_base.nme_product_oil_2l'), 'counted_qty': 50, 'unit_cost': 32000}),
+                (0, 0, {'product_id': ref('nme_base.nme_product_sugar_1kg'), 'counted_qty': 400, 'unit_cost': 15500}),
+                (0, 0, {'product_id': ref('nme_base.nme_product_eggs'), 'counted_qty': 25, 'unit_cost': 26000}),
+                (0, 0, {'product_id': ref('nme_base.nme_product_noodles_box'), 'counted_qty': 80, 'unit_cost': 108000}),
+            ]"
+        />
+    </record>
+    <function
+        model="nme.stock.adjustment"
+        name="action_validate"
+        eval="[[ref('nme_adjustment_opening_sby')]]"
+    />
+
+    <!-- A validated receipt raising the average cost of the rice -->
+    <record id="nme_picking_receipt_rice" model="nme.picking">
+        <field name="picking_type">incoming</field>
+        <field name="partner_id" ref="nme_base.nme_partner_beras_nusantara" />
+        <field name="warehouse_id" ref="nme_warehouse_main" />
+        <field name="origin">Opening order</field>
+        <field
+            name="move_ids"
+            eval="[(0, 0, {'product_id': ref('nme_base.nme_product_rice_5kg'), 'quantity': 60, 'price_unit': 73000})]"
+        />
+    </record>
+    <function
+        model="nme.picking"
+        name="action_validate"
+        eval="[[ref('nme_picking_receipt_rice')]]"
+    />
+
+    <!-- Sugar sent to the Sidoarjo warehouse -->
+    <record id="nme_picking_transfer_sugar" model="nme.picking">
+        <field name="picking_type">internal</field>
+        <field name="warehouse_id" ref="nme_warehouse_main" />
+        <field name="warehouse_dest_id" ref="nme_warehouse_sidoarjo" />
+        <field
+            name="move_ids"
+            eval="[(0, 0, {'product_id': ref('nme_base.nme_product_sugar_1kg'), 'quantity': 150})]"
+        />
+    </record>
+    <function
+        model="nme.picking"
+        name="action_validate"
+        eval="[[ref('nme_picking_transfer_sugar')]]"
+    />
+
+    <!-- A delivery still to do -->
+    <record id="nme_picking_delivery_oil" model="nme.picking">
+        <field name="picking_type">outgoing</field>
+        <field name="partner_id" ref="nme_base.nme_partner_toko_makmur" />
+        <field name="warehouse_id" ref="nme_warehouse_main" />
+        <field
+            name="move_ids"
+            eval="[(0, 0, {'product_id': ref('nme_base.nme_product_oil_2l'), 'quantity': 20})]"
+        />
+    </record>
+</odoo>

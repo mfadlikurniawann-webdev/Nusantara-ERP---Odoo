@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="seq_nme_picking_incoming" model="ir.sequence">
+        <field name="name">Receipts</field>
+        <field name="code">nme.picking.incoming</field>
+        <field name="prefix">IN/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False" />
+    </record>
+    <record id="seq_nme_picking_outgoing" model="ir.sequence">
+        <field name="name">Deliveries</field>
+        <field name="code">nme.picking.outgoing</field>
+        <field name="prefix">OUT/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False" />
+    </record>
+    <record id="seq_nme_picking_internal" model="ir.sequence">
+        <field name="name">Internal Transfers</field>
+        <field name="code">nme.picking.internal</field>
+        <field name="prefix">INT/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False" />
+    </record>
+    <record id="seq_nme_stock_adjustment" model="ir.sequence">
+        <field name="name">Stock Adjustments</field>
+        <field name="code">nme.stock.adjustment</field>
+        <field name="prefix">ADJ/%(year)s/</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False" />
+    </record>
+</odoo>

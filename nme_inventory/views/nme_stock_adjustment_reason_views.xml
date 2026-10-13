@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_stock_adjustment_reason_view_list" model="ir.ui.view">
+        <field name="name">nme.stock.adjustment.reason.view.list</field>
+        <field name="model">nme.stock.adjustment.reason</field>
+        <field name="arch" type="xml">
+            <list string="Adjustment Reasons" editable="bottom">
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="active" widget="boolean_toggle" />
+            </list>
+        </field>
+    </record>
+
+    <record id="nme_stock_adjustment_reason_action" model="ir.actions.act_window">
+        <field name="name">Adjustment Reasons</field>
+        <field name="res_model">nme.stock.adjustment.reason</field>
+        <field name="view_mode">list</field>
+        <field name="context">{'active_test': False}</field>
+    </record>
+</odoo>

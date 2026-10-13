@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_warehouse_main" model="nme.warehouse">
+        <field name="name">Surabaya Main Warehouse</field>
+        <field name="code">SBY</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="nme_warehouse_sidoarjo" model="nme.warehouse">
+        <field name="name">Sidoarjo Warehouse</field>
+        <field name="code">SDA</field>
+        <field name="sequence">2</field>
+    </record>
+</odoo>
