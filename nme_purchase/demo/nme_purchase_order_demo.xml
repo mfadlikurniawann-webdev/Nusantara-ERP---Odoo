@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Confirmed and received: rice restocking -->
+    <record id="nme_purchase_order_demo_received" model="nme.purchase.order">
+        <field name="partner_id" ref="nme_base.nme_partner_beras_nusantara" />
+        <field name="partner_ref">QUO-BN-0915</field>
+        <field name="warehouse_id" ref="nme_inventory.nme_warehouse_main" />
+        <field
+            name="date_planned"
+            eval="(DateTime.today() - timedelta(days=5)).strftime('%Y-%m-%d 08:00:00')"
+        />
+        <field
+            name="line_ids"
+            eval="[
+                (0, 0, {'product_id': ref('nme_base.nme_product_rice_5kg'), 'quantity': 100, 'price_unit': 71500}),
+                (0, 0, {'product_id': ref('nme_base.nme_product_rice_25kg'), 'quantity': 20, 'price_unit': 298000}),
+            ]"
+        />
+    </record>
+    <function
+        model="nme.purchase.order"
+        name="action_confirm"
+        eval="[[ref('nme_purchase_order_demo_received')]]"
+    />
+    <function
+        model="nme.picking"
+        name="action_validate"
+        eval="[obj().env.ref('nme_purchase.nme_purchase_order_demo_received').picking_ids.ids]"
+    />
+
+    <!-- Confirmed, receipt expected in three days -->
+    <record id="nme_purchase_order_demo_to_receive" model="nme.purchase.order">
+        <field name="partner_id" ref="nme_base.nme_partner_sawit_indah" />
+        <field name="warehouse_id" ref="nme_inventory.nme_warehouse_main" />
+        <field
+            name="date_planned"
+            eval="(DateTime.today() + timedelta(days=3)).strftime('%Y-%m-%d 08:00:00')"
+        />
+        <field
+            name="line_ids"
+            eval="[(0, 0, {'product_id': ref('nme_base.nme_product_oil_2l'), 'quantity': 120})]"
+        />
+    </record>
+    <function
+        model="nme.purchase.order"
+        name="action_confirm"
+        eval="[[ref('nme_purchase_order_demo_to_receive')]]"
+    />
+
+    <!-- Large order waiting for a manager approval -->
+    <record id="nme_purchase_order_demo_to_approve" model="nme.purchase.order">
+        <field name="partner_id" ref="nme_base.nme_partner_gula_manis" />
+        <field name="warehouse_id" ref="nme_inventory.nme_warehouse_sidoarjo" />
+        <field name="state">to_approve</field>
+        <field
+            name="line_ids"
+            eval="[(0, 0, {'product_id': ref('nme_base.nme_product_sugar_1kg'), 'quantity': 4000})]"
+        />
+    </record>
+
+    <!-- RFQ sent -->
+    <record id="nme_purchase_order_demo_sent" model="nme.purchase.order">
+        <field name="partner_id" ref="nme_base.nme_partner_beras_nusantara" />
+        <field name="warehouse_id" ref="nme_inventory.nme_warehouse_sidoarjo" />
+        <field name="state">sent</field>
+        <field
+            name="line_ids"
+            eval="[(0, 0, {'product_id': ref('nme_base.nme_product_eggs'), 'quantity': 60})]"
+        />
+    </record>
+</odoo>

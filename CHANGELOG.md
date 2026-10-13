@@ -20,3 +20,6 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 - `nme_sales`: quotations and sales orders with strict states, email sending with PDF,
   automatic deliveries, delivered quantity from the ledger (returns included),
   per-customer credit limits (warn/block) and own-documents access for salespeople.
+- `nme_purchase`: RFQs and purchase orders, tiered approval above a company amount
+  with manager activities, automatic receipts valued at the net purchase price,
+  received quantity from the ledger and vendor returns.

@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_purchase_order_view_search" model="ir.ui.view">
+        <field name="name">nme.purchase.order.view.search</field>
+        <field name="model">nme.purchase.order</field>
+        <field name="arch" type="xml">
+            <search string="Purchase Orders">
+                <field
+                    name="name"
+                    string="Order"
+                    filter_domain="['|', '|', ('name', 'ilike', self), ('partner_ref', 'ilike', self), ('partner_id', 'child_of', self)]"
+                />
+                <field name="partner_id" operator="child_of" />
+                <field
+                    name="line_ids"
+                    string="Product"
+                    filter_domain="[('line_ids.product_id', 'ilike', self)]"
+                />
+                <filter
+                    name="filter_rfq"
+                    string="RFQs"
+                    domain="[('state', 'in', ('draft', 'sent'))]"
+                />
+                <filter
+                    name="filter_to_approve"
+                    string="To Approve"
+                    domain="[('state', '=', 'to_approve')]"
+                />
+                <filter
+                    name="filter_orders"
+                    string="Purchase Orders"
+                    domain="[('state', '=', 'purchase')]"
+                />
+                <filter
+                    name="filter_to_receive"
+                    string="To Receive"
+                    domain="[('receipt_status', 'in', ('to_receive', 'partial'))]"
+                />
+                <separator />
+                <filter
+                    name="filter_date_order"
+                    string="Order Date"
+                    date="date_order"
+                />
+                <group>
+                    <filter
+                        name="group_by_partner"
+                        string="Vendor"
+                        context="{'group_by': 'partner_id'}"
+                    />
+                    <filter
+                        name="group_by_state"
+                        string="Status"
+                        context="{'group_by': 'state'}"
+                    />
+                    <filter
+                        name="group_by_date_order"
+                        string="Order Date"
+                        context="{'group_by': 'date_order:month'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="nme_purchase_order_view_list" model="ir.ui.view">
+        <field name="name">nme.purchase.order.view.list</field>
+        <field name="model">nme.purchase.order</field>
+        <field name="arch" type="xml">
+            <list
+                string="Purchase Orders"
+                sample="1"
+                decoration-muted="state == 'cancel'"
+                decoration-info="state in ('draft', 'sent')"
+                decoration-warning="state == 'to_approve'"
+            >
+                <field name="currency_id" column_invisible="True" />
+                <field name="name" decoration-bf="1" />
+                <field name="date_order" widget="date" />
+                <field name="partner_id" />
+                <field name="partner_ref" optional="hide" />
+                <field name="date_planned" optional="show" />
+                <field name="user_id" widget="many2one_avatar_user" optional="show" />
+                <field
+                    name="amount_total"
+                    sum="Total"
+                    widget="monetary"
+                    decoration-bf="1"
+                />
+                <field
+                    name="receipt_status"
+                    widget="badge"
+                    optional="show"
+                    decoration-success="receipt_status == 'received'"
+                    decoration-warning="receipt_status in ('to_receive', 'partial')"
+                    invisible="state != 'purchase'"
+                />
+                <field
+                    name="company_id"
+                    groups="base.group_multi_company"
+                    optional="hide"
+                />
+                <field
+                    name="state"
+                    widget="badge"
+                    decoration-success="state == 'purchase'"
+                    decoration-info="state in ('draft', 'sent')"
+                    decoration-warning="state == 'to_approve'"
+                />
+            </list>
+        </field>
+    </record>
+
+    <record id="nme_purchase_order_view_kanban" model="ir.ui.view">
+        <field name="name">nme.purchase.order.view.kanban</field>
+        <field name="model">nme.purchase.order</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="state" quick_create="false" sample="1">
+                <field name="currency_id" />
+                <templates>
+                    <t t-name="card">
+                        <div class="d-flex">
+                            <field name="partner_id" class="fw-bold fs-5" />
+                            <field
+                                name="amount_total"
+                                widget="monetary"
+                                class="ms-auto fw-bold"
+                            />
+                        </div>
+                        <field name="name" class="text-muted" />
+                        <footer>
+                            <field name="date_order" widget="date" />
+                            <field
+                                name="user_id"
+                                widget="many2one_avatar_user"
+                                class="ms-auto"
+                            />
+                        </footer>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="nme_purchase_order_view_calendar" model="ir.ui.view">
+        <field name="name">nme.purchase.order.view.calendar</field>
+        <field name="model">nme.purchase.order</field>
+        <field name="arch" type="xml">
+            <calendar
+                string="Expected Arrivals"
+                date_start="date_planned"
+                color="partner_id"
+                mode="month"
+                event_limit="5"
+                quick_create="0"
+            >
+                <field name="partner_id" />
+                <field name="amount_total" />
+                <field name="receipt_status" />
+            </calendar>
+        </field>
+    </record>
+
+    <record id="nme_purchase_order_view_pivot" model="ir.ui.view">
+        <field name="name">nme.purchase.order.view.pivot</field>
+        <field name="model">nme.purchase.order</field>
+        <field name="arch" type="xml">
+            <pivot string="Purchase Orders" sample="1">
+                <field name="partner_id" type="row" />
+                <field name="date_order" interval="month" type="col" />
+                <field name="amount_total" type="measure" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="nme_purchase_order_view_graph" model="ir.ui.view">
+        <field name="name">nme.purchase.order.view.graph</field>
+        <field name="model">nme.purchase.order</field>
+        <field name="arch" type="xml">
+            <graph string="Purchase Orders" sample="1">
+                <field name="partner_id" />
+                <field name="amount_total" type="measure" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="nme_purchase_order_view_form" model="ir.ui.view">
+        <field name="name">nme.purchase.order.view.form</field>
+        <field name="model">nme.purchase.order</field>
+        <field name="arch" type="xml">
+            <form string="Purchase Order">
+                <header>
+                    <button
+                        name="action_rfq_send"
+                        type="object"
+                        string="Send by Email"
+                        class="btn-primary"
+                        invisible="state != 'draft'"
+                        data-hotkey="g"
+                    />
+                    <button
+                        name="action_confirm"
+                        type="object"
+                        string="Confirm Order"
+                        class="btn-primary"
+                        invisible="state != 'sent'"
+                        data-hotkey="v"
+                    />
+                    <button
+                        name="action_confirm"
+                        type="object"
+                        string="Confirm Order"
+                        invisible="state != 'draft'"
+                        data-hotkey="v"
+                    />
+                    <button
+                        name="action_approve"
+                        type="object"
+                        string="Approve"
+                        class="btn-primary"
+                        invisible="state != 'to_approve'"
+                        groups="nme_purchase.nme_group_purchase_manager"
+                    />
+                    <button
+                        name="action_reject"
+                        type="object"
+                        string="Reject"
+                        invisible="state != 'to_approve'"
+                        groups="nme_purchase.nme_group_purchase_manager"
+                    />
+                    <button
+                        name="action_rfq_send"
+                        type="object"
+                        string="Send by Email"
+                        invisible="state not in ('sent', 'purchase')"
+                    />
+                    <button
+                        name="nme_purchase.action_report_nme_purchase_order"
+                        type="action"
+                        string="Print"
+                        invisible="state == 'cancel'"
+                    />
+                    <button
+                        name="action_open_cancel_wizard"
+                        type="object"
+                        string="Cancel"
+                        invisible="state == 'cancel'"
+                    />
+                    <button
+                        name="action_draft"
+                        type="object"
+                        string="Set to RFQ"
+                        invisible="state != 'cancel'"
+                    />
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,sent,purchase"
+                    />
+                </header>
+                <div
+                    class="alert alert-info mb-0"
+                    role="alert"
+                    invisible="state not in ('draft', 'sent') or not approval_required"
+                >
+                    This order reaches the approval amount: a purchase manager has to
+                    approve it before it is confirmed.
+                </div>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="action_view_receipts"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-truck"
+                            invisible="not receipt_count"
+                        >
+                            <field
+                                name="receipt_count"
+                                widget="statinfo"
+                                string="Receipt"
+                            />
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group name="partner">
+                            <field
+                                name="partner_id"
+                                readonly="state not in ('draft', 'sent')"
+                                context="{'default_nme_is_vendor': True}"
+                            />
+                            <field
+                                name="partner_ref"
+                                readonly="state not in ('draft', 'sent', 'to_approve')"
+                            />
+                            <field
+                                name="payment_term_id"
+                                readonly="state not in ('draft', 'sent')"
+                                options="{'no_create': True}"
+                            />
+                            <field
+                                name="warehouse_id"
+                                readonly="state not in ('draft', 'sent')"
+                                options="{'no_create': True}"
+                            />
+                        </group>
+                        <group name="dates">
+                            <field
+                                name="date_order"
+                                readonly="state not in ('draft', 'sent')"
+                            />
+                            <field
+                                name="date_planned"
+                                readonly="state not in ('draft', 'sent')"
+                            />
+                            <field name="approval_required" invisible="1" />
+                            <field
+                                name="receipt_status"
+                                invisible="state != 'purchase'"
+                            />
+                            <field
+                                name="approved_by_id"
+                                invisible="not approved_by_id"
+                            />
+                            <field name="approval_date" invisible="not approval_date" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Products" name="lines">
+                            <field
+                                name="line_ids"
+                                readonly="state not in ('draft', 'sent')"
+                            >
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle" />
+                                    <field
+                                        name="product_id"
+                                        options="{'no_create': True}"
+                                    />
+                                    <field name="name" optional="show" />
+                                    <field name="quantity" />
+                                    <field name="uom_id" optional="show" />
+                                    <field
+                                        name="qty_received"
+                                        optional="show"
+                                        column_invisible="parent.state != 'purchase'"
+                                    />
+                                    <field name="price_unit" />
+                                    <field name="discount" optional="hide" />
+                                    <field
+                                        name="tax_ids"
+                                        widget="many2many_tags"
+                                        options="{'no_create': True}"
+                                        domain="[('type_tax_use', '=', 'purchase'), ('company_id', '=', parent.company_id)]"
+                                    />
+                                    <field name="currency_id" column_invisible="True" />
+                                    <field name="price_subtotal" widget="monetary" />
+                                </list>
+                            </field>
+                            <group class="oe_subtotal_footer" name="totals">
+                                <field name="currency_id" invisible="1" />
+                                <field name="amount_untaxed" widget="monetary" />
+                                <field name="amount_tax" widget="monetary" />
+                                <field
+                                    name="amount_total"
+                                    widget="monetary"
+                                    class="oe_subtotal_footer_separator"
+                                />
+                            </group>
+                            <field name="note" placeholder="Terms for the vendor..." />
+                        </page>
+                        <page string="Other Information" name="other_info">
+                            <group>
+                                <group name="purchase">
+                                    <field name="user_id" />
+                                    <field
+                                        name="company_id"
+                                        groups="base.group_multi_company"
+                                        readonly="state != 'draft'"
+                                    />
+                                </group>
+                                <group
+                                    name="cancellation"
+                                    invisible="not cancel_reason"
+                                >
+                                    <field name="cancel_reason" />
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <record id="nme_purchase_order_action_rfq" model="ir.actions.act_window">
+        <field name="name">Requests for Quotation</field>
+        <field name="res_model">nme.purchase.order</field>
+        <field name="view_mode">list,kanban,form,calendar,pivot,graph</field>
+        <field
+            name="context"
+        >{'search_default_filter_rfq': 1, 'search_default_filter_to_approve': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Ask a vendor for a quotation</p>
+            <p>Confirmed RFQs become purchase orders and their goods are received.</p>
+        </field>
+    </record>
+
+    <record id="nme_purchase_order_action_orders" model="ir.actions.act_window">
+        <field name="name">Purchase Orders</field>
+        <field name="res_model">nme.purchase.order</field>
+        <field name="view_mode">list,kanban,form,calendar,pivot,graph</field>
+        <field name="domain">[('state', '=', 'purchase')]</field>
+        <field name="context">{'create': False}</field>
+    </record>
+
+    <record id="nme_purchase_order_action_to_approve" model="ir.actions.act_window">
+        <field name="name">To Approve</field>
+        <field name="res_model">nme.purchase.order</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('state', '=', 'to_approve')]</field>
+        <field name="context">{'create': False}</field>
+    </record>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_report_nme_purchase_order" model="ir.actions.report">
+        <field name="name">Purchase Order</field>
+        <field name="model">nme.purchase.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nme_purchase.report_nme_purchase_order</field>
+        <field
+            name="print_report_name"
+        >(object.state in ('draft', 'sent') and 'RFQ - %s' or 'PO - %s') % object.name.replace('/', '-')</field>
+        <field name="binding_model_id" ref="model_nme_purchase_order" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

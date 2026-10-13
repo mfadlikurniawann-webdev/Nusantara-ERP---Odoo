@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.nme.purchase</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="nme_base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <block id="nme_defaults" position="after">
+                <block title="Purchase" id="nme_purchase">
+                    <setting
+                        id="nme_po_approval"
+                        string="Purchase Approval"
+                        company_dependent="1"
+                        help="Orders reaching this total (taxes included) need a manager approval. 0 disables it."
+                    >
+                        <field name="nme_company_currency_id" invisible="1" />
+                        <field name="nme_po_approval_amount" widget="monetary" />
+                    </setting>
+                </block>
+            </block>
+        </field>
+    </record>
+</odoo>

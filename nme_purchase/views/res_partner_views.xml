@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit.nme.purchase</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button
+                    name="action_view_nme_purchase_orders"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-credit-card"
+                    groups="nme_purchase.nme_group_purchase_user"
+                    invisible="not nme_is_vendor"
+                >
+                    <field
+                        name="nme_purchase_order_count"
+                        widget="statinfo"
+                        string="Purchases"
+                    />
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>

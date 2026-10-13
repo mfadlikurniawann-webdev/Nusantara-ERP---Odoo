@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        id="nme_menu_purchase"
+        name="Purchase"
+        parent="nme_base.nme_menu_root"
+        sequence="20"
+        groups="nme_group_purchase_user"
+    />
+    <menuitem
+        id="nme_purchase_order_menu_rfq"
+        name="Requests for Quotation"
+        parent="nme_menu_purchase"
+        action="nme_purchase_order_action_rfq"
+        sequence="10"
+    />
+    <menuitem
+        id="nme_purchase_order_menu_to_approve"
+        name="To Approve"
+        parent="nme_menu_purchase"
+        action="nme_purchase_order_action_to_approve"
+        sequence="15"
+        groups="nme_group_purchase_manager"
+    />
+    <menuitem
+        id="nme_purchase_order_menu_orders"
+        name="Purchase Orders"
+        parent="nme_menu_purchase"
+        action="nme_purchase_order_action_orders"
+        sequence="20"
+    />
+    <menuitem
+        id="nme_partner_menu_vendors"
+        name="Vendors"
+        parent="nme_menu_purchase"
+        action="nme_base.nme_partner_vendor_action"
+        sequence="30"
+    />
+    <menuitem
+        id="nme_product_menu_purchase"
+        name="Products"
+        parent="nme_menu_purchase"
+        action="nme_base.nme_product_action"
+        sequence="40"
+    />
+</odoo>

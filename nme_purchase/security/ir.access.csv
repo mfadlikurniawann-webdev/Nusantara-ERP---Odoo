@@ -1,0 +1,10 @@
+id,name,model_id,group_id/id,operation,domain
+nme_purchase_order_access_user,nme.purchase.order user,nme.purchase.order,nme_purchase.nme_group_purchase_user,cru,
+nme_purchase_order_access_manager,nme.purchase.order manager,nme.purchase.order,nme_purchase.nme_group_purchase_manager,crud,
+nme_purchase_order_access_inventory,nme.purchase.order read for inventory,nme.purchase.order,nme_inventory.nme_group_inventory_user,r,
+nme_purchase_order_rule_company,nme.purchase.order multi-company,nme.purchase.order,,crud,"[('company_id', 'in', company_ids)]"
+nme_purchase_order_line_access_user,nme.purchase.order.line user,nme.purchase.order.line,nme_purchase.nme_group_purchase_user,crud,
+nme_purchase_order_line_access_inventory,nme.purchase.order.line read for inventory,nme.purchase.order.line,nme_inventory.nme_group_inventory_user,r,
+nme_purchase_order_line_rule_company,nme.purchase.order.line multi-company,nme.purchase.order.line,,crud,"[('company_id', 'in', company_ids)]"
+nme_picking_access_purchase,nme.picking receipts of purchase orders,nme.picking,nme_purchase.nme_group_purchase_user,cru,"[('purchase_id', 'access', 'read')]"
+nme_stock_move_access_purchase,nme.stock.move of purchase order lines,nme.stock.move,nme_purchase.nme_group_purchase_user,cru,"[('purchase_line_id', 'access', 'read')]"
