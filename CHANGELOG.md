@@ -6,6 +6,10 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-10-13
+
+First complete version: six modules, documentation and Indonesian translations.
+
 ### Added
 
 - Repository tooling: Docker Compose (Odoo 20 + PostgreSQL 16), Makefile, pre-commit
@@ -29,3 +33,14 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 - `nme_reporting`: OWL 3 dashboard with KPIs and a sales chart (Hoot tests), sales
   analysis with margin of delivered goods, purchase analysis, stock by warehouse,
   Excel export and a PDF aging report.
+- Indonesian translations (`i18n/id.po`) of every module, demo company "CV Sumber
+  Rejeki" in rupiah, module description pages and icons.
+- Documentation: README with diagrams and screenshots, architecture and design
+  decisions, user guide in Bahasa Indonesia, developer guide.
+- CI upgrade check (`-u` of the installed modules) after the tests.
+
+### Fixed
+
+- Access rules added on another module's model (`nme.picking`, `nme.stock.move`) used
+  fields defined by the module itself, which broke upgrades: they now use fields of the
+  original model.
