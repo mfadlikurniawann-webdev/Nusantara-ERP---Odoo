@@ -54,6 +54,13 @@ jobs:
         run: |
           apt-get update -qq
           apt-get install -y -qq python3-coverage python3-websocket chromium
+      - name: Warm up Chromium
+        # The first start builds the font cache and can exceed the 10 seconds
+        # Odoo waits for the browser; start it once before the tests.
+        run: |
+          chromium --version
+          timeout 120 chromium --headless --no-sandbox --disable-gpu \
+            --disable-dev-shm-usage --dump-dom about:blank 2>&1 | tail -5 || true
       - name: Install modules and run tests
         run: |
           python3-coverage run \
