@@ -1,0 +1,14 @@
+.o_nme_dashboard {
+    .o_nme_dashboard_kpi {
+        cursor: pointer;
+        transition: box-shadow 0.15s ease-in-out;
+
+        &:hover {
+            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.12);
+        }
+    }
+
+    .o_nme_dashboard_chart {
+        height: 320px;
+    }
+}

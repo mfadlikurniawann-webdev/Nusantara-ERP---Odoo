@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_dashboard_action" model="ir.actions.client">
+        <field name="name">Dashboard</field>
+        <field name="tag">nme_reporting.dashboard</field>
+        <field name="path">nusantara-dashboard</field>
+    </record>
+
+    <!-- Opening the Nusantara ERP app lands on the dashboard. -->
+    <record id="nme_base.nme_menu_root" model="ir.ui.menu">
+        <field name="action" ref="nme_dashboard_action" />
+    </record>
+</odoo>

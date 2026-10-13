@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Delivered orders of the previous months, for the dashboard chart and
+         the sales analysis. -->
+    <record id="nme_sale_order_history_1" model="nme.sale.order">
+        <field name="partner_id" ref="nme_base.nme_partner_toko_makmur" />
+        <field name="warehouse_id" ref="nme_inventory.nme_warehouse_main" />
+        <field
+            name="line_ids"
+            eval="[
+                (0, 0, {'product_id': ref('nme_base.nme_product_sugar_1kg'), 'quantity': 40}),
+                (0, 0, {'product_id': ref('nme_base.nme_product_noodles_box'), 'quantity': 8}),
+            ]"
+        />
+    </record>
+    <record id="nme_sale_order_history_2" model="nme.sale.order">
+        <field name="partner_id" ref="nme_base.nme_partner_minimarket_berkah" />
+        <field name="warehouse_id" ref="nme_inventory.nme_warehouse_main" />
+        <field
+            name="line_ids"
+            eval="[
+                (0, 0, {'product_id': ref('nme_base.nme_product_rice_5kg'), 'quantity': 25}),
+                (0, 0, {'product_id': ref('nme_base.nme_product_noodles_box'), 'quantity': 12}),
+            ]"
+        />
+    </record>
+    <record id="nme_sale_order_history_3" model="nme.sale.order">
+        <field name="partner_id" ref="nme_base.nme_partner_warung_sri" />
+        <field name="warehouse_id" ref="nme_inventory.nme_warehouse_main" />
+        <field
+            name="line_ids"
+            eval="[(0, 0, {'product_id': ref('nme_base.nme_product_sugar_1kg'), 'quantity': 30})]"
+        />
+    </record>
+    <record id="nme_sale_order_history_4" model="nme.sale.order">
+        <field name="partner_id" ref="nme_base.nme_partner_minimarket_berkah" />
+        <field name="warehouse_id" ref="nme_inventory.nme_warehouse_main" />
+        <field
+            name="line_ids"
+            eval="[
+                (0, 0, {'product_id': ref('nme_base.nme_product_rice_25kg'), 'quantity': 10}),
+                (0, 0, {'product_id': ref('nme_base.nme_product_sugar_1kg'), 'quantity': 20}),
+            ]"
+        />
+    </record>
+    <function
+        model="nme.sale.order"
+        name="action_confirm"
+        eval="[[
+            ref('nme_sale_order_history_1'),
+            ref('nme_sale_order_history_2'),
+            ref('nme_sale_order_history_3'),
+            ref('nme_sale_order_history_4'),
+        ]]"
+    />
+    <function
+        model="nme.picking"
+        name="action_validate"
+        eval="[obj().env['nme.sale.order'].browse([
+            ref('nme_sale_order_history_1'),
+            ref('nme_sale_order_history_2'),
+            ref('nme_sale_order_history_3'),
+            ref('nme_sale_order_history_4'),
+        ]).picking_ids.ids]"
+    />
+    <!-- Back-date the confirmations to the previous months. -->
+    <record id="nme_sale_order_history_1" model="nme.sale.order">
+        <field
+            name="date_order"
+            eval="(DateTime.today() - relativedelta(months=4)).strftime('%Y-%m-10 09:00:00')"
+        />
+    </record>
+    <record id="nme_sale_order_history_2" model="nme.sale.order">
+        <field
+            name="date_order"
+            eval="(DateTime.today() - relativedelta(months=3)).strftime('%Y-%m-12 09:00:00')"
+        />
+    </record>
+    <record id="nme_sale_order_history_3" model="nme.sale.order">
+        <field
+            name="date_order"
+            eval="(DateTime.today() - relativedelta(months=2)).strftime('%Y-%m-08 09:00:00')"
+        />
+    </record>
+    <record id="nme_sale_order_history_4" model="nme.sale.order">
+        <field
+            name="date_order"
+            eval="(DateTime.today() - relativedelta(months=1)).strftime('%Y-%m-15 09:00:00')"
+        />
+    </record>
+</odoo>

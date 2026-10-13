@@ -1,0 +1,10 @@
+id,name,model_id,group_id/id,operation,domain
+nme_sale_report_access_user,nme.sale.report own documents,nme.sale.report,nme_sales.nme_group_sales_user,r,"['|', ('user_id', '=', user.id), ('user_id', '=', False)]"
+nme_sale_report_access_manager,nme.sale.report manager,nme.sale.report,nme_sales.nme_group_sales_manager,r,
+nme_sale_report_rule_company,nme.sale.report multi-company,nme.sale.report,,r,"[('company_id', 'in', company_ids)]"
+nme_purchase_report_access_user,nme.purchase.report user,nme.purchase.report,nme_purchase.nme_group_purchase_user,r,
+nme_purchase_report_rule_company,nme.purchase.report multi-company,nme.purchase.report,,r,"[('company_id', 'in', company_ids)]"
+nme_stock_report_access_user,nme.stock.report user,nme.stock.report,nme_inventory.nme_group_inventory_user,r,
+nme_stock_report_rule_company,nme.stock.report multi-company,nme.stock.report,,r,"[('company_id', 'in', company_ids)]"
+nme_report_export_access_user,nme.report.export user,nme.report.export,base.group_user,cru,
+nme_report_export_rule_own,nme.report.export own wizard,nme.report.export,,crud,"[('create_uid', '=', user.id)]"

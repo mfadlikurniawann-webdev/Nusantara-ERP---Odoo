@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_stock_report_view_search" model="ir.ui.view">
+        <field name="name">nme.stock.report.view.search</field>
+        <field name="model">nme.stock.report</field>
+        <field name="arch" type="xml">
+            <search string="Stock by Warehouse">
+                <field name="product_id" />
+                <field name="categ_id" operator="child_of" />
+                <field name="warehouse_id" />
+                <group>
+                    <filter
+                        name="group_by_warehouse"
+                        string="Warehouse"
+                        context="{'group_by': 'warehouse_id'}"
+                    />
+                    <filter
+                        name="group_by_categ"
+                        string="Product Category"
+                        context="{'group_by': 'categ_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="nme_stock_report_view_pivot" model="ir.ui.view">
+        <field name="name">nme.stock.report.view.pivot</field>
+        <field name="model">nme.stock.report</field>
+        <field name="arch" type="xml">
+            <pivot string="Stock by Warehouse" sample="1">
+                <field name="product_id" type="row" />
+                <field name="warehouse_id" type="col" />
+                <field name="quantity" type="measure" />
+                <field name="value" type="measure" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="nme_stock_report_view_list" model="ir.ui.view">
+        <field name="name">nme.stock.report.view.list</field>
+        <field name="model">nme.stock.report</field>
+        <field name="arch" type="xml">
+            <list string="Stock by Warehouse" create="false">
+                <field name="currency_id" column_invisible="True" />
+                <field name="warehouse_id" />
+                <field name="location_id" optional="hide" />
+                <field name="product_id" />
+                <field name="categ_id" optional="show" />
+                <field name="quantity" />
+                <field name="uom_id" />
+                <field name="avg_cost" optional="show" />
+                <field name="value" sum="Total" widget="monetary" />
+            </list>
+        </field>
+    </record>
+
+    <record id="nme_stock_report_action" model="ir.actions.act_window">
+        <field name="name">Stock by Warehouse</field>
+        <field name="res_model">nme.stock.report</field>
+        <field name="view_mode">list,pivot</field>
+        <field name="context">{'search_default_group_by_warehouse': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">No stock yet</p>
+        </field>
+    </record>
+</odoo>

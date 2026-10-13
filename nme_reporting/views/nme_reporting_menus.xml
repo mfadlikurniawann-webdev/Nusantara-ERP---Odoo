@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        id="nme_menu_reporting"
+        name="Reporting"
+        parent="nme_base.nme_menu_root"
+        sequence="50"
+    />
+    <menuitem
+        id="nme_dashboard_menu"
+        name="Dashboard"
+        parent="nme_menu_reporting"
+        action="nme_dashboard_action"
+        sequence="1"
+    />
+    <menuitem
+        id="nme_sale_report_menu"
+        name="Sales Analysis"
+        parent="nme_menu_reporting"
+        action="nme_sale_report_action"
+        sequence="10"
+        groups="nme_sales.nme_group_sales_user"
+    />
+    <menuitem
+        id="nme_purchase_report_menu"
+        name="Purchase Analysis"
+        parent="nme_menu_reporting"
+        action="nme_purchase_report_action"
+        sequence="20"
+        groups="nme_purchase.nme_group_purchase_user"
+    />
+    <menuitem
+        id="nme_stock_report_menu"
+        name="Stock by Warehouse"
+        parent="nme_menu_reporting"
+        action="nme_stock_report_action"
+        sequence="30"
+        groups="nme_inventory.nme_group_inventory_user"
+    />
+    <menuitem
+        id="nme_aging_report_menu"
+        name="Receivable Aging"
+        parent="nme_menu_reporting"
+        action="nme_invoicing.nme_invoice_aging_report_action_receivable"
+        sequence="40"
+        groups="nme_invoicing.nme_group_invoicing_user"
+    />
+    <menuitem
+        id="nme_report_export_menu"
+        name="Export to Excel"
+        parent="nme_menu_reporting"
+        action="nme_report_export_action"
+        sequence="90"
+    />
+</odoo>

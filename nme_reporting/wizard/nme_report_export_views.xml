@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_report_export_view_form" model="ir.ui.view">
+        <field name="name">nme.report.export.view.form</field>
+        <field name="model">nme.report.export</field>
+        <field name="arch" type="xml">
+            <form string="Export Report">
+                <group>
+                    <group>
+                        <field name="report_type" widget="radio" />
+                    </group>
+                    <group>
+                        <field
+                            name="company_id"
+                            groups="base.group_multi_company"
+                            options="{'no_create': True}"
+                        />
+                        <field
+                            name="warehouse_id"
+                            invisible="report_type != 'stock'"
+                            options="{'no_create': True}"
+                        />
+                        <field name="date_from" invisible="report_type != 'sales'" />
+                        <field name="date_to" invisible="report_type != 'sales'" />
+                    </group>
+                </group>
+                <footer>
+                    <button
+                        name="action_export_xlsx"
+                        type="object"
+                        string="Export to Excel"
+                        class="btn-primary"
+                        data-hotkey="q"
+                    />
+                    <button
+                        name="action_print_pdf"
+                        type="object"
+                        string="Print PDF"
+                        invisible="report_type not in ('receivable', 'payable')"
+                    />
+                    <button
+                        string="Close"
+                        special="cancel"
+                        class="btn-secondary"
+                        data-hotkey="x"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="nme_report_export_action" model="ir.actions.act_window">
+        <field name="name">Export Report</field>
+        <field name="res_model">nme.report.export</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

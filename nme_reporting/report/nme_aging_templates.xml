@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_nme_aging">
+        <t t-call="web.html_container">
+            <t t-set="o" t-value="docs[:1]" />
+            <t t-call="web.external_layout">
+                <div class="page o_nme_reporting_aging">
+                    <h2 t-out="title" />
+                    <p>
+                        As of
+                        <span t-out="date" t-options="{'widget': 'date'}" />
+                    </p>
+                    <table class="table table-sm o_main_table">
+                        <thead>
+                            <tr>
+                                <th class="text-start">Partner</th>
+                                <t t-foreach="buckets" t-as="bucket">
+                                    <th class="text-end" t-out="bucket[1]" />
+                                </t>
+                                <th class="text-end">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="lines" t-as="line">
+                                <td t-out="line['partner'].display_name" />
+                                <t t-foreach="buckets" t-as="bucket">
+                                    <td class="text-end">
+                                        <span
+                                            t-out="line['amounts'][bucket[0]]"
+                                            t-options="{'widget': 'monetary', 'display_currency': currency}"
+                                        />
+                                    </td>
+                                </t>
+                                <td class="text-end fw-bold">
+                                    <span
+                                        t-out="line['total']"
+                                        t-options="{'widget': 'monetary', 'display_currency': currency}"
+                                    />
+                                </td>
+                            </tr>
+                            <tr t-if="not lines">
+                                <td colspan="7">Nothing is due.</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="fw-bold">
+                                <td>Total</td>
+                                <t t-foreach="buckets" t-as="bucket">
+                                    <td class="text-end">
+                                        <span
+                                            t-out="totals[bucket[0]]"
+                                            t-options="{'widget': 'monetary', 'display_currency': currency}"
+                                        />
+                                    </td>
+                                </t>
+                                <td class="text-end">
+                                    <span
+                                        t-out="grand_total"
+                                        t-options="{'widget': 'monetary', 'display_currency': currency}"
+                                    />
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

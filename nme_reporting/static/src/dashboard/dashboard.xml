@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="nme_reporting.Dashboard">
+        <div class="o_action o_nme_dashboard h-100 overflow-auto bg-view">
+            <div class="container-fluid py-3" t-if="this.state.data">
+                <h2 class="mb-3">Dashboard</h2>
+                <div class="row g-3">
+                    <t t-foreach="this.state.data.kpis" t-as="kpi" t-key="kpi.key">
+                        <div class="col-12 col-md-6 col-xl-3">
+                            <div
+                                class="card h-100 o_nme_dashboard_kpi"
+                                t-att-class="{'border-danger': kpi.alert}"
+                                role="button"
+                                t-att-data-kpi="kpi.key"
+                                t-on-click="() => this.openKpi(kpi)"
+                            >
+                                <div class="card-body">
+                                    <div
+                                        class="text-muted small o_nme_dashboard_label"
+                                        t-out="kpi.label"
+                                    />
+                                    <div
+                                        class="fs-3 fw-bold o_nme_dashboard_value"
+                                        t-att-class="{'text-danger': kpi.alert}"
+                                        t-out="this.formatValue(kpi)"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+                <div class="card mt-3" t-if="this.state.data.sales_chart">
+                    <div class="card-body">
+                        <h5 class="card-title">Sales of the Last 6 Months (untaxed)</h5>
+                        <div class="o_nme_dashboard_chart position-relative">
+                            <canvas t-ref="this.chart.ref" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

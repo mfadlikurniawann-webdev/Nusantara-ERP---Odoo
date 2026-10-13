@@ -26,3 +26,6 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 - `nme_invoicing`: customer invoices and vendor bills from orders (delivered/received
   quantities), gapless numbering on posting, partial payments, overdue scheduled
   action, receivable/payable aging report and credit exposure based on open invoices.
+- `nme_reporting`: OWL 3 dashboard with KPIs and a sales chart (Hoot tests), sales
+  analysis with margin of delivered goods, purchase analysis, stock by warehouse,
+  Excel export and a PDF aging report.
