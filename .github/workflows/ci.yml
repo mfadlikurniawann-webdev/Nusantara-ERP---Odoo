@@ -50,16 +50,20 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: Install test tools
-        # chromium and websocket-client let Odoo run the Hoot (JavaScript) tests.
+        # Google Chrome and websocket-client let Odoo run the Hoot (JavaScript)
+        # tests. The distribution "chromium" package is a snap stub that does
+        # not run in containers.
         run: |
           apt-get update -qq
-          apt-get install -y -qq python3-coverage python3-websocket chromium
-      - name: Warm up Chromium
+          apt-get install -y -qq python3-coverage python3-websocket wget
+          wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          apt-get install -y -qq ./google-chrome-stable_current_amd64.deb
+      - name: Warm up Chrome
         # The first start builds the font cache and can exceed the 10 seconds
         # Odoo waits for the browser; start it once before the tests.
         run: |
-          chromium --version
-          timeout 120 chromium --headless --no-sandbox --disable-gpu \
+          google-chrome --version
+          timeout 120 google-chrome --headless --no-sandbox --disable-gpu \
             --disable-dev-shm-usage --dump-dom about:blank 2>&1 | tail -5 || true
       - name: Install modules and run tests
         run: |
