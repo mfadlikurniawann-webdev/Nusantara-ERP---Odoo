@@ -6,6 +6,11 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 
 ## [Unreleased]
 
+### Changed
+
+- CI installs Google Chrome so that the Hoot (JavaScript) tests of the dashboard run
+  in the pipeline instead of being skipped.
+
 ## [1.0.0] - 2026-10-13
 
 First complete version: six modules, documentation and Indonesian translations.
