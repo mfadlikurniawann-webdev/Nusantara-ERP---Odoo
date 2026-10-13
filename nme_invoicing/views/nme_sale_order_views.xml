@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_sale_order_view_form" model="ir.ui.view">
+        <field name="name">nme.sale.order.view.form.inherit.nme.invoicing</field>
+        <field name="model">nme.sale.order</field>
+        <field name="inherit_id" ref="nme_sales.nme_sale_order_view_form" />
+        <field name="arch" type="xml">
+            <button name="action_quotation_send" position="before">
+                <button
+                    name="action_create_invoice"
+                    type="object"
+                    string="Create Invoice"
+                    class="btn-primary"
+                    invisible="invoice_status != 'to_invoice'"
+                    groups="nme_invoicing.nme_group_invoicing_user"
+                />
+            </button>
+            <div name="button_box" position="inside">
+                <button
+                    name="action_view_invoices"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-file-text-o"
+                    invisible="not invoice_count"
+                >
+                    <field name="invoice_count" widget="statinfo" string="Invoices" />
+                </button>
+            </div>
+            <field name="delivery_status" position="after">
+                <field name="invoice_status" invisible="state != 'sale'" />
+            </field>
+            <field name="qty_delivered" position="after">
+                <field
+                    name="qty_invoiced"
+                    optional="show"
+                    column_invisible="parent.state != 'sale'"
+                />
+            </field>
+        </field>
+    </record>
+
+    <record id="nme_sale_order_view_list" model="ir.ui.view">
+        <field name="name">nme.sale.order.view.list.inherit.nme.invoicing</field>
+        <field name="model">nme.sale.order</field>
+        <field name="inherit_id" ref="nme_sales.nme_sale_order_view_list" />
+        <field name="arch" type="xml">
+            <field name="delivery_status" position="after">
+                <field
+                    name="invoice_status"
+                    widget="badge"
+                    optional="show"
+                    decoration-success="invoice_status == 'invoiced'"
+                    decoration-info="invoice_status == 'to_invoice'"
+                    invisible="state != 'sale'"
+                />
+            </field>
+        </field>
+    </record>
+
+    <record id="nme_sale_order_view_search" model="ir.ui.view">
+        <field name="name">nme.sale.order.view.search.inherit.nme.invoicing</field>
+        <field name="model">nme.sale.order</field>
+        <field name="inherit_id" ref="nme_sales.nme_sale_order_view_search" />
+        <field name="arch" type="xml">
+            <filter name="filter_to_deliver" position="after">
+                <filter
+                    name="filter_to_invoice"
+                    string="To Invoice"
+                    domain="[('invoice_status', '=', 'to_invoice')]"
+                />
+            </filter>
+        </field>
+    </record>
+
+    <record id="nme_sale_order_action_to_invoice" model="ir.actions.act_window">
+        <field name="name">Orders to Invoice</field>
+        <field name="res_model">nme.sale.order</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('invoice_status', '=', 'to_invoice')]</field>
+        <field name="context">{'create': False}</field>
+    </record>
+</odoo>

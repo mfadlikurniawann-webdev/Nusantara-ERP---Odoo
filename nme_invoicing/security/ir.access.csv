@@ -1,0 +1,20 @@
+id,name,model_id,group_id/id,operation,domain
+nme_invoice_access_user,nme.invoice user,nme.invoice,nme_invoicing.nme_group_invoicing_user,cru,
+nme_invoice_access_manager,nme.invoice manager,nme.invoice,nme_invoicing.nme_group_invoicing_manager,crud,
+nme_invoice_access_sales,nme.invoice of readable sales orders,nme.invoice,nme_sales.nme_group_sales_user,r,"[('sale_order_id', 'access', 'read')]"
+nme_invoice_access_purchase,nme.invoice of readable purchase orders,nme.invoice,nme_purchase.nme_group_purchase_user,r,"[('purchase_order_id', 'access', 'read')]"
+nme_invoice_rule_company,nme.invoice multi-company,nme.invoice,,crud,"[('company_id', 'in', company_ids)]"
+nme_invoice_line_access_user,nme.invoice.line user,nme.invoice.line,nme_invoicing.nme_group_invoicing_user,crud,
+nme_invoice_line_access_read,nme.invoice.line of readable invoices,nme.invoice.line,base.group_user,r,"[('invoice_id', 'access', 'read')]"
+nme_invoice_line_rule_company,nme.invoice.line multi-company,nme.invoice.line,,crud,"[('company_id', 'in', company_ids)]"
+nme_payment_access_user,nme.payment user,nme.payment,nme_invoicing.nme_group_invoicing_user,cr,
+nme_payment_access_manager,nme.payment manager,nme.payment,nme_invoicing.nme_group_invoicing_manager,crud,
+nme_payment_rule_company,nme.payment multi-company,nme.payment,,crud,"[('company_id', 'in', company_ids)]"
+nme_payment_register_access_user,nme.payment.register user,nme.payment.register,nme_invoicing.nme_group_invoicing_user,cru,
+nme_payment_register_rule_own,nme.payment.register own wizard,nme.payment.register,,crud,"[('create_uid', '=', user.id)]"
+nme_invoice_aging_report_access_user,nme.invoice.aging.report user,nme.invoice.aging.report,nme_invoicing.nme_group_invoicing_user,r,
+nme_invoice_aging_report_rule_company,nme.invoice.aging.report multi-company,nme.invoice.aging.report,,r,"[('company_id', 'in', company_ids)]"
+nme_sale_order_access_invoicing,nme.sale.order read for invoicing,nme.sale.order,nme_invoicing.nme_group_invoicing_user,r,
+nme_sale_order_line_access_invoicing,nme.sale.order.line read for invoicing,nme.sale.order.line,nme_invoicing.nme_group_invoicing_user,r,
+nme_purchase_order_access_invoicing,nme.purchase.order read for invoicing,nme.purchase.order,nme_invoicing.nme_group_invoicing_user,r,
+nme_purchase_order_line_access_invoicing,nme.purchase.order.line read for invoicing,nme.purchase.order.line,nme_invoicing.nme_group_invoicing_user,r,

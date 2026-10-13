@@ -25,6 +25,9 @@ class NmeDocumentMixin(models.AbstractModel):
     _state_transitions = {}
     # States in which a document may still be deleted.
     _unlink_allowed_states = ("draft", "cancel")
+    # Number documents when they are created. Documents numbered at a later
+    # step (invoices get their number when posted) set it to False.
+    _sequence_on_create = True
 
     name = fields.Char(
         string="Reference",
@@ -54,10 +57,11 @@ class NmeDocumentMixin(models.AbstractModel):
 
     @api.model_create_multi
     def create(self, vals_list):
-        new_name = self.env._("New")
-        for vals in vals_list:
-            if vals.get("name", new_name) == new_name:
-                vals["name"] = self._next_sequence_number(vals) or new_name
+        if self._sequence_on_create:
+            new_name = self.env._("New")
+            for vals in vals_list:
+                if vals.get("name", new_name) == new_name:
+                    vals["name"] = self._next_sequence_number(vals) or new_name
         return super().create(vals_list)
 
     @api.ondelete(at_uninstall=False)

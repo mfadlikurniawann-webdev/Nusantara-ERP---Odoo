@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="report_nme_invoice_document">
+        <t t-call="web.external_layout">
+            <t t-set="address">
+                <div
+                    t-field="doc.partner_id"
+                    t-options="{'widget': 'contact', 'fields': ['address', 'name', 'vat'], 'no_marker': True}"
+                />
+            </t>
+            <div class="page o_nme_invoicing_report">
+                <h2>
+                    <span t-if="doc.move_type == 'in_invoice'">Vendor Bill</span>
+                    <span t-elif="doc.state == 'draft'">Draft Invoice</span>
+                    <span t-elif="doc.state == 'cancel'">Cancelled Invoice</span>
+                    <span t-else="">Invoice</span>
+                    <span t-if="doc.state != 'draft'" t-field="doc.name" />
+                </h2>
+                <div class="row mt-3 mb-3">
+                    <div class="col-3" t-if="doc.invoice_date">
+                        <strong>Invoice Date</strong>
+                        <div t-field="doc.invoice_date" />
+                    </div>
+                    <div class="col-3" t-if="doc.invoice_date_due">
+                        <strong>Due Date</strong>
+                        <div t-field="doc.invoice_date_due" />
+                    </div>
+                    <div class="col-3" t-if="doc.ref">
+                        <strong>Reference</strong>
+                        <div t-field="doc.ref" />
+                    </div>
+                    <div class="col-3" t-if="doc.payment_term_id">
+                        <strong>Payment Terms</strong>
+                        <div t-field="doc.payment_term_id" />
+                    </div>
+                </div>
+                <table class="table table-sm o_main_table">
+                    <thead>
+                        <tr>
+                            <th class="text-start">Description</th>
+                            <th class="text-end">Quantity</th>
+                            <th class="text-end">Unit Price</th>
+                            <th
+                                class="text-end"
+                                t-if="any(doc.line_ids.mapped('discount'))"
+                            >Disc.%</th>
+                            <th class="text-start">Taxes</th>
+                            <th class="text-end">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="doc.line_ids" t-as="line">
+                            <td>
+                                <span t-field="line.name" />
+                            </td>
+                            <td class="text-end">
+                                <span t-field="line.quantity" />
+                                <span t-field="line.uom_id.code" />
+                            </td>
+                            <td class="text-end">
+                                <span t-field="line.price_unit" />
+                            </td>
+                            <td
+                                class="text-end"
+                                t-if="any(doc.line_ids.mapped('discount'))"
+                            >
+                                <span t-field="line.discount" />
+                            </td>
+                            <td>
+                                <span t-out="', '.join(line.tax_ids.mapped('name'))" />
+                            </td>
+                            <td class="text-end">
+                                <span t-field="line.price_subtotal" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row justify-content-end">
+                    <div class="col-5">
+                        <table class="table table-sm">
+                            <tr>
+                                <td>Untaxed Amount</td>
+                                <td class="text-end">
+                                    <span t-field="doc.amount_untaxed" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Taxes</td>
+                                <td class="text-end">
+                                    <span t-field="doc.amount_tax" />
+                                </td>
+                            </tr>
+                            <tr class="fw-bold">
+                                <td>Total</td>
+                                <td class="text-end">
+                                    <span t-field="doc.amount_total" />
+                                </td>
+                            </tr>
+                            <tr t-if="doc.amount_paid">
+                                <td>Paid</td>
+                                <td class="text-end">
+                                    <span t-field="doc.amount_paid" />
+                                </td>
+                            </tr>
+                            <tr t-if="doc.state == 'posted'" class="fw-bold">
+                                <td>Amount Due</td>
+                                <td class="text-end">
+                                    <span t-field="doc.amount_residual" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <p t-if="doc.payment_term_id.note" t-field="doc.payment_term_id.note" />
+                <p t-if="doc.move_type == 'out_invoice' and doc.state == 'posted'">
+                    Please use
+                    <strong t-field="doc.name" />
+                    as the reference of your payment.
+                </p>
+                <div t-if="doc.note" t-field="doc.note" class="mt-3" />
+            </div>
+        </t>
+    </template>
+
+    <template id="report_nme_invoice">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t
+                    t-call="nme_invoicing.report_nme_invoice_document"
+                    t-lang="doc.partner_id.lang"
+                />
+            </t>
+        </t>
+    </template>
+</odoo>

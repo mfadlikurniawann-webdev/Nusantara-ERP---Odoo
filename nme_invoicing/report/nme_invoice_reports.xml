@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_report_nme_invoice" model="ir.actions.report">
+        <field name="name">Invoice</field>
+        <field name="model">nme.invoice</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nme_invoicing.report_nme_invoice</field>
+        <field
+            name="print_report_name"
+        >(object.move_type == 'in_invoice' and 'Bill - %s' or 'Invoice - %s') % object.display_name.replace('/', '-')</field>
+        <field name="binding_model_id" ref="model_nme_invoice" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

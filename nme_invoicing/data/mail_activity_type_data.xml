@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="mail_activity_type_overdue" model="mail.activity.type">
+        <field name="name">Overdue Invoice</field>
+        <field name="summary">Follow up the payment with the customer</field>
+        <field name="res_model">nme.invoice</field>
+        <field name="icon">fa-money</field>
+        <field name="delay_count">1</field>
+    </record>
+</odoo>

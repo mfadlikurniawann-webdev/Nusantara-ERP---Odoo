@@ -23,3 +23,6 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
 - `nme_purchase`: RFQs and purchase orders, tiered approval above a company amount
   with manager activities, automatic receipts valued at the net purchase price,
   received quantity from the ledger and vendor returns.
+- `nme_invoicing`: customer invoices and vendor bills from orders (delivered/received
+  quantities), gapless numbering on posting, partial payments, overdue scheduled
+  action, receivable/payable aging report and credit exposure based on open invoices.

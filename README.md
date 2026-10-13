@@ -18,7 +18,7 @@ A compact, multi-module ERP for an Indonesian staples distributor (UMKM), built 
 | `nme_inventory` | Warehouses, stock moves ledger, average cost, adjustments, transfers | Done    |
 | `nme_sales`     | Quotation, sales order, delivery, credit limit                       | Done    |
 | `nme_purchase`  | RFQ, purchase order, receipt, approval                               | Done    |
-| `nme_invoicing` | Customer invoices, vendor bills, payments, aging                     | Planned |
+| `nme_invoicing` | Customer invoices, vendor bills, payments, aging                     | Done    |
 | `nme_reporting` | Analysis reports, dashboard, Excel export                            | Planned |
 
 ## Quick start (Docker)

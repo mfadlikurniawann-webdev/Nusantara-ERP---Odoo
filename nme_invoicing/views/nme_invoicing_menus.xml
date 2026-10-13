@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        id="nme_menu_invoicing"
+        name="Invoicing"
+        parent="nme_base.nme_menu_root"
+        sequence="40"
+        groups="nme_group_invoicing_user"
+    />
+    <menuitem
+        id="nme_menu_invoicing_customers"
+        name="Customers"
+        parent="nme_menu_invoicing"
+        sequence="10"
+    />
+    <menuitem
+        id="nme_invoice_menu_customer"
+        name="Invoices"
+        parent="nme_menu_invoicing_customers"
+        action="nme_invoice_action_customer"
+        sequence="10"
+    />
+    <menuitem
+        id="nme_sale_order_menu_to_invoice"
+        name="Orders to Invoice"
+        parent="nme_menu_invoicing_customers"
+        action="nme_sale_order_action_to_invoice"
+        sequence="20"
+    />
+    <menuitem
+        id="nme_menu_invoicing_vendors"
+        name="Vendors"
+        parent="nme_menu_invoicing"
+        sequence="20"
+    />
+    <menuitem
+        id="nme_invoice_menu_vendor"
+        name="Bills"
+        parent="nme_menu_invoicing_vendors"
+        action="nme_invoice_action_vendor"
+        sequence="10"
+    />
+    <menuitem
+        id="nme_purchase_order_menu_to_bill"
+        name="Orders to Bill"
+        parent="nme_menu_invoicing_vendors"
+        action="nme_purchase_order_action_to_bill"
+        sequence="20"
+    />
+    <menuitem
+        id="nme_payment_menu"
+        name="Payments"
+        parent="nme_menu_invoicing"
+        action="nme_payment_action"
+        sequence="30"
+    />
+    <menuitem
+        id="nme_menu_invoicing_reporting"
+        name="Reporting"
+        parent="nme_menu_invoicing"
+        sequence="90"
+    />
+    <menuitem
+        id="nme_invoice_aging_report_menu_receivable"
+        name="Receivable Aging"
+        parent="nme_menu_invoicing_reporting"
+        action="nme_invoice_aging_report_action_receivable"
+        sequence="10"
+    />
+    <menuitem
+        id="nme_invoice_aging_report_menu_payable"
+        name="Payable Aging"
+        parent="nme_menu_invoicing_reporting"
+        action="nme_invoice_aging_report_action_payable"
+        sequence="20"
+    />
+</odoo>

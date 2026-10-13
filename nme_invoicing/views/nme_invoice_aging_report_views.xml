@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_invoice_aging_report_view_search" model="ir.ui.view">
+        <field name="name">nme.invoice.aging.report.view.search</field>
+        <field name="model">nme.invoice.aging.report</field>
+        <field name="arch" type="xml">
+            <search string="Aging">
+                <field name="partner_id" operator="child_of" />
+                <field name="invoice_id" />
+                <filter
+                    name="filter_overdue"
+                    string="Overdue"
+                    domain="[('aging_bucket', '!=', 'current')]"
+                />
+                <group>
+                    <filter
+                        name="group_by_partner"
+                        string="Partner"
+                        context="{'group_by': 'partner_id'}"
+                    />
+                    <filter
+                        name="group_by_bucket"
+                        string="Aging"
+                        context="{'group_by': 'aging_bucket'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="nme_invoice_aging_report_view_pivot" model="ir.ui.view">
+        <field name="name">nme.invoice.aging.report.view.pivot</field>
+        <field name="model">nme.invoice.aging.report</field>
+        <field name="arch" type="xml">
+            <pivot string="Aging" disable_linking="0">
+                <field name="partner_id" type="row" />
+                <field name="aging_bucket" type="col" />
+                <field name="amount_residual" type="measure" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="nme_invoice_aging_report_view_graph" model="ir.ui.view">
+        <field name="name">nme.invoice.aging.report.view.graph</field>
+        <field name="model">nme.invoice.aging.report</field>
+        <field name="arch" type="xml">
+            <graph string="Aging" type="bar" stacked="1">
+                <field name="aging_bucket" />
+                <field name="amount_residual" type="measure" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="nme_invoice_aging_report_view_list" model="ir.ui.view">
+        <field name="name">nme.invoice.aging.report.view.list</field>
+        <field name="model">nme.invoice.aging.report</field>
+        <field name="arch" type="xml">
+            <list string="Aging" create="false">
+                <field name="currency_id" column_invisible="True" />
+                <field name="partner_id" />
+                <field name="invoice_id" />
+                <field name="invoice_date" />
+                <field name="invoice_date_due" />
+                <field name="days_overdue" />
+                <field name="aging_bucket" />
+                <field name="amount_residual" sum="Total" widget="monetary" />
+            </list>
+        </field>
+    </record>
+
+    <record
+        id="nme_invoice_aging_report_action_receivable"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Receivable Aging</field>
+        <field name="res_model">nme.invoice.aging.report</field>
+        <field name="view_mode">pivot,graph,list</field>
+        <field name="domain">[('move_type', '=', 'out_invoice')]</field>
+    </record>
+
+    <record id="nme_invoice_aging_report_action_payable" model="ir.actions.act_window">
+        <field name="name">Payable Aging</field>
+        <field name="res_model">nme.invoice.aging.report</field>
+        <field name="view_mode">pivot,graph,list</field>
+        <field name="domain">[('move_type', '=', 'in_invoice')]</field>
+    </record>
+</odoo>

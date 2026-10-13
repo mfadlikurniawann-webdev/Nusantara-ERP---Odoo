@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_payment_view_search" model="ir.ui.view">
+        <field name="name">nme.payment.view.search</field>
+        <field name="model">nme.payment</field>
+        <field name="arch" type="xml">
+            <search string="Payments">
+                <field name="name" />
+                <field name="partner_id" operator="child_of" />
+                <field name="invoice_id" />
+                <filter
+                    name="filter_inbound"
+                    string="Received"
+                    domain="[('payment_type', '=', 'inbound')]"
+                />
+                <filter
+                    name="filter_outbound"
+                    string="Sent"
+                    domain="[('payment_type', '=', 'outbound')]"
+                />
+                <separator />
+                <filter name="filter_date" string="Date" date="date" />
+                <group>
+                    <filter
+                        name="group_by_method"
+                        string="Method"
+                        context="{'group_by': 'method'}"
+                    />
+                    <filter
+                        name="group_by_date"
+                        string="Date"
+                        context="{'group_by': 'date:month'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="nme_payment_view_list" model="ir.ui.view">
+        <field name="name">nme.payment.view.list</field>
+        <field name="model">nme.payment</field>
+        <field name="arch" type="xml">
+            <list string="Payments" create="false" decoration-muted="state == 'cancel'">
+                <field name="currency_id" column_invisible="True" />
+                <field name="date" />
+                <field name="name" />
+                <field name="partner_id" />
+                <field name="invoice_id" />
+                <field name="payment_type" />
+                <field name="method" optional="show" />
+                <field name="amount" sum="Total" widget="monetary" />
+                <field
+                    name="state"
+                    widget="badge"
+                    decoration-success="state == 'posted'"
+                />
+            </list>
+        </field>
+    </record>
+
+    <record id="nme_payment_view_form" model="ir.ui.view">
+        <field name="name">nme.payment.view.form</field>
+        <field name="model">nme.payment</field>
+        <field name="arch" type="xml">
+            <form string="Payment" create="false">
+                <header>
+                    <button
+                        name="action_open_cancel_wizard"
+                        type="object"
+                        string="Cancel"
+                        invisible="state != 'posted'"
+                        groups="nme_invoicing.nme_group_invoicing_manager"
+                    />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="invoice_id" readonly="1" />
+                            <field name="partner_id" />
+                            <field name="payment_type" />
+                        </group>
+                        <group>
+                            <field name="currency_id" invisible="1" />
+                            <field name="amount" widget="monetary" readonly="1" />
+                            <field name="date" readonly="1" />
+                            <field name="method" readonly="1" />
+                            <field name="memo" readonly="state != 'posted'" />
+                            <field name="cancel_reason" invisible="not cancel_reason" />
+                        </group>
+                    </group>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <record id="nme_payment_action" model="ir.actions.act_window">
+        <field name="name">Payments</field>
+        <field name="res_model">nme.payment</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">No payment yet</p>
+            <p>Register payments from the invoices.</p>
+        </field>
+    </record>
+</odoo>

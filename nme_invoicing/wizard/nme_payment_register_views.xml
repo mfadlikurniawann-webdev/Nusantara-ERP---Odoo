@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_payment_register_view_form" model="ir.ui.view">
+        <field name="name">nme.payment.register.view.form</field>
+        <field name="model">nme.payment.register</field>
+        <field name="arch" type="xml">
+            <form string="Register Payment">
+                <group>
+                    <group>
+                        <field name="invoice_id" readonly="1" />
+                        <field name="currency_id" invisible="1" />
+                        <field name="company_id" invisible="1" />
+                        <field name="amount_residual" widget="monetary" />
+                        <field name="amount" widget="monetary" />
+                    </group>
+                    <group>
+                        <field name="date" />
+                        <field name="method" />
+                        <field name="memo" />
+                    </group>
+                </group>
+                <footer>
+                    <button
+                        name="action_create_payment"
+                        type="object"
+                        string="Create Payment"
+                        class="btn-primary"
+                        data-hotkey="q"
+                    />
+                    <button
+                        string="Discard"
+                        special="cancel"
+                        class="btn-secondary"
+                        data-hotkey="x"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
