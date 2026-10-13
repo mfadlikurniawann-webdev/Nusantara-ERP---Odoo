@@ -1,0 +1,674 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* nme_reporting
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-13 02:51+0000\n"
+"PO-Revision-Date: 2026-10-13 02:51+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: nme_reporting
+#: model:ir.actions.report,print_report_name:nme_reporting.action_report_nme_aging
+msgid "'Aging - %s' % object.report_type"
+msgstr "'Umur - %s' % object.report_type"
+
+#. module: nme_reporting
+#: model:ir.module.module,description:base.module_nme_reporting
+msgid ""
+"=============================\n"
+"Nusantara ERP - Reporting\n"
+"=============================\n"
+"\n"
+"Dashboard and analysis reports of Nusantara Mini ERP.\n"
+"\n"
+"**Table of contents**\n"
+"\n"
+".. contents::\n"
+"   :local:\n"
+"\n"
+"Features\n"
+"========\n"
+"\n"
+"* **Dashboard** (OWL client action), the landing page of the Nusantara ERP\n"
+"  app: sales of the month, orders to deliver, receivables, overdue invoices,\n"
+"  payables, products below minimum, purchases to approve, and a chart of\n"
+"  the sales of the last six months. Each card opens the matching records.\n"
+"  Figures are computed in one call with the rights of the user: cards about\n"
+"  documents the user cannot read are not shown.\n"
+"* **Sales analysis** (SQL view) per order line with the margin of the\n"
+"  delivered goods: revenue of the delivered quantity minus the value of the\n"
+"  delivery moves at average cost, customer returns included.\n"
+"* **Purchase analysis** with the average net unit price per vendor/product.\n"
+"* **Stock by warehouse**: quantity per internal location from the stock\n"
+"  ledger, valued at the average cost of the location's company.\n"
+"* **Export to Excel** (xlsxwriter) of the stock, receivable/payable aging\n"
+"  and sales by product, and a **PDF aging report** by partner and bucket\n"
+"  (custom ``report.*`` model).\n"
+"\n"
+"Technical notes\n"
+"===============\n"
+"\n"
+"* The dashboard is an OWL 3 component (``proxy`` state, ``useChart`` hook\n"
+"  with the Chart.js bundle of the web client) with a Hoot unit test in\n"
+"  ``static/tests``, run by the web test suite when Chrome is available.\n"
+"* SQL views declare ``_depends`` so that pending ORM writes are flushed\n"
+"  before they are read.\n"
+"\n"
+"Security\n"
+"========\n"
+"\n"
+"Each report follows the groups of its source documents: sales users see the\n"
+"analysis of their own orders, purchase users the purchase analysis,\n"
+"inventory users the stock report; all of them are filtered by company.\n"
+"\n"
+"Credits\n"
+"=======\n"
+"\n"
+"Author\n"
+"------\n"
+"\n"
+"* M. Fadli Kurniawan\n"
+"\n"
+"License\n"
+"-------\n"
+"\n"
+"LGPL-3\n"
+msgstr ""
+"=============================\n"
+"Nusantara ERP - Laporan\n"
+"=============================\n"
+"\n"
+"Dasbor dan laporan analisis untuk Nusantara Mini ERP.\n"
+"\n"
+"**Daftar isi**\n"
+"\n"
+".. contents::\n"
+"   :local:\n"
+"\n"
+"Fitur\n"
+"=====\n"
+"\n"
+"* **Dasbor** (client action OWL), halaman utama aplikasi Nusantara ERP:\n"
+"  penjualan bulan ini, pesanan belum dikirim, piutang, faktur lewat jatuh\n"
+"  tempo, hutang, produk di bawah stok minimum, pembelian menunggu\n"
+"  persetujuan, serta grafik penjualan enam bulan terakhir. Setiap kartu\n"
+"  membuka data yang sesuai. Angka dihitung dalam satu panggilan sesuai hak\n"
+"  akses pengguna: kartu untuk dokumen yang tidak dapat dibaca pengguna\n"
+"  tidak ditampilkan.\n"
+"* **Analisis Penjualan** (view SQL) per baris pesanan dengan margin barang\n"
+"  terkirim: pendapatan dari jumlah yang dikirim dikurangi nilai pergerakan\n"
+"  pengiriman berdasarkan biaya rata-rata, termasuk retur pelanggan.\n"
+"* **Analisis Pembelian** dengan harga satuan bersih rata-rata per\n"
+"  pemasok/produk.\n"
+"* **Stok per Gudang**: jumlah per lokasi internal dari buku besar stok,\n"
+"  dinilai dengan biaya rata-rata perusahaan pemilik lokasi.\n"
+"* **Ekspor ke Excel** (xlsxwriter) untuk stok, umur piutang/hutang dan\n"
+"  penjualan per produk, serta **laporan umur piutang/hutang dalam PDF** per\n"
+"  mitra dan rentang umur (model ``report.*`` kustom).\n"
+"\n"
+"Catatan teknis\n"
+"==============\n"
+"\n"
+"* Dasbor merupakan komponen OWL 3 (state ``proxy``, hook ``useChart``\n"
+"  dengan bundle Chart.js dari web client) dengan unit test Hoot di\n"
+"  ``static/tests``, yang dijalankan oleh rangkaian pengujian web jika\n"
+"  Chrome tersedia.\n"
+"* View SQL mendeklarasikan ``_depends`` agar penulisan ORM yang tertunda\n"
+"  disimpan (flush) terlebih dahulu sebelum view dibaca.\n"
+"\n"
+"Keamanan\n"
+"========\n"
+"\n"
+"Setiap laporan mengikuti grup dari dokumen sumbernya: pengguna penjualan\n"
+"melihat analisis pesanan mereka sendiri, pengguna pembelian melihat analisis\n"
+"pembelian, pengguna inventaris melihat laporan stok; semuanya difilter\n"
+"berdasarkan perusahaan.\n"
+"\n"
+"Kredit\n"
+"======\n"
+"\n"
+"Penulis\n"
+"-------\n"
+"\n"
+"* M. Fadli Kurniawan\n"
+"\n"
+"Lisensi\n"
+"-------\n"
+"\n"
+"LGPL-3\n"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+msgid "Aging"
+msgstr "Umur"
+
+#. module: nme_reporting
+#: model:ir.actions.report,name:nme_reporting.action_report_nme_aging
+msgid "Aging Report"
+msgstr "Laporan Umur Piutang/Hutang"
+
+#. module: nme_reporting
+#: model:ir.model,name:nme_reporting.model_report_nme_reporting_report_nme_aging
+msgid "Aging Report PDF"
+msgstr "PDF Laporan Umur Piutang/Hutang"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+msgid "Amount Due"
+msgstr "Sisa Tagihan"
+
+#. module: nme_reporting
+#: model_terms:ir.ui.view,arch_db:nme_reporting.report_nme_aging
+msgid "As of"
+msgstr "Per tanggal"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_stock_report__avg_cost
+msgid "Average Cost"
+msgstr "Biaya Rata-rata"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_purchase_report__price_average
+msgid "Average Unit Price"
+msgstr "Harga Satuan Rata-rata"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_purchase_report__user_id
+msgid "Buyer"
+msgstr "Pembeli"
+
+#. module: nme_reporting
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_report_export_view_form
+msgid "Close"
+msgstr "Tutup"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_purchase_report__company_id
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_report_export__company_id
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__company_id
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_stock_report__company_id
+msgid "Company"
+msgstr "Perusahaan"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__cost
+msgid "Cost of Goods"
+msgstr "Harga Pokok"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_report_export__create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_report_export__create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_purchase_report__currency_id
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__currency_id
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_stock_report__currency_id
+msgid "Currency"
+msgstr "Mata Uang"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__partner_id
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_sale_report_view_search
+msgid "Customer"
+msgstr "Pelanggan"
+
+#. module: nme_reporting
+#. odoo-javascript
+#: code:addons/nme_reporting/static/src/dashboard/dashboard.xml:0
+#: model:ir.actions.client,name:nme_reporting.nme_dashboard_action
+#: model:ir.ui.menu,name:nme_reporting.nme_dashboard_menu
+msgid "Dashboard"
+msgstr "Dasbor"
+
+#. module: nme_reporting
+#: model:ir.module.module,summary:base.module_nme_reporting
+msgid "Dashboard, sales/purchase/stock analysis, Excel export and aging PDF"
+msgstr ""
+"Dasbor, analisis penjualan/pembelian/stok, ekspor Excel dan PDF umur "
+"piutang/hutang"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_report_export__date_from
+msgid "Date From"
+msgstr "Dari Tanggal"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_report_export__date_to
+msgid "Date To"
+msgstr "Sampai Tanggal"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+msgid "Days Overdue"
+msgstr "Hari Lewat Jatuh Tempo"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__amount_delivered
+msgid "Delivered Revenue"
+msgstr "Pendapatan Barang Terkirim"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_dashboard__display_name
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_purchase_report__display_name
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_report_export__display_name
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__display_name
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_stock_report__display_name
+#: model:ir.model.fields,field_description:nme_reporting.field_report_nme_reporting_report_nme_aging__display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+msgid "Due Date"
+msgstr "Jatuh Tempo"
+
+#. module: nme_reporting
+#: model:ir.actions.act_window,name:nme_reporting.nme_report_export_action
+#: model:ir.model,name:nme_reporting.model_nme_report_export
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_report_export_view_form
+msgid "Export Report"
+msgstr "Ekspor Laporan"
+
+#. module: nme_reporting
+#: model:ir.ui.menu,name:nme_reporting.nme_report_export_menu
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_report_export_view_form
+msgid "Export to Excel"
+msgstr "Ekspor ke Excel"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_report_export__file_data
+msgid "File"
+msgstr "File"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_report_export__file_name
+msgid "File Name"
+msgstr "Nama File"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_dashboard__id
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_purchase_report__id
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_report_export__id
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__id
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_stock_report__id
+#: model:ir.model.fields,field_description:nme_reporting.field_report_nme_reporting_report_nme_aging__id
+msgid "ID"
+msgstr "ID"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+msgid "Invoice"
+msgstr "Faktur"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_report_export__write_uid
+msgid "Last Updated by"
+msgstr "Terakhir Diperbarui oleh"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_report_export__write_date
+msgid "Last Updated on"
+msgstr "Terakhir Diperbarui pada"
+
+#. module: nme_reporting
+#: model:ir.model.fields,help:nme_reporting.field_nme_report_export__warehouse_id
+msgid "Leave empty for every warehouse."
+msgstr "Kosongkan untuk semua gudang."
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_stock_report__location_id
+msgid "Location"
+msgstr "Lokasi"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__margin
+msgid "Margin"
+msgstr "Margin"
+
+#. module: nme_reporting
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_purchase_report_view_search
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_sale_report_view_search
+msgid "Month"
+msgstr "Bulan"
+
+#. module: nme_reporting
+#: model_terms:ir.actions.act_window,help:nme_reporting.nme_purchase_report_action
+msgid "No confirmed purchase yet"
+msgstr "Belum ada pembelian yang dikonfirmasi"
+
+#. module: nme_reporting
+#: model_terms:ir.actions.act_window,help:nme_reporting.nme_sale_report_action
+msgid "No confirmed sales yet"
+msgstr "Belum ada penjualan yang dikonfirmasi"
+
+#. module: nme_reporting
+#: model_terms:ir.actions.act_window,help:nme_reporting.nme_stock_report_action
+msgid "No stock yet"
+msgstr "Belum ada stok"
+
+#. module: nme_reporting
+#: model_terms:ir.ui.view,arch_db:nme_reporting.report_nme_aging
+msgid "Nothing is due."
+msgstr "Tidak ada sisa tagihan."
+
+#. module: nme_reporting
+#: model:ir.module.module,shortdesc:base.module_nme_reporting
+msgid "Nusantara ERP - Reporting"
+msgstr "Nusantara ERP - Laporan"
+
+#. module: nme_reporting
+#: model:ir.model,name:nme_reporting.model_nme_dashboard
+msgid "Nusantara ERP Dashboard"
+msgstr "Dasbor Nusantara ERP"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+msgid "Only the aging reports can be printed as PDF."
+msgstr "Hanya laporan umur piutang/hutang yang dapat dicetak sebagai PDF."
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_purchase_report__order_id
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__order_id
+msgid "Order"
+msgstr "Pesanan"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_purchase_report__date
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__date
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_purchase_report_view_search
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_sale_report_view_search
+msgid "Order Date"
+msgstr "Tanggal Pesanan"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/models/nme_dashboard.py:0
+msgid "Orders to Deliver"
+msgstr "Pesanan Belum Dikirim"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/models/nme_dashboard.py:0
+msgid "Overdue (%s invoices)"
+msgstr "Lewat Jatuh Tempo (%s faktur)"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+#: model_terms:ir.ui.view,arch_db:nme_reporting.report_nme_aging
+msgid "Partner"
+msgstr "Mitra"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/report/report_nme_aging.py:0
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+#: model:ir.model.fields.selection,name:nme_reporting.selection__nme_report_export__report_type__payable
+msgid "Payable Aging"
+msgstr "Umur Hutang"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/models/nme_dashboard.py:0
+msgid "Payables Due"
+msgstr "Hutang Belum Dibayar"
+
+#. module: nme_reporting
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_report_export_view_form
+msgid "Print PDF"
+msgstr "Cetak PDF"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_purchase_report__product_id
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__product_id
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_stock_report__product_id
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_purchase_report_view_search
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_sale_report_view_search
+msgid "Product"
+msgstr "Produk"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_purchase_report__categ_id
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__categ_id
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_stock_report__categ_id
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_sale_report_view_search
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_stock_report_view_search
+msgid "Product Category"
+msgstr "Kategori Produk"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/models/nme_dashboard.py:0
+msgid "Products Below Minimum"
+msgstr "Produk di Bawah Stok Minimum"
+
+#. module: nme_reporting
+#: model:ir.actions.act_window,name:nme_reporting.nme_purchase_report_action
+#: model:ir.model,name:nme_reporting.model_nme_purchase_report
+#: model:ir.ui.menu,name:nme_reporting.nme_purchase_report_menu
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_purchase_report_view_graph
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_purchase_report_view_list
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_purchase_report_view_pivot
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_purchase_report_view_search
+msgid "Purchase Analysis"
+msgstr "Analisis Pembelian"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/models/nme_dashboard.py:0
+msgid "Purchases to Approve"
+msgstr "Pembelian Menunggu Persetujuan"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_purchase_report__qty_invoiced
+msgid "Qty Billed"
+msgstr "Jumlah Ditagih"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__qty_delivered
+msgid "Qty Delivered"
+msgstr "Jumlah Dikirim"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__qty_invoiced
+msgid "Qty Invoiced"
+msgstr "Jumlah Difakturkan"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_purchase_report__qty_ordered
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__qty_ordered
+msgid "Qty Ordered"
+msgstr "Jumlah Dipesan"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_purchase_report__qty_received
+msgid "Qty Received"
+msgstr "Jumlah Diterima"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_stock_report__quantity
+msgid "Quantity"
+msgstr "Kuantitas"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+msgid "Quantity Delivered"
+msgstr "Jumlah Dikirim"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+msgid "Quantity Ordered"
+msgstr "Jumlah Dipesan"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/report/report_nme_aging.py:0
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+#: model:ir.model.fields.selection,name:nme_reporting.selection__nme_report_export__report_type__receivable
+#: model:ir.ui.menu,name:nme_reporting.nme_aging_report_menu
+msgid "Receivable Aging"
+msgstr "Umur Piutang"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/models/nme_dashboard.py:0
+msgid "Receivables Due"
+msgstr "Piutang Belum Dibayar"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_report_export__report_type
+msgid "Report"
+msgstr "Laporan"
+
+#. module: nme_reporting
+#: model:ir.ui.menu,name:nme_reporting.nme_menu_reporting
+msgid "Reporting"
+msgstr "Laporan"
+
+#. module: nme_reporting
+#: model:ir.actions.act_window,name:nme_reporting.nme_sale_report_action
+#: model:ir.model,name:nme_reporting.model_nme_sale_report
+#: model:ir.ui.menu,name:nme_reporting.nme_sale_report_menu
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_sale_report_view_graph
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_sale_report_view_list
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_sale_report_view_pivot
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_sale_report_view_search
+msgid "Sales Analysis"
+msgstr "Analisis Penjualan"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/models/nme_dashboard.py:0
+msgid "Sales This Month"
+msgstr "Penjualan Bulan Ini"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+#: model:ir.model.fields.selection,name:nme_reporting.selection__nme_report_export__report_type__sales
+msgid "Sales by Product"
+msgstr "Penjualan per Produk"
+
+#. module: nme_reporting
+#. odoo-javascript
+#: code:addons/nme_reporting/static/src/dashboard/dashboard.xml:0
+msgid "Sales of the Last 6 Months (untaxed)"
+msgstr "Penjualan 6 Bulan Terakhir (sebelum pajak)"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__user_id
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_sale_report_view_search
+msgid "Salesperson"
+msgstr "Penjual"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+#: model:ir.actions.act_window,name:nme_reporting.nme_stock_report_action
+#: model:ir.model,name:nme_reporting.model_nme_stock_report
+#: model:ir.model.fields.selection,name:nme_reporting.selection__nme_report_export__report_type__stock
+#: model:ir.ui.menu,name:nme_reporting.nme_stock_report_menu
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_stock_report_view_list
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_stock_report_view_pivot
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_stock_report_view_search
+msgid "Stock by Warehouse"
+msgstr "Stok per Gudang"
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_purchase_report__amount_total
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__amount_total
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_purchase_report_view_list
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_sale_report_view_list
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_stock_report_view_list
+#: model_terms:ir.ui.view,arch_db:nme_reporting.report_nme_aging
+msgid "Total"
+msgstr "Total"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_stock_report__uom_id
+msgid "Unit"
+msgstr "Satuan"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_purchase_report__amount_untaxed
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__amount_untaxed
+msgid "Untaxed Total"
+msgstr "Total Sebelum Pajak"
+
+#. module: nme_reporting
+#: model:ir.model.fields,help:nme_reporting.field_nme_sale_report__amount_delivered
+msgid "Untaxed revenue of the delivered quantity."
+msgstr "Pendapatan sebelum pajak dari jumlah yang dikirim."
+
+#. module: nme_reporting
+#: model:ir.model.fields,help:nme_reporting.field_nme_purchase_report__price_average
+msgid "Untaxed unit price after discount."
+msgstr "Harga satuan sebelum pajak setelah diskon."
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_stock_report__value
+msgid "Value"
+msgstr "Nilai"
+
+#. module: nme_reporting
+#: model:ir.model.fields,help:nme_reporting.field_nme_sale_report__cost
+msgid "Value of the delivery moves, at average cost."
+msgstr "Nilai pergerakan pengiriman, berdasarkan biaya rata-rata."
+
+#. module: nme_reporting
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_purchase_report__partner_id
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_purchase_report_view_search
+msgid "Vendor"
+msgstr "Pemasok"
+
+#. module: nme_reporting
+#. odoo-python
+#: code:addons/nme_reporting/wizard/nme_report_export.py:0
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_purchase_report__warehouse_id
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_report_export__warehouse_id
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_sale_report__warehouse_id
+#: model:ir.model.fields,field_description:nme_reporting.field_nme_stock_report__warehouse_id
+#: model_terms:ir.ui.view,arch_db:nme_reporting.nme_stock_report_view_search
+msgid "Warehouse"
+msgstr "Gudang"

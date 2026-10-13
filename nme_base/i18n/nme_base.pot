@@ -1,0 +1,1096 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* nme_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-13 03:01+0000\n"
+"PO-Revision-Date: 2026-10-13 03:01+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_product_category__product_count
+msgid "# Products"
+msgstr ""
+
+#. module: nme_base
+#. odoo-python
+#: code:addons/nme_base/models/nme_document_mixin.py:0
+msgid "%(document)s cannot go from %(old)s to %(new)s."
+msgstr ""
+
+#. module: nme_base
+#. odoo-python
+#: code:addons/nme_base/models/nme_document_mixin.py:0
+msgid "%s cannot be deleted anymore. Cancel it instead."
+msgstr ""
+
+#. module: nme_base
+#: model:nme.payment.term,name:nme_base.nme_payment_term_14_days
+msgid "14 Days"
+msgstr ""
+
+#. module: nme_base
+#: model:nme.payment.term,name:nme_base.nme_payment_term_30_days
+msgid "30 Days"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.module.module,description:base.module_nme_base
+msgid ""
+"=========================\n"
+"Nusantara ERP - Base\n"
+"=========================\n"
+"\n"
+"Foundation of Nusantara Mini ERP, a small ERP for Indonesian distributors\n"
+"built on Odoo 20 Community.\n"
+"\n"
+"**Table of contents**\n"
+"\n"
+".. contents::\n"
+"   :local:\n"
+"\n"
+"Features\n"
+"========\n"
+"\n"
+"* Master data shared by every module: products, hierarchical product\n"
+"  categories, units of measure, taxes and payment terms.\n"
+"* Customer and vendor flags and per-company payment terms on contacts. The\n"
+"  NPWP (tax number) is Odoo's standard Tax ID field, validated by Odoo.\n"
+"* Company settings: default sales/purchase tax and default payment terms.\n"
+"* Abstract mixins reused by all business documents:\n"
+"\n"
+"  * ``nme.document.mixin``: sequence numbering, strict state machine\n"
+"    (``_state_transitions`` + ``_set_state``), cancellation with a reason,\n"
+"    chatter and protection against deleting confirmed documents.\n"
+"  * ``nme.trade.document.mixin``: partner, payment terms and computed totals.\n"
+"  * ``nme.trade.line.mixin``: product, quantity, price, discount, taxes and\n"
+"    computed amounts.\n"
+"\n"
+"* A generic \"Cancel with reason\" wizard (``nme.document.cancel``).\n"
+"\n"
+"Configuration\n"
+"=============\n"
+"\n"
+"Go to *Nusantara ERP > Configuration > Settings* to choose the default taxes\n"
+"and payment terms of the company. The module creates a \"VAT 11%\" sales tax\n"
+"and purchase tax for the main company. Leave the tax fields of a product\n"
+"empty for goods exempted from VAT.\n"
+"\n"
+"Security\n"
+"========\n"
+"\n"
+"* Every internal user can read master data.\n"
+"* *Nusantara ERP / Master Data: Manager* creates and edits it.\n"
+"* Products, taxes and payment terms are filtered by the user's allowed\n"
+"  companies (shared records have no company).\n"
+"\n"
+"Credits\n"
+"=======\n"
+"\n"
+"Author\n"
+"------\n"
+"\n"
+"* M. Fadli Kurniawan\n"
+"\n"
+"License\n"
+"-------\n"
+"\n"
+"LGPL-3\n"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.constraint,message:nme_base.constraint_nme_tax_amount_range
+msgid "A tax rate must be between 0 and 100%."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__message_needaction
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__message_needaction
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_payment_term__active
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__active
+#: model:ir.model.fields,field_description:nme_base.field_nme_tax__active
+#: model:ir.model.fields,field_description:nme_base.field_nme_uom__active
+msgid "Active"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__activity_ids
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__activity_ids
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__activity_exception_decoration
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__activity_exception_decoration
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__activity_plans_ids
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__activity_plans_ids
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__activity_plans_ids
+msgid "Activity Plans"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__activity_state
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__activity_state
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__activity_type_icon
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__activity_type_icon
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: nme_base
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_view_form
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_view_search
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_tax_view_search
+msgid "Archived"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__message_attachment_count
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__message_attachment_count
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__barcode
+msgid "Barcode"
+msgstr ""
+
+#. module: nme_base
+#: model:nme.uom,name:nme_base.nme_uom_box
+msgid "Box"
+msgstr ""
+
+#. module: nme_base
+#. odoo-python
+#: code:addons/nme_base/models/nme_document_mixin.py:0
+msgid "Cancel %s"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model,name:nme_base.model_nme_document_cancel
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_document_cancel_view_form
+msgid "Cancel Document"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__cancel_reason
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__cancel_reason
+msgid "Cancel Reason"
+msgstr ""
+
+#. module: nme_base
+#. odoo-python
+#: code:addons/nme_base/models/nme_document_mixin.py:0
+msgid "Cancelled: %s"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__categ_id
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_category_view_list
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_category_view_search
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_view_search
+msgid "Category"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_uom__code
+msgid "Code"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model,name:nme_base.model_res_company
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__company_id
+#: model:ir.model.fields,field_description:nme_base.field_nme_payment_term__company_id
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__company_id
+#: model:ir.model.fields,field_description:nme_base.field_nme_tax__company_id
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__company_id
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_line_mixin__company_id
+msgid "Company"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_product_category__complete_name
+msgid "Complete Name"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model,name:nme_base.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.ui.menu,name:nme_base.nme_menu_configuration
+msgid "Configuration"
+msgstr ""
+
+#. module: nme_base
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_document_cancel_view_form
+msgid "Confirm Cancellation"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model,name:nme_base.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: nme_base
+#: model_terms:ir.actions.act_window,help:nme_base.nme_product_action
+msgid "Create your first product"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_cancel__create_uid
+#: model:ir.model.fields,field_description:nme_base.field_nme_payment_term__create_uid
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__create_uid
+#: model:ir.model.fields,field_description:nme_base.field_nme_product_category__create_uid
+#: model:ir.model.fields,field_description:nme_base.field_nme_tax__create_uid
+#: model:ir.model.fields,field_description:nme_base.field_nme_uom__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_cancel__create_date
+#: model:ir.model.fields,field_description:nme_base.field_nme_payment_term__create_date
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__create_date
+#: model:ir.model.fields,field_description:nme_base.field_nme_product_category__create_date
+#: model:ir.model.fields,field_description:nme_base.field_nme_tax__create_date
+#: model:ir.model.fields,field_description:nme_base.field_nme_uom__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: nme_base
+#: model:res.groups,comment:nme_base.nme_group_master_data_manager
+msgid ""
+"Creates and edits products, categories, units, taxes and payment terms."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__currency_id
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__currency_id
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_line_mixin__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_res_partner__nme_payment_term_id
+#: model:ir.model.fields,field_description:nme_base.field_res_users__nme_payment_term_id
+msgid "Customer Payment Terms"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.actions.act_window,name:nme_base.nme_partner_customer_action
+#: model:ir.ui.menu,name:nme_base.nme_partner_customer_menu
+#: model_terms:ir.ui.view,arch_db:nme_base.view_res_partner_filter
+msgid "Customers"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_res_company__nme_payment_term_id
+#: model:ir.model.fields,field_description:nme_base.field_res_config_settings__nme_payment_term_id
+#: model_terms:ir.ui.view,arch_db:nme_base.res_config_settings_view_form
+msgid "Default Payment Terms"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_res_company__nme_purchase_tax_id
+#: model:ir.model.fields,field_description:nme_base.field_res_config_settings__nme_purchase_tax_id
+#: model_terms:ir.ui.view,arch_db:nme_base.res_config_settings_view_form
+msgid "Default Purchase Tax"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_res_company__nme_sale_tax_id
+#: model:ir.model.fields,field_description:nme_base.field_res_config_settings__nme_sale_tax_id
+#: model_terms:ir.ui.view,arch_db:nme_base.res_config_settings_view_form
+msgid "Default Sales Tax"
+msgstr ""
+
+#. module: nme_base
+#: model_terms:ir.ui.view,arch_db:nme_base.res_config_settings_view_form
+msgid "Defaults"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_line_mixin__name
+msgid "Description"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_payment_term__note
+msgid "Description on Documents"
+msgstr ""
+
+#. module: nme_base
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_document_cancel_view_form
+msgid "Discard"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_line_mixin__discount
+msgid "Discount (%)"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_cancel__display_name
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__display_name
+#: model:ir.model.fields,field_description:nme_base.field_nme_payment_term__display_name
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__display_name
+#: model:ir.model.fields,field_description:nme_base.field_nme_product_category__display_name
+#: model:ir.model.fields,field_description:nme_base.field_nme_tax__display_name
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__display_name
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_line_mixin__display_name
+#: model:ir.model.fields,field_description:nme_base.field_nme_uom__display_name
+#: model:ir.model.fields,field_description:nme_base.field_res_company__display_name
+#: model:ir.model.fields,field_description:nme_base.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:nme_base.field_res_partner__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_cancel__res_model
+msgid "Document Model"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_cancel__res_ids
+msgid "Documents"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_payment_term__days
+msgid "Due After (Days)"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__message_follower_ids
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__message_follower_ids
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__message_partner_ids
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__message_partner_ids
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields.selection,name:nme_base.selection__nme_product__type__goods
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_view_search
+msgid "Goods"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,help:nme_base.field_nme_product__type
+msgid "Goods are tracked in stock, services are not."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__has_message
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__has_message
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_cancel__id
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__id
+#: model:ir.model.fields,field_description:nme_base.field_nme_payment_term__id
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__id
+#: model:ir.model.fields,field_description:nme_base.field_nme_product_category__id
+#: model:ir.model.fields,field_description:nme_base.field_nme_tax__id
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__id
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_line_mixin__id
+#: model:ir.model.fields,field_description:nme_base.field_nme_uom__id
+#: model:ir.model.fields,field_description:nme_base.field_res_company__id
+#: model:ir.model.fields,field_description:nme_base.field_res_config_settings__id
+#: model:ir.model.fields,field_description:nme_base.field_res_partner__id
+msgid "ID"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__activity_exception_icon
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__activity_exception_icon
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,help:nme_base.field_nme_document_mixin__activity_exception_icon
+#: model:ir.model.fields,help:nme_base.field_nme_product__activity_exception_icon
+#: model:ir.model.fields,help:nme_base.field_nme_trade_document_mixin__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,help:nme_base.field_nme_document_mixin__message_needaction
+#: model:ir.model.fields,help:nme_base.field_nme_product__message_needaction
+#: model:ir.model.fields,help:nme_base.field_nme_trade_document_mixin__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,help:nme_base.field_nme_document_mixin__message_has_error
+#: model:ir.model.fields,help:nme_base.field_nme_product__message_has_error
+#: model:ir.model.fields,help:nme_base.field_nme_trade_document_mixin__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: nme_base
+#: model:nme.payment.term,name:nme_base.nme_payment_term_immediate
+msgid "Immediate Payment"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__description
+msgid "Internal Notes"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__default_code
+msgid "Internal Reference"
+msgstr ""
+
+#. module: nme_base
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_view_form
+msgid "Internal notes about this product..."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__message_is_follower
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__message_is_follower
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_res_partner__nme_is_customer
+#: model:ir.model.fields,field_description:nme_base.field_res_users__nme_is_customer
+msgid "Is a Customer"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_res_partner__nme_is_vendor
+#: model:ir.model.fields,field_description:nme_base.field_res_users__nme_is_vendor
+msgid "Is a Vendor"
+msgstr ""
+
+#. module: nme_base
+#: model:nme.uom,name:nme_base.nme_uom_kg
+msgid "Kilogram"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_cancel__write_uid
+#: model:ir.model.fields,field_description:nme_base.field_nme_payment_term__write_uid
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__write_uid
+#: model:ir.model.fields,field_description:nme_base.field_nme_product_category__write_uid
+#: model:ir.model.fields,field_description:nme_base.field_nme_tax__write_uid
+#: model:ir.model.fields,field_description:nme_base.field_nme_uom__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_cancel__write_date
+#: model:ir.model.fields,field_description:nme_base.field_nme_payment_term__write_date
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__write_date
+#: model:ir.model.fields,field_description:nme_base.field_nme_product_category__write_date
+#: model:ir.model.fields,field_description:nme_base.field_nme_tax__write_date
+#: model:ir.model.fields,field_description:nme_base.field_nme_uom__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,help:nme_base.field_nme_product__sale_tax_ids
+msgid "Leave empty for goods exempted from VAT."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,help:nme_base.field_nme_payment_term__company_id
+msgid "Leave empty to share the payment term between companies."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,help:nme_base.field_nme_product__company_id
+msgid "Leave empty to share the product between companies."
+msgstr ""
+
+#. module: nme_base
+#: model:nme.uom,name:nme_base.nme_uom_liter
+msgid "Liter"
+msgstr ""
+
+#. module: nme_base
+#: model:res.groups,name:nme_base.nme_group_master_data_manager
+msgid "Manager"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.ui.menu,name:nme_base.nme_menu_master_data
+#: model:res.groups.privilege,name:nme_base.nme_privilege_master_data
+msgid "Master Data"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.module.module,summary:base.module_nme_base
+msgid "Master data, shared document mixins and settings of Nusantara Mini ERP"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,help:nme_base.field_nme_document_mixin__activity_type_icon
+#: model:ir.model.fields,help:nme_base.field_nme_product__activity_type_icon
+#: model:ir.model.fields,help:nme_base.field_nme_trade_document_mixin__activity_type_icon
+msgid "Material Symbols icon e.g. checklist"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__message_has_error
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__message_has_error
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__message_ids
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__message_ids
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__my_activity_date_deadline
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__my_activity_date_deadline
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_payment_term__name
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__name
+#: model:ir.model.fields,field_description:nme_base.field_nme_product_category__name
+#: model:ir.model.fields,field_description:nme_base.field_nme_tax__name
+#: model:ir.model.fields,field_description:nme_base.field_nme_uom__name
+msgid "Name"
+msgstr ""
+
+#. module: nme_base
+#. odoo-python
+#: code:addons/nme_base/models/nme_document_mixin.py:0
+msgid "New"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__activity_date_deadline
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__activity_date_deadline
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__activity_summary
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__activity_summary
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__activity_type_id
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__activity_type_id
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: nme_base
+#: model:res.groups.privilege,placeholder:nme_base.nme_privilege_master_data
+msgid "No"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__note
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__note
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_view_form
+msgid "Notes"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__message_needaction_counter
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__message_needaction_counter
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__message_has_error_counter
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__message_has_error_counter
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,help:nme_base.field_nme_document_mixin__message_needaction_counter
+#: model:ir.model.fields,help:nme_base.field_nme_product__message_needaction_counter
+#: model:ir.model.fields,help:nme_base.field_nme_trade_document_mixin__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,help:nme_base.field_nme_document_mixin__message_has_error_counter
+#: model:ir.model.fields,help:nme_base.field_nme_product__message_has_error_counter
+#: model:ir.model.fields,help:nme_base.field_nme_trade_document_mixin__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,help:nme_base.field_nme_product_category__product_count
+msgid "Number of products in this category and its subcategories."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.ui.menu,name:nme_base.nme_menu_root
+#: model_terms:ir.ui.view,arch_db:nme_base.res_config_settings_view_form
+msgid "Nusantara ERP"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.module.module,shortdesc:base.module_nme_base
+msgid "Nusantara ERP - Base"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model,name:nme_base.model_nme_document_mixin
+msgid "Nusantara ERP Document"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model,name:nme_base.model_nme_trade_document_mixin
+msgid "Nusantara ERP Trade Document"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model,name:nme_base.model_nme_trade_line_mixin
+msgid "Nusantara ERP Trade Document Line"
+msgstr ""
+
+#. module: nme_base
+#. odoo-python
+#: code:addons/nme_base/wizard/nme_document_cancel.py:0
+msgid "Only Nusantara ERP documents can be cancelled here."
+msgstr ""
+
+#. module: nme_base
+#: model:nme.uom,name:nme_base.nme_uom_pack
+msgid "Pack"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_product_category__parent_id
+msgid "Parent Category"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_product_category__parent_path
+msgid "Parent Path"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__partner_id
+msgid "Partner"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model,name:nme_base.model_nme_payment_term
+msgid "Payment Term"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.actions.act_window,name:nme_base.nme_payment_term_action
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__payment_term_id
+#: model:ir.ui.menu,name:nme_base.nme_payment_term_menu
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_payment_term_view_list
+msgid "Payment Terms"
+msgstr ""
+
+#. module: nme_base
+#: model:nme.payment.term,note:nme_base.nme_payment_term_immediate
+msgid "Payment due on receipt."
+msgstr ""
+
+#. module: nme_base
+#: model:nme.payment.term,note:nme_base.nme_payment_term_14_days
+msgid "Payment due within 14 days."
+msgstr ""
+
+#. module: nme_base
+#: model:nme.payment.term,note:nme_base.nme_payment_term_30_days
+msgid "Payment due within 30 days."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,help:nme_base.field_res_partner__nme_vendor_payment_term_id
+#: model:ir.model.fields,help:nme_base.field_res_users__nme_vendor_payment_term_id
+msgid "Payment terms proposed on purchase orders and vendor bills."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,help:nme_base.field_res_partner__nme_payment_term_id
+#: model:ir.model.fields,help:nme_base.field_res_users__nme_payment_term_id
+msgid "Payment terms proposed on sales orders and customer invoices."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model,name:nme_base.model_nme_product
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_line_mixin__product_id
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_view_form
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_view_search
+msgid "Product"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.actions.act_window,name:nme_base.nme_product_category_action
+#: model:ir.ui.menu,name:nme_base.nme_product_category_menu
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_category_view_list
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_category_view_search
+msgid "Product Categories"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model,name:nme_base.model_nme_product_category
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_category_view_form
+msgid "Product Category"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__type
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_view_search
+msgid "Product Type"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.actions.act_window,name:nme_base.nme_product_action
+#: model:ir.ui.menu,name:nme_base.nme_product_menu
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_category_view_form
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_view_list
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_view_search
+msgid "Products"
+msgstr ""
+
+#. module: nme_base
+#: model_terms:ir.actions.act_window,help:nme_base.nme_product_action
+msgid "Products are shared by sales, purchase and inventory documents."
+msgstr ""
+
+#. module: nme_base
+#: model_terms:ir.ui.view,arch_db:nme_base.res_config_settings_view_form
+msgid "Proposed on new products for purchases."
+msgstr ""
+
+#. module: nme_base
+#: model_terms:ir.ui.view,arch_db:nme_base.res_config_settings_view_form
+msgid "Proposed on new products. Leave empty when most goods are VAT exempt."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__purchase_price
+msgid "Purchase Price"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__purchase_tax_ids
+msgid "Purchase Taxes"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields.selection,name:nme_base.selection__nme_tax__type_tax_use__purchase
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_tax_view_search
+msgid "Purchases"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_line_mixin__quantity
+msgid "Quantity"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_tax__amount
+msgid "Rate (%)"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_cancel__reason
+msgid "Reason"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__name
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__name
+msgid "Reference"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__user_id
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__user_id
+msgid "Responsible"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_document_mixin__activity_user_id
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__activity_user_id
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: nme_base
+#: model:nme.uom,name:nme_base.nme_uom_sack
+msgid "Sack"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields.selection,name:nme_base.selection__nme_tax__type_tax_use__sale
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_tax_view_search
+msgid "Sales"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__list_price
+msgid "Sales Price"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__sale_tax_ids
+msgid "Sales Taxes"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_payment_term__sequence
+#: model:ir.model.fields,field_description:nme_base.field_nme_tax__sequence
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_line_mixin__sequence
+#: model:ir.model.fields,field_description:nme_base.field_nme_uom__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields.selection,name:nme_base.selection__nme_product__type__service
+msgid "Service"
+msgstr ""
+
+#. module: nme_base
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_view_search
+msgid "Services"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.actions.act_window,name:nme_base.nme_settings_action
+#: model:ir.ui.menu,name:nme_base.nme_settings_menu
+msgid "Settings"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,help:nme_base.field_nme_uom__code
+msgid "Short symbol printed on documents, for example kg or pcs."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,help:nme_base.field_nme_document_mixin__activity_state
+#: model:ir.model.fields,help:nme_base.field_nme_product__activity_state
+#: model:ir.model.fields,help:nme_base.field_nme_trade_document_mixin__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_product_category__child_ids
+msgid "Subcategories"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_line_mixin__price_subtotal
+msgid "Subtotal"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model,name:nme_base.model_nme_tax
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_line_mixin__price_tax
+msgid "Tax"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_tax__type_tax_use
+msgid "Tax Scope"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.actions.act_window,name:nme_base.nme_tax_action
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__amount_tax
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_line_mixin__tax_ids
+#: model:ir.ui.menu,name:nme_base.nme_tax_menu
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_tax_view_list
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_tax_view_search
+msgid "Taxes"
+msgstr ""
+
+#. module: nme_base
+#. odoo-python
+#: code:addons/nme_base/models/nme_trade_line_mixin.py:0
+msgid "The discount of %s must be between 0 and 100%%."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.constraint,message:nme_base.constraint_nme_product_default_code_unique
+msgid "The internal reference must be unique per company."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.constraint,message:nme_base.constraint_nme_payment_term_days_positive
+msgid "The number of days cannot be negative."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.constraint,message:nme_base.constraint_nme_product_purchase_price_positive
+msgid "The purchase price cannot be negative."
+msgstr ""
+
+#. module: nme_base
+#. odoo-python
+#: code:addons/nme_base/models/nme_trade_line_mixin.py:0
+msgid "The quantity of %s must be positive."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.constraint,message:nme_base.constraint_nme_product_list_price_positive
+msgid "The sales price cannot be negative."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.constraint,message:nme_base.constraint_nme_uom_code_unique
+msgid "The unit code must be unique."
+msgstr ""
+
+#. module: nme_base
+#. odoo-python
+#: code:addons/nme_base/models/nme_trade_line_mixin.py:0
+msgid "The unit price of %s cannot be negative."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__amount_total
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_line_mixin__price_total
+msgid "Total"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,help:nme_base.field_nme_document_mixin__activity_exception_decoration
+#: model:ir.model.fields,help:nme_base.field_nme_product__activity_exception_decoration
+#: model:ir.model.fields,help:nme_base.field_nme_trade_document_mixin__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_line_mixin__uom_id
+#: model:nme.uom,name:nme_base.nme_uom_unit
+msgid "Unit"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_line_mixin__price_unit
+msgid "Unit Price"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model,name:nme_base.model_nme_uom
+#: model:ir.model.fields,field_description:nme_base.field_nme_product__uom_id
+msgid "Unit of Measure"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,help:nme_base.field_nme_product__purchase_price
+msgid "Unit price proposed on new purchase orders."
+msgstr ""
+
+#. module: nme_base
+#: model:ir.actions.act_window,name:nme_base.nme_uom_action
+#: model:ir.ui.menu,name:nme_base.nme_uom_menu
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_uom_view_list
+msgid "Units of Measure"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_nme_trade_document_mixin__amount_untaxed
+msgid "Untaxed Amount"
+msgstr ""
+
+#. module: nme_base
+#: model_terms:ir.ui.view,arch_db:nme_base.res_config_settings_view_form
+msgid "Used when the partner has no payment terms of their own."
+msgstr ""
+
+#. module: nme_base
+#: model:nme.tax,name:nme_base.nme_tax_vat_11_sale
+msgid "VAT 11%"
+msgstr ""
+
+#. module: nme_base
+#: model:nme.tax,name:nme_base.nme_tax_vat_11_purchase
+msgid "VAT 11% (Purchase)"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.model.fields,field_description:nme_base.field_res_partner__nme_vendor_payment_term_id
+#: model:ir.model.fields,field_description:nme_base.field_res_users__nme_vendor_payment_term_id
+msgid "Vendor Payment Terms"
+msgstr ""
+
+#. module: nme_base
+#: model:ir.actions.act_window,name:nme_base.nme_partner_vendor_action
+#: model:ir.ui.menu,name:nme_base.nme_partner_vendor_menu
+#: model_terms:ir.ui.view,arch_db:nme_base.view_res_partner_filter
+msgid "Vendors"
+msgstr ""
+
+#. module: nme_base
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_view_form
+msgid "Visible to all companies"
+msgstr ""
+
+#. module: nme_base
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_document_cancel_view_form
+msgid "Why is this document cancelled?"
+msgstr ""
+
+#. module: nme_base
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_view_form
+msgid "e.g. Premium Rice 5 kg"
+msgstr ""
+
+#. module: nme_base
+#: model_terms:ir.ui.view,arch_db:nme_base.nme_product_category_view_form
+msgid "e.g. Rice"
+msgstr ""

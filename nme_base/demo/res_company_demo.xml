@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- The demo company of the business case: a staples distributor in
+         Surabaya working in Indonesian rupiah. -->
+    <record id="base.IDR" model="res.currency">
+        <field name="active" eval="True" />
+    </record>
+    <record id="base.main_company" model="res.company">
+        <field name="name">CV Sumber Rejeki</field>
+        <field name="currency_id" ref="base.IDR" />
+        <field name="street">Jl. Raya Darmo 88</field>
+        <field name="city">Surabaya</field>
+        <field name="zip">60241</field>
+        <field name="country_id" ref="base.id" />
+        <field name="phone">+62 31 567 8900</field>
+        <field name="email">info@sumberrejeki.example.com</field>
+        <field name="vat">0056789019615000</field>
+    </record>
+</odoo>

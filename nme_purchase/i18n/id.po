@@ -1,0 +1,1015 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* nme_purchase
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-13 02:51+0000\n"
+"PO-Revision-Date: 2026-10-13 02:51+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: nme_purchase
+#. odoo-python
+#: code:addons/nme_purchase/models/nme_purchase_order.py:0
+msgid "%(order)s amounts to %(amount)s and needs your approval."
+msgstr "%(order)s bernilai %(amount)s dan memerlukan persetujuan Anda."
+
+#. module: nme_purchase
+#: model:ir.actions.report,print_report_name:nme_purchase.action_report_nme_purchase_order
+msgid ""
+"(object.state in ('draft', 'sent') and 'RFQ - %s' or 'PO - %s') % "
+"object.name.replace('/', '-')"
+msgstr ""
+"(object.state in ('draft', 'sent') and 'RFQ - %s' or 'PO - %s') % "
+"object.name.replace('/', '-')"
+
+#. module: nme_purchase
+#: model:mail.template,body_html:nme_purchase.mail_template_nme_purchase_order
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                    Dear <t t-out=\"object.partner_id.name or ''\">PT Beras Nusantara</t>,\n"
+"                    <br/><br/>\n"
+"                    <t t-if=\"object.state in ('draft', 'sent')\">\n"
+"                        Please find attached our request for quotation\n"
+"                    </t>\n"
+"                    <t t-else=\"\">Please find attached our purchase order</t>\n"
+"                    <strong t-out=\"object.name or ''\">PO/2026/00001</strong>.\n"
+"                    <t t-if=\"object.date_planned\">\n"
+"                        <br/>We expect the delivery on\n"
+"                        <t t-out=\"format_date(object.date_planned) or ''\">01/31/2026</t>.\n"
+"                    </t>\n"
+"                    <br/><br/>\n"
+"                    Thank you,\n"
+"                    <br/>\n"
+"                    <t t-out=\"object.user_id.name or object.company_id.name or ''\">Purchasing</t>\n"
+"                </p>\n"
+"            </div>\n"
+"        "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                    Yth. <t t-out=\"object.partner_id.name or ''\">PT Beras Nusantara</t>,\n"
+"                    <br/><br/>\n"
+"                    <t t-if=\"object.state in ('draft', 'sent')\">\n"
+"                        Terlampir kami sampaikan permintaan penawaran harga (RFQ)\n"
+"                    </t>\n"
+"                    <t t-else=\"\">Terlampir kami sampaikan pesanan pembelian</t>\n"
+"                    <strong t-out=\"object.name or ''\">PO/2026/00001</strong>.\n"
+"                    <t t-if=\"object.date_planned\">\n"
+"                        <br/>Kami mengharapkan pengiriman pada tanggal\n"
+"                        <t t-out=\"format_date(object.date_planned) or ''\">01/31/2026</t>.\n"
+"                    </t>\n"
+"                    <br/><br/>\n"
+"                    Terima kasih,\n"
+"                    <br/>\n"
+"                    <t t-out=\"object.user_id.name or object.company_id.name or ''\">Bagian Pembelian</t>\n"
+"                </p>\n"
+"            </div>\n"
+"        "
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.report_nme_purchase_order_document
+msgid "<strong>Deliver To</strong>"
+msgstr "<strong>Kirim Ke</strong>"
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.report_nme_purchase_order_document
+msgid "<strong>Expected Arrival</strong>"
+msgstr "<strong>Perkiraan Kedatangan</strong>"
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.report_nme_purchase_order_document
+msgid "<strong>Order Date</strong>"
+msgstr "<strong>Tanggal Pesanan</strong>"
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.report_nme_purchase_order_document
+msgid "<strong>Your Reference</strong>"
+msgstr "<strong>Referensi Anda</strong>"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__message_needaction
+msgid "Action Needed"
+msgstr "Perlu Tindakan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__activity_ids
+msgid "Activities"
+msgstr "Aktivitas"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Dekorasi Pengecualian Aktivitas"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__activity_plans_ids
+msgid "Activity Plans"
+msgstr "Rencana Aktivitas"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__activity_state
+msgid "Activity State"
+msgstr "Status Aktivitas"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Ikon Jenis Aktivitas"
+
+#. module: nme_purchase
+#. odoo-python
+#: code:addons/nme_purchase/models/nme_purchase_order.py:0
+msgid "Add at least one line to %s."
+msgstr "Tambahkan minimal satu baris ke %s."
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.report_nme_purchase_order_document
+msgid "Amount"
+msgstr "Jumlah"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__approval_required
+msgid "Approval Required"
+msgstr "Perlu Persetujuan"
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_form
+msgid "Approve"
+msgstr "Setujui"
+
+#. module: nme_purchase
+#: model:mail.activity.type,summary:nme_purchase.mail_activity_type_po_approval
+msgid "Approve or reject this purchase order"
+msgstr "Setujui atau tolak pesanan pembelian ini"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__approved_by_id
+msgid "Approved By"
+msgstr "Disetujui Oleh"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__approval_date
+msgid "Approved On"
+msgstr "Disetujui Pada"
+
+#. module: nme_purchase
+#: model:res.groups,comment:nme_purchase.nme_group_purchase_manager
+msgid "Approves or rejects purchase orders above the approval amount."
+msgstr ""
+"Menyetujui atau menolak pesanan pembelian di atas batas nilai persetujuan."
+
+#. module: nme_purchase
+#: model_terms:ir.actions.act_window,help:nme_purchase.nme_purchase_order_action_rfq
+msgid "Ask a vendor for a quotation"
+msgstr "Minta penawaran harga dari pemasok"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__message_attachment_count
+msgid "Attachment Count"
+msgstr "Jumlah Lampiran"
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_form
+msgid "Cancel"
+msgstr "Batalkan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__cancel_reason
+msgid "Cancel Reason"
+msgstr "Alasan Pembatalan"
+
+#. module: nme_purchase
+#: model:ir.model.fields.selection,name:nme_purchase.selection__nme_purchase_order__state__cancel
+msgid "Cancelled"
+msgstr "Dibatalkan"
+
+#. module: nme_purchase
+#: model:ir.model,name:nme_purchase.model_res_company
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__company_id
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__company_id
+msgid "Company"
+msgstr "Perusahaan"
+
+#. module: nme_purchase
+#: model:ir.model,name:nme_purchase.model_res_config_settings
+msgid "Config Settings"
+msgstr "Pengaturan Konfigurasi"
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_form
+msgid "Confirm Order"
+msgstr "Konfirmasi Pesanan"
+
+#. module: nme_purchase
+#: model_terms:ir.actions.act_window,help:nme_purchase.nme_purchase_order_action_rfq
+msgid "Confirmed RFQs become purchase orders and their goods are received."
+msgstr ""
+"RFQ yang dikonfirmasi menjadi pesanan pembelian dan barangnya akan diterima."
+
+#. module: nme_purchase
+#: model:ir.model,name:nme_purchase.model_res_partner
+msgid "Contact"
+msgstr "Kontak"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__create_uid
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__create_date
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__currency_id
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__currency_id
+msgid "Currency"
+msgstr "Mata Uang"
+
+#. module: nme_purchase
+#: model:ir.model.fields,help:nme_purchase.field_nme_purchase_order__date_planned
+msgid "Date the vendor promised to deliver."
+msgstr "Tanggal pengiriman yang dijanjikan oleh pemasok."
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__warehouse_id
+msgid "Deliver To"
+msgstr "Kirim Ke"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__name
+#: model_terms:ir.ui.view,arch_db:nme_purchase.report_nme_purchase_order_document
+msgid "Description"
+msgstr "Deskripsi"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__discount
+msgid "Discount (%)"
+msgstr "Diskon (%)"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_picking__display_name
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__display_name
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__display_name
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_stock_move__display_name
+#: model:ir.model.fields,field_description:nme_purchase.field_res_company__display_name
+#: model:ir.model.fields,field_description:nme_purchase.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:nme_purchase.field_res_partner__display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__date_planned
+msgid "Expected Arrival"
+msgstr "Perkiraan Kedatangan"
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_calendar
+msgid "Expected Arrivals"
+msgstr "Perkiraan Kedatangan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__message_follower_ids
+msgid "Followers"
+msgstr "Pengikut"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Pengikut (Mitra)"
+
+#. module: nme_purchase
+#. odoo-python
+#: code:addons/nme_purchase/models/nme_purchase_order.py:0
+msgid "Goods of %s were received: return them before cancelling the order."
+msgstr ""
+"Barang dari %s sudah diterima: retur barang tersebut sebelum membatalkan "
+"pesanan."
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__has_message
+msgid "Has Message"
+msgstr "Memiliki Pesan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_picking__id
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__id
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__id
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_stock_move__id
+#: model:ir.model.fields,field_description:nme_purchase.field_res_company__id
+#: model:ir.model.fields,field_description:nme_purchase.field_res_config_settings__id
+#: model:ir.model.fields,field_description:nme_purchase.field_res_partner__id
+msgid "ID"
+msgstr "ID"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__activity_exception_icon
+msgid "Icon"
+msgstr "Ikon"
+
+#. module: nme_purchase
+#: model:ir.model.fields,help:nme_purchase.field_nme_purchase_order__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Ikon untuk menandai aktivitas pengecualian."
+
+#. module: nme_purchase
+#: model:ir.model.fields,help:nme_purchase.field_nme_purchase_order__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Jika dicentang, pesan baru memerlukan perhatian Anda."
+
+#. module: nme_purchase
+#: model:ir.model.fields,help:nme_purchase.field_nme_purchase_order__message_has_error
+#: model:ir.model.fields,help:nme_purchase.field_nme_purchase_order__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Jika dicentang, beberapa pesan mengalami kesalahan pengiriman."
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__message_is_follower
+msgid "Is Follower"
+msgstr "Adalah Pengikut"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__write_uid
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__write_uid
+msgid "Last Updated by"
+msgstr "Terakhir Diperbarui oleh"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__write_date
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__write_date
+msgid "Last Updated on"
+msgstr "Terakhir Diperbarui pada"
+
+#. module: nme_purchase
+#. odoo-python
+#: code:addons/nme_purchase/models/nme_purchase_order_line.py:0
+msgid "Lines of a confirmed order cannot be deleted."
+msgstr "Baris pesanan yang sudah dikonfirmasi tidak dapat dihapus."
+
+#. module: nme_purchase
+#: model:res.groups,name:nme_purchase.nme_group_purchase_manager
+msgid "Manager"
+msgstr "Manajer"
+
+#. module: nme_purchase
+#: model:ir.model.fields,help:nme_purchase.field_nme_purchase_order__activity_type_icon
+msgid "Material Symbols icon e.g. checklist"
+msgstr "Ikon Material Symbols, misalnya checklist"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__message_has_error
+msgid "Message Delivery error"
+msgstr "Kesalahan Pengiriman Pesan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__message_ids
+msgid "Messages"
+msgstr "Pesan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Tenggat Aktivitas Saya"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Tenggat Aktivitas Berikutnya"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__activity_summary
+msgid "Next Activity Summary"
+msgstr "Ringkasan Aktivitas Berikutnya"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__activity_type_id
+msgid "Next Activity Type"
+msgstr "Jenis Aktivitas Berikutnya"
+
+#. module: nme_purchase
+#: model:res.groups.privilege,placeholder:nme_purchase.nme_privilege_purchase
+msgid "No"
+msgstr "Tidak"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__note
+msgid "Notes"
+msgstr "Catatan"
+
+#. module: nme_purchase
+#: model:ir.model.fields.selection,name:nme_purchase.selection__nme_purchase_order__receipt_status__nothing
+msgid "Nothing to Receive"
+msgstr "Tidak Ada yang Perlu Diterima"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Jumlah Tindakan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__message_has_error_counter
+msgid "Number of errors"
+msgstr "Jumlah kesalahan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,help:nme_purchase.field_nme_purchase_order__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Jumlah pesan yang memerlukan tindakan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,help:nme_purchase.field_nme_purchase_order__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Jumlah pesan dengan kesalahan pengiriman"
+
+#. module: nme_purchase
+#: model:ir.module.module,shortdesc:base.module_nme_purchase
+msgid "Nusantara ERP - Purchase"
+msgstr "Nusantara ERP - Pembelian"
+
+#. module: nme_purchase
+#: model:mail.template,name:nme_purchase.mail_template_nme_purchase_order
+msgid "Nusantara ERP: Send Purchase Order"
+msgstr "Nusantara ERP: Kirim Pesanan Pembelian"
+
+#. module: nme_purchase
+#. odoo-python
+#: code:addons/nme_purchase/models/nme_purchase_order.py:0
+msgid "Only orders waiting for approval can be approved."
+msgstr "Hanya pesanan yang menunggu persetujuan yang dapat disetujui."
+
+#. module: nme_purchase
+#. odoo-python
+#: code:addons/nme_purchase/models/nme_purchase_order.py:0
+msgid "Only purchase managers can approve orders."
+msgstr "Hanya manajer pembelian yang dapat menyetujui pesanan."
+
+#. module: nme_purchase
+#. odoo-python
+#: code:addons/nme_purchase/models/nme_purchase_order.py:0
+msgid "Only purchase managers can reject orders."
+msgstr "Hanya manajer pembelian yang dapat menolak pesanan."
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__order_id
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_search
+msgid "Order"
+msgstr "Pesanan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__date_order
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_search
+msgid "Order Date"
+msgstr "Tanggal Pesanan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__line_ids
+msgid "Order Lines"
+msgstr "Baris Pesanan"
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.res_config_settings_view_form
+msgid ""
+"Orders reaching this total (taxes included) need a manager approval. 0 "
+"disables it."
+msgstr ""
+"Pesanan yang mencapai total ini (termasuk pajak) memerlukan persetujuan "
+"manajer. Nilai 0 menonaktifkannya."
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_form
+msgid "Other Information"
+msgstr "Informasi Lainnya"
+
+#. module: nme_purchase
+#: model:ir.model.fields.selection,name:nme_purchase.selection__nme_purchase_order__receipt_status__partial
+msgid "Partially Received"
+msgstr "Diterima Sebagian"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__payment_term_id
+msgid "Payment Terms"
+msgstr "Termin Pembayaran"
+
+#. module: nme_purchase
+#: model:res.groups,comment:nme_purchase.nme_group_purchase_user
+msgid ""
+"Prepares requests for quotation and confirms purchase orders below the "
+"approval amount."
+msgstr ""
+"Menyiapkan permintaan penawaran harga (RFQ) dan mengonfirmasi pesanan "
+"pembelian di bawah batas nilai persetujuan."
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_form
+msgid "Print"
+msgstr "Cetak"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__product_id
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_search
+msgid "Product"
+msgstr "Produk"
+
+#. module: nme_purchase
+#: model:ir.ui.menu,name:nme_purchase.nme_product_menu_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_form
+msgid "Products"
+msgstr "Produk"
+
+#. module: nme_purchase
+#: model:ir.ui.menu,name:nme_purchase.nme_menu_purchase
+#: model:res.groups.privilege,name:nme_purchase.nme_privilege_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.res_config_settings_view_form
+msgid "Purchase"
+msgstr "Pembelian"
+
+#. module: nme_purchase
+#: model:mail.activity.type,name:nme_purchase.mail_activity_type_po_approval
+#: model_terms:ir.ui.view,arch_db:nme_purchase.res_config_settings_view_form
+msgid "Purchase Approval"
+msgstr "Persetujuan Pembelian"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_res_company__nme_po_approval_amount
+#: model:ir.model.fields,field_description:nme_purchase.field_res_config_settings__nme_po_approval_amount
+msgid "Purchase Approval Amount"
+msgstr "Batas Nilai Persetujuan Pembelian"
+
+#. module: nme_purchase
+#: model:ir.actions.report,name:nme_purchase.action_report_nme_purchase_order
+#: model:ir.model,name:nme_purchase.model_nme_purchase_order
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_picking__purchase_id
+#: model:ir.model.fields.selection,name:nme_purchase.selection__nme_purchase_order__state__purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_form
+#: model_terms:ir.ui.view,arch_db:nme_purchase.report_nme_purchase_order_document
+msgid "Purchase Order"
+msgstr "Pesanan Pembelian"
+
+#. module: nme_purchase
+#: model:ir.model,name:nme_purchase.model_nme_purchase_order_line
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_stock_move__purchase_line_id
+msgid "Purchase Order Line"
+msgstr "Baris Pesanan Pembelian"
+
+#. module: nme_purchase
+#. odoo-python
+#: code:addons/nme_purchase/models/res_partner.py:0
+#: model:ir.actions.act_window,name:nme_purchase.nme_purchase_order_action_orders
+#: model:ir.ui.menu,name:nme_purchase.nme_purchase_order_menu_orders
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_graph
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_list
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_pivot
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_search
+msgid "Purchase Orders"
+msgstr "Pesanan Pembelian"
+
+#. module: nme_purchase
+#: model:ir.model.fields,help:nme_purchase.field_res_company__nme_po_approval_amount
+#: model:ir.model.fields,help:nme_purchase.field_res_config_settings__nme_po_approval_amount
+msgid ""
+"Purchase orders reaching this total (taxes included) must be approved by a "
+"purchase manager. 0 disables the approval."
+msgstr ""
+"Pesanan pembelian yang mencapai total ini (termasuk pajak) harus disetujui "
+"oleh manajer pembelian. Nilai 0 menonaktifkan persetujuan."
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.view_partner_form
+msgid "Purchases"
+msgstr "Pembelian"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__quantity
+#: model_terms:ir.ui.view,arch_db:nme_purchase.report_nme_purchase_order_document
+msgid "Quantity"
+msgstr "Kuantitas"
+
+#. module: nme_purchase
+#: model:ir.model.fields.selection,name:nme_purchase.selection__nme_purchase_order__state__draft
+msgid "RFQ"
+msgstr "RFQ"
+
+#. module: nme_purchase
+#: model:ir.model.fields.selection,name:nme_purchase.selection__nme_purchase_order__state__sent
+msgid "RFQ Sent"
+msgstr "RFQ Terkirim"
+
+#. module: nme_purchase
+#: model:ir.model.fields,help:nme_purchase.field_nme_purchase_order__date_order
+msgid "RFQ date, replaced by the confirmation date."
+msgstr "Tanggal RFQ, akan diganti dengan tanggal konfirmasi."
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_search
+msgid "RFQs"
+msgstr "RFQ"
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_form
+msgid "Receipt"
+msgstr "Penerimaan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__receipt_count
+msgid "Receipt Count"
+msgstr "Jumlah Penerimaan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__receipt_status
+msgid "Receipt Status"
+msgstr "Status Penerimaan"
+
+#. module: nme_purchase
+#. odoo-python
+#: code:addons/nme_purchase/models/nme_purchase_order.py:0
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__picking_ids
+msgid "Receipts"
+msgstr "Penerimaan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__qty_received
+#: model:ir.model.fields.selection,name:nme_purchase.selection__nme_purchase_order__receipt_status__received
+msgid "Received"
+msgstr "Diterima"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__name
+msgid "Reference"
+msgstr "Referensi"
+
+#. module: nme_purchase
+#: model:ir.model.fields,help:nme_purchase.field_nme_purchase_order__partner_ref
+msgid "Reference of the vendor's quote."
+msgstr "Referensi penawaran dari pemasok."
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_form
+msgid "Reject"
+msgstr "Tolak"
+
+#. module: nme_purchase
+#. odoo-python
+#: code:addons/nme_purchase/models/nme_purchase_order.py:0
+msgid "Rejected by %s."
+msgstr "Ditolak oleh %s."
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.report_nme_purchase_order_document
+msgid "Request for Quotation"
+msgstr "Permintaan Penawaran Harga (RFQ)"
+
+#. module: nme_purchase
+#: model:ir.actions.act_window,name:nme_purchase.nme_purchase_order_action_rfq
+#: model:ir.ui.menu,name:nme_purchase.nme_purchase_order_menu_rfq
+msgid "Requests for Quotation"
+msgstr "Permintaan Penawaran Harga (RFQ)"
+
+#. module: nme_purchase
+#: model:ir.module.module,summary:base.module_nme_purchase
+msgid "Requests for quotation, purchase orders with approval and receipts"
+msgstr ""
+"Permintaan penawaran harga (RFQ), pesanan pembelian dengan persetujuan, dan "
+"penerimaan barang"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__user_id
+msgid "Responsible"
+msgstr "Penanggung Jawab"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__activity_user_id
+msgid "Responsible User"
+msgstr "Pengguna Penanggung Jawab"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Kesalahan Pengiriman SMS"
+
+#. module: nme_purchase
+#. odoo-python
+#: code:addons/nme_purchase/models/nme_purchase_order.py:0
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_form
+msgid "Send by Email"
+msgstr "Kirim melalui Email"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__sequence
+msgid "Sequence"
+msgstr "Urutan"
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_form
+msgid "Set to RFQ"
+msgstr "Kembalikan ke RFQ"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__state
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__state
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_search
+msgid "Status"
+msgstr "Status"
+
+#. module: nme_purchase
+#: model:ir.model.fields,help:nme_purchase.field_nme_purchase_order__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Status berdasarkan aktivitas\n"
+"Lewat Jatuh Tempo: Tanggal jatuh tempo sudah terlewati\n"
+"Hari Ini: Tanggal aktivitas adalah hari ini\n"
+"Direncanakan: Aktivitas yang akan datang."
+
+#. module: nme_purchase
+#: model:ir.model,name:nme_purchase.model_nme_stock_move
+msgid "Stock Move"
+msgstr "Pergerakan Stok"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__move_ids
+msgid "Stock Moves"
+msgstr "Pergerakan Stok"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__price_subtotal
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__price_tax
+msgid "Tax"
+msgstr "Pajak"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__amount_tax
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__tax_ids
+#: model_terms:ir.ui.view,arch_db:nme_purchase.report_nme_purchase_order_document
+msgid "Taxes"
+msgstr "Pajak"
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_form
+msgid "Terms for the vendor..."
+msgstr "Ketentuan untuk pemasok..."
+
+#. module: nme_purchase
+#. odoo-python
+#: code:addons/nme_purchase/models/nme_purchase_order_line.py:0
+msgid ""
+"The lines of an order waiting for approval, confirmed or cancelled are "
+"locked."
+msgstr ""
+"Baris dari pesanan yang menunggu persetujuan, sudah dikonfirmasi, atau "
+"dibatalkan tidak dapat diubah."
+
+#. module: nme_purchase
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_form
+msgid ""
+"This order reaches the approval amount: a purchase manager has to\n"
+"                    approve it before it is confirmed."
+msgstr ""
+"Pesanan ini mencapai batas nilai persetujuan: manajer pembelian harus\n"
+"                    menyetujuinya sebelum pesanan dikonfirmasi."
+
+#. module: nme_purchase
+#: model:ir.actions.act_window,name:nme_purchase.nme_purchase_order_action_to_approve
+#: model:ir.model.fields.selection,name:nme_purchase.selection__nme_purchase_order__state__to_approve
+#: model:ir.ui.menu,name:nme_purchase.nme_purchase_order_menu_to_approve
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_search
+msgid "To Approve"
+msgstr "Menunggu Persetujuan"
+
+#. module: nme_purchase
+#: model:ir.model.fields.selection,name:nme_purchase.selection__nme_purchase_order__receipt_status__to_receive
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_search
+msgid "To Receive"
+msgstr "Perlu Diterima"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__amount_total
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__price_total
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_list
+#: model_terms:ir.ui.view,arch_db:nme_purchase.report_nme_purchase_order_document
+msgid "Total"
+msgstr "Total"
+
+#. module: nme_purchase
+#: model:ir.model,name:nme_purchase.model_nme_picking
+msgid "Transfer"
+msgstr "Transfer"
+
+#. module: nme_purchase
+#: model:ir.model.fields,help:nme_purchase.field_nme_purchase_order__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Jenis aktivitas pengecualian pada record."
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__uom_id
+msgid "Unit"
+msgstr "Satuan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__price_unit
+#: model_terms:ir.ui.view,arch_db:nme_purchase.report_nme_purchase_order_document
+msgid "Unit Price"
+msgstr "Harga Satuan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__amount_untaxed
+#: model_terms:ir.ui.view,arch_db:nme_purchase.report_nme_purchase_order_document
+msgid "Untaxed Amount"
+msgstr "Jumlah Sebelum Pajak"
+
+#. module: nme_purchase
+#: model:res.groups,name:nme_purchase.nme_group_purchase_user
+msgid "User"
+msgstr "Pengguna"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__partner_id
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order_line__partner_id
+#: model_terms:ir.ui.view,arch_db:nme_purchase.nme_purchase_order_view_search
+msgid "Vendor"
+msgstr "Pemasok"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_nme_purchase_order__partner_ref
+msgid "Vendor Reference"
+msgstr "Referensi Pemasok"
+
+#. module: nme_purchase
+#: model:ir.ui.menu,name:nme_purchase.nme_partner_menu_vendors
+msgid "Vendors"
+msgstr "Pemasok"
+
+#. module: nme_purchase
+#. odoo-python
+#: code:addons/nme_purchase/models/res_partner.py:0
+msgid "partner_id"
+msgstr "partner_id"
+
+#. module: nme_purchase
+#. odoo-python
+#: code:addons/nme_purchase/models/nme_purchase_order.py:0
+msgid "purchase_id"
+msgstr "purchase_id"
+
+#. module: nme_purchase
+#: model:mail.template,subject:nme_purchase.mail_template_nme_purchase_order
+msgid ""
+"{{ object.company_id.name }} {{ object.state in ('draft', 'sent') and "
+"'Request for Quotation' or 'Purchase Order' }} (Ref {{ object.name }})"
+msgstr ""
+"{{ object.company_id.name }} {{ object.state in ('draft', 'sent') and "
+"'Permintaan Penawaran Harga (RFQ)' or 'Pesanan Pembelian' }} (Ref {{ "
+"object.name }})"
+
+#. module: nme_purchase
+#: model:ir.module.module,description:base.module_nme_purchase
+msgid ""
+"============================\n"
+"Nusantara ERP - Purchase\n"
+"============================\n"
+"\n"
+"Purchase flow of Nusantara Mini ERP: request for quotation, purchase order\n"
+"with tiered approval and receipt of the goods.\n"
+"\n"
+"**Table of contents**\n"
+"\n"
+".. contents::\n"
+"   :local:\n"
+"\n"
+"Features\n"
+"========\n"
+"\n"
+"* Requests for quotation sent by email with the PDF attached (sending marks\n"
+"  the RFQ as sent), vendor reference and expected arrival date.\n"
+"* **Tiered approval**: an order whose total (taxes included) reaches the\n"
+"  company approval amount, confirmed by a purchase user, goes to\n"
+"  *To Approve* and every purchase manager of the company gets a\n"
+"  \"Purchase Approval\" activity. Managers approve or reject it; orders they\n"
+"  confirm themselves skip the approval.\n"
+"* Confirmed orders create the receipt of the goods. The received quantity\n"
+"  and receipt status come from the stock ledger (returns to the vendor\n"
+"  included), and receiving updates the average cost with the **net** price\n"
+"  of the line (after discount, without taxes).\n"
+"* Locked lines once waiting for approval or confirmed; cancellation with a\n"
+"  reason, refused while goods are received and not returned.\n"
+"* Kanban by status, calendar of expected arrivals, pivot and graph views,\n"
+"  vendor smart button and a printable RFQ / purchase order.\n"
+"\n"
+"Configuration\n"
+"=============\n"
+"\n"
+"*Nusantara ERP > Configuration > Settings > Purchase Approval*: approval\n"
+"amount per company (default Rp 50.000.000, 0 disables the approval).\n"
+"\n"
+"Security\n"
+"========\n"
+"\n"
+"* *Purchase / User*: every purchase order of their companies, and the\n"
+"  receipts (incoming transfers).\n"
+"* *Purchase / Manager*: approves or rejects orders above the threshold.\n"
+"* Inventory users can read purchase orders to receive the goods.\n"
+"\n"
+"Credits\n"
+"=======\n"
+"\n"
+"Author\n"
+"------\n"
+"\n"
+"* M. Fadli Kurniawan\n"
+"\n"
+"License\n"
+"-------\n"
+"\n"
+"LGPL-3\n"
+msgstr ""
+"=============================\n"
+"Nusantara ERP - Pembelian\n"
+"=============================\n"
+"\n"
+"Alur pembelian Nusantara Mini ERP: permintaan penawaran harga, pesanan\n"
+"pembelian dengan persetujuan berjenjang dan penerimaan barang.\n"
+"\n"
+"**Daftar isi**\n"
+"\n"
+".. contents::\n"
+"   :local:\n"
+"\n"
+"Fitur\n"
+"=====\n"
+"\n"
+"* Permintaan penawaran harga dikirim melalui email dengan PDF terlampir\n"
+"  (pengiriman menandai RFQ sebagai terkirim), referensi pemasok dan perkiraan\n"
+"  tanggal kedatangan.\n"
+"* **Persetujuan berjenjang**: pesanan yang totalnya (termasuk pajak) mencapai\n"
+"  batas nilai persetujuan perusahaan dan dikonfirmasi oleh pengguna pembelian\n"
+"  masuk ke status *Menunggu Persetujuan*, dan setiap manajer pembelian di\n"
+"  perusahaan mendapat aktivitas \"Persetujuan Pembelian\". Manajer menyetujui\n"
+"  atau menolaknya; pesanan yang mereka konfirmasi sendiri tidak memerlukan\n"
+"  persetujuan.\n"
+"* Pesanan yang dikonfirmasi membuat penerimaan barang. Jumlah diterima dan\n"
+"  status penerimaan berasal dari buku besar stok (termasuk retur ke pemasok),\n"
+"  dan penerimaan memperbarui biaya rata-rata dengan harga **bersih** baris\n"
+"  (setelah diskon, tanpa pajak).\n"
+"* Baris dikunci setelah menunggu persetujuan atau dikonfirmasi; pembatalan\n"
+"  wajib disertai alasan, dan ditolak selama barang sudah diterima dan belum\n"
+"  diretur.\n"
+"* Kanban per status, kalender perkiraan kedatangan, tampilan pivot dan grafik,\n"
+"  tombol cerdas pada pemasok serta RFQ / pesanan pembelian yang dapat dicetak.\n"
+"\n"
+"Konfigurasi\n"
+"===========\n"
+"\n"
+"*Nusantara ERP > Konfigurasi > Pengaturan > Persetujuan Pembelian*: batas\n"
+"nilai persetujuan per perusahaan (default Rp 50.000.000, 0 menonaktifkan\n"
+"persetujuan).\n"
+"\n"
+"Keamanan\n"
+"========\n"
+"\n"
+"* *Pembelian / Pengguna*: semua pesanan pembelian di perusahaannya, serta\n"
+"  penerimaan barang (transfer masuk).\n"
+"* *Pembelian / Manajer*: menyetujui atau menolak pesanan di atas batas.\n"
+"* Pengguna persediaan dapat membaca pesanan pembelian untuk menerima barang.\n"
+"\n"
+"Kontributor\n"
+"===========\n"
+"\n"
+"Penulis\n"
+"-------\n"
+"\n"
+"* M. Fadli Kurniawan\n"
+"\n"
+"Lisensi\n"
+"-------\n"
+"\n"
+"LGPL-3\n"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_res_config_settings__nme_company_currency_id
+msgid "Company Currency"
+msgstr "Mata Uang Perusahaan"
+
+#. module: nme_purchase
+#: model:ir.model.fields,field_description:nme_purchase.field_res_partner__nme_purchase_order_count
+#: model:ir.model.fields,field_description:nme_purchase.field_res_users__nme_purchase_order_count
+msgid "Purchase Order Count"
+msgstr "Jumlah Pesanan Pembelian"

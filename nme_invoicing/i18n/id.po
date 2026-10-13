@@ -1,0 +1,1413 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* nme_invoicing
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-13 02:51+0000\n"
+"PO-Revision-Date: 2026-10-13 02:51+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice.py:0
+msgid "%(invoice)s is overdue since %(date)s: %(amount)s still due."
+msgstr ""
+"%(invoice)s lewat jatuh tempo sejak %(date)s: sisa tagihan %(amount)s."
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/wizard/nme_payment_register.py:0
+msgid "%s cannot be paid more than its amount due."
+msgstr "%s tidak dapat dibayar melebihi sisa tagihannya."
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice.py:0
+msgid "%s is not a draft invoice."
+msgstr "%s bukan faktur draf."
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_payment.py:0
+msgid "%s would be paid more than its total."
+msgstr "%s akan terbayar melebihi totalnya."
+
+#. module: nme_invoicing
+#: model:ir.actions.report,print_report_name:nme_invoicing.action_report_nme_invoice
+msgid ""
+"(object.move_type == 'in_invoice' and 'Bill - %s' or 'Invoice - %s') % "
+"object.display_name.replace('/', '-')"
+msgstr ""
+"(object.move_type == 'in_invoice' and 'Tagihan - %s' or 'Faktur - %s') % "
+"object.display_name.replace('/', '-')"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_invoice_aging_report__aging_bucket__1_30
+msgid "1-30 Days"
+msgstr "1-30 Hari"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_invoice_aging_report__aging_bucket__31_60
+msgid "31-60 Days"
+msgstr "31-60 Hari"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_invoice_aging_report__aging_bucket__61_90
+msgid "61-90 Days"
+msgstr "61-90 Hari"
+
+#. module: nme_invoicing
+#: model:mail.template,body_html:nme_invoicing.mail_template_nme_invoice
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                    Hello <t t-out=\"object.partner_id.name or ''\">Toko Makmur Jaya</t>,\n"
+"                    <br/><br/>\n"
+"                    Please find attached the invoice\n"
+"                    <strong t-out=\"object.name or ''\">INV/2026/00001</strong>\n"
+"                    amounting to\n"
+"                    <strong t-out=\"format_amount(object.amount_total, object.currency_id) or ''\">Rp 1.000.000</strong>,\n"
+"                    due on\n"
+"                    <t t-out=\"format_date(object.invoice_date_due) or ''\">01/31/2026</t>.\n"
+"                    <t t-if=\"object.payment_state == 'partial'\">\n"
+"                        <br/>Amount still due:\n"
+"                        <strong t-out=\"format_amount(object.amount_residual, object.currency_id) or ''\">Rp 500.000</strong>.\n"
+"                    </t>\n"
+"                    <br/><br/>\n"
+"                    Thank you for your business.\n"
+"                </p>\n"
+"            </div>\n"
+"        "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                    Halo <t t-out=\"object.partner_id.name or ''\">Toko Makmur Jaya</t>,\n"
+"                    <br/><br/>\n"
+"                    Bersama ini kami lampirkan faktur\n"
+"                    <strong t-out=\"object.name or ''\">INV/2026/00001</strong>\n"
+"                    sebesar\n"
+"                    <strong t-out=\"format_amount(object.amount_total, object.currency_id) or ''\">Rp 1.000.000</strong>,\n"
+"                    yang jatuh tempo pada\n"
+"                    <t t-out=\"format_date(object.invoice_date_due) or ''\">01/31/2026</t>.\n"
+"                    <t t-if=\"object.payment_state == 'partial'\">\n"
+"                        <br/>Sisa tagihan:\n"
+"                        <strong t-out=\"format_amount(object.amount_residual, object.currency_id) or ''\">Rp 500.000</strong>.\n"
+"                    </t>\n"
+"                    <br/><br/>\n"
+"                    Terima kasih atas kepercayaan Anda.\n"
+"                </p>\n"
+"            </div>\n"
+"        "
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "<strong>Due Date</strong>"
+msgstr "<strong>Jatuh Tempo</strong>"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "<strong>Invoice Date</strong>"
+msgstr "<strong>Tanggal Faktur</strong>"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "<strong>Payment Terms</strong>"
+msgstr "<strong>Termin Pembayaran</strong>"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "<strong>Reference</strong>"
+msgstr "<strong>Referensi</strong>"
+
+#. module: nme_invoicing
+#: model:ir.module.module,description:base.module_nme_invoicing
+msgid ""
+"=============================\n"
+"Nusantara ERP - Invoicing\n"
+"=============================\n"
+"\n"
+"Customer invoices, vendor bills, partial payments, overdue follow-up and\n"
+"aging reports of Nusantara Mini ERP.\n"
+"\n"
+"**Table of contents**\n"
+"\n"
+".. contents::\n"
+"   :local:\n"
+"\n"
+"Features\n"
+"========\n"
+"\n"
+"* Customer invoices and vendor bills created from sales and purchase\n"
+"  orders: goods are invoiced on the **delivered / received** quantity,\n"
+"  services on the ordered quantity. Orders show the invoiced quantity and\n"
+"  their invoicing status.\n"
+"* **Numbering on posting**: drafts have no number; the ``no_gap`` sequences\n"
+"  ``INV/`` and ``BILL/`` are only consumed when an invoice is posted, and a\n"
+"  numbered invoice can be cancelled but never deleted.\n"
+"* Due date from the payment terms, taxes per line (VAT 11% by default).\n"
+"* **Partial payments** through the *Register Payment* wizard; payment state\n"
+"  ``not_paid`` / ``partial`` / ``paid`` and amount due computed from the\n"
+"  posted payments. An invoice can never be paid more than its total.\n"
+"* Daily scheduled action flagging overdue invoices and creating an\n"
+"  \"Overdue Invoice\" activity for the salesperson.\n"
+"* **Aging report** (SQL view) of receivables and payables by bucket\n"
+"  (not due, 1-30, 31-60, 61-90, over 90 days), always computed on the\n"
+"  current date.\n"
+"* The customer credit exposure of ``nme_sales`` is extended: the invoiced\n"
+"  part of the orders is replaced by the amount still due on invoices.\n"
+"* Printable invoice, email sending, mass posting from the list.\n"
+"\n"
+"Security\n"
+"========\n"
+"\n"
+"* *Invoicing / User*: creates and posts invoices, registers payments.\n"
+"* *Invoicing / Manager*: cancels or resets posted invoices, cancels\n"
+"  payments.\n"
+"* Salespeople and buyers can read the invoices of the orders they can read\n"
+"  (``access`` domain operator).\n"
+"\n"
+"Credits\n"
+"=======\n"
+"\n"
+"Author\n"
+"------\n"
+"\n"
+"* M. Fadli Kurniawan\n"
+"\n"
+"License\n"
+"-------\n"
+"\n"
+"LGPL-3\n"
+msgstr ""
+"=============================\n"
+"Nusantara ERP - Penagihan\n"
+"=============================\n"
+"\n"
+"Faktur pelanggan, tagihan pemasok, pembayaran sebagian, tindak lanjut\n"
+"faktur lewat jatuh tempo, dan laporan umur Nusantara Mini ERP.\n"
+"\n"
+"**Daftar Isi**\n"
+"\n"
+".. contents::\n"
+"   :local:\n"
+"\n"
+"Fitur\n"
+"=====\n"
+"\n"
+"* Faktur pelanggan dan tagihan pemasok dibuat dari pesanan penjualan dan\n"
+"  pesanan pembelian: barang difakturkan berdasarkan kuantitas yang\n"
+"  **dikirim / diterima**, jasa berdasarkan kuantitas yang dipesan. Pesanan\n"
+"  menampilkan kuantitas yang sudah difakturkan beserta status penagihannya.\n"
+"* **Penomoran saat posting**: draf belum memiliki nomor; sequence ``no_gap``\n"
+"  ``INV/`` dan ``BILL/`` hanya terpakai saat faktur diposting, dan faktur\n"
+"  yang sudah bernomor dapat dibatalkan tetapi tidak pernah dapat dihapus.\n"
+"* Jatuh tempo dari termin pembayaran, pajak per baris (PPN 11% secara default).\n"
+"* **Pembayaran sebagian** melalui wizard *Catat Pembayaran*; status pembayaran\n"
+"  ``not_paid`` / ``partial`` / ``paid`` dan sisa tagihan dihitung dari\n"
+"  pembayaran yang terposting. Faktur tidak pernah dapat dibayar melebihi totalnya.\n"
+"* Tindakan terjadwal harian yang menandai faktur lewat jatuh tempo dan membuat\n"
+"  aktivitas \"Faktur Lewat Jatuh Tempo\" untuk penjual.\n"
+"* **Laporan umur** (SQL view) piutang dan hutang per kelompok\n"
+"  (belum jatuh tempo, 1-30, 31-60, 61-90, lebih dari 90 hari), selalu dihitung\n"
+"  berdasarkan tanggal hari ini.\n"
+"* Eksposur kredit pelanggan dari ``nme_sales`` diperluas: bagian pesanan yang\n"
+"  sudah difakturkan diganti dengan sisa tagihan pada faktur.\n"
+"* Faktur yang dapat dicetak, pengiriman email, posting massal dari tampilan daftar.\n"
+"\n"
+"Keamanan\n"
+"========\n"
+"\n"
+"* *Penagihan / Pengguna*: membuat dan memposting faktur, mencatat pembayaran.\n"
+"* *Penagihan / Manajer*: membatalkan atau mengembalikan faktur terposting ke\n"
+"  draf, membatalkan pembayaran.\n"
+"* Penjual dan pembeli dapat membaca faktur dari pesanan yang dapat mereka baca\n"
+"  (operator domain ``access``).\n"
+"\n"
+"Kredit\n"
+"======\n"
+"\n"
+"Penulis\n"
+"-------\n"
+"\n"
+"* M. Fadli Kurniawan\n"
+"\n"
+"Lisensi\n"
+"-------\n"
+"\n"
+"LGPL-3\n"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__message_needaction
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__message_needaction
+msgid "Action Needed"
+msgstr "Perlu Tindakan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__activity_ids
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__activity_ids
+msgid "Activities"
+msgstr "Aktivitas"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__activity_exception_decoration
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Dekorasi Pengecualian Aktivitas"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__activity_plans_ids
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__activity_plans_ids
+msgid "Activity Plans"
+msgstr "Rencana Aktivitas"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__activity_state
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__activity_state
+msgid "Activity State"
+msgstr "Status Aktivitas"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__activity_type_icon
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Ikon Jenis Aktivitas"
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice.py:0
+msgid "Add at least one line to %s."
+msgstr "Tambahkan minimal satu baris ke %s."
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_aging_report__aging_bucket
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_aging_report_view_graph
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_aging_report_view_list
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_aging_report_view_pivot
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_aging_report_view_search
+msgid "Aging"
+msgstr "Umur"
+
+#. module: nme_invoicing
+#: model:res.groups,comment:nme_invoicing.nme_group_invoicing_manager
+msgid "Also cancels or resets posted invoices and cancels payments."
+msgstr ""
+"Juga dapat membatalkan atau mengembalikan faktur terposting ke draf, serta "
+"membatalkan pembayaran."
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__amount
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment_register__amount
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "Amount"
+msgstr "Jumlah"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__amount_residual
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_aging_report__amount_residual
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment_register__amount_residual
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_list
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "Amount Due"
+msgstr "Sisa Tagihan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__amount_paid
+msgid "Amount Paid"
+msgstr "Jumlah Dibayar"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__message_attachment_count
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__message_attachment_count
+msgid "Attachment Count"
+msgstr "Jumlah Lampiran"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_payment__method__bank
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_payment_register__method__bank
+msgid "Bank Transfer"
+msgstr "Transfer Bank"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_purchase_order_line__invoice_line_ids
+msgid "Bill Lines"
+msgstr "Baris Tagihan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_purchase_order_line__qty_invoiced
+msgid "Billed"
+msgstr "Ditagih"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_purchase_order__invoice_status
+msgid "Billing Status"
+msgstr "Status Penagihan"
+
+#. module: nme_invoicing
+#: model:ir.ui.menu,name:nme_invoicing.nme_invoice_menu_vendor
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_purchase_order_view_form
+msgid "Bills"
+msgstr "Tagihan"
+
+#. module: nme_invoicing
+#: model_terms:ir.actions.act_window,help:nme_invoicing.nme_invoice_action_vendor
+msgid "Bills are usually created from received purchase orders."
+msgstr "Tagihan biasanya dibuat dari pesanan pembelian yang telah diterima."
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_form
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_payment_view_form
+msgid "Cancel"
+msgstr "Batalkan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__cancel_reason
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__cancel_reason
+msgid "Cancel Reason"
+msgstr "Alasan Pembatalan"
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_sale_order.py:0
+msgid "Cancel the invoices of the order before cancelling it."
+msgstr ""
+"Batalkan faktur pesanan ini terlebih dahulu sebelum membatalkan pesanan."
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice.py:0
+msgid "Cancel the payments of the invoice first."
+msgstr "Batalkan pembayaran faktur ini terlebih dahulu."
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_purchase_order.py:0
+msgid "Cancel the vendor bills of the order before cancelling it."
+msgstr ""
+"Batalkan tagihan pemasok pesanan ini terlebih dahulu sebelum membatalkan "
+"pesanan."
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_invoice__state__cancel
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_payment__state__cancel
+msgid "Cancelled"
+msgstr "Dibatalkan"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "Cancelled Invoice"
+msgstr "Faktur Dibatalkan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_payment__method__cash
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_payment_register__method__cash
+msgid "Cash"
+msgstr "Tunai"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__company_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_aging_report__company_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__company_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__company_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment_register__company_id
+msgid "Company"
+msgstr "Perusahaan"
+
+#. module: nme_invoicing
+#: model:ir.model,name:nme_invoicing.model_res_partner
+msgid "Contact"
+msgstr "Kontak"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_purchase_order_view_form
+msgid "Create Bill"
+msgstr "Buat Tagihan"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_sale_order_view_form
+msgid "Create Invoice"
+msgstr "Buat Faktur"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_payment_register_view_form
+msgid "Create Payment"
+msgstr "Buat Pembayaran"
+
+#. module: nme_invoicing
+#: model_terms:ir.actions.act_window,help:nme_invoicing.nme_invoice_action_customer
+msgid "Create a customer invoice"
+msgstr "Buat faktur pelanggan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__create_uid
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__create_uid
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__create_uid
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment_register__create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__create_date
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__create_date
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__create_date
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment_register__create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: nme_invoicing
+#: model:res.groups,comment:nme_invoicing.nme_group_invoicing_user
+msgid "Creates and posts invoices and vendor bills, registers payments."
+msgstr ""
+"Membuat dan memposting faktur serta tagihan pemasok, mencatat pembayaran."
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__currency_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_aging_report__currency_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__currency_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__currency_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment_register__currency_id
+msgid "Currency"
+msgstr "Mata Uang"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_invoice__move_type__out_invoice
+msgid "Customer Invoice"
+msgstr "Faktur Pelanggan"
+
+#. module: nme_invoicing
+#: model:ir.actions.act_window,name:nme_invoicing.nme_invoice_action_customer
+msgid "Customer Invoices"
+msgstr "Faktur Pelanggan"
+
+#. module: nme_invoicing
+#: model:ir.module.module,summary:base.module_nme_invoicing
+msgid "Customer invoices, vendor bills, partial payments and aging"
+msgstr ""
+"Faktur pelanggan, tagihan pemasok, pembayaran sebagian, dan umur "
+"piutang/hutang"
+
+#. module: nme_invoicing
+#: model:ir.ui.menu,name:nme_invoicing.nme_menu_invoicing_customers
+msgid "Customers"
+msgstr "Pelanggan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__date
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment_register__date
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_payment_view_search
+msgid "Date"
+msgstr "Tanggal"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_aging_report__days_overdue
+msgid "Days Overdue"
+msgstr "Hari Lewat Jatuh Tempo"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__name
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "Description"
+msgstr "Deskripsi"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "Disc.%"
+msgstr "Disk.%"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_payment_register_view_form
+msgid "Discard"
+msgstr "Buang"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__discount
+msgid "Discount (%)"
+msgstr "Diskon (%)"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__display_name
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_aging_report__display_name
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__display_name
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__display_name
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment_register__display_name
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_purchase_order__display_name
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_purchase_order_line__display_name
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_sale_order__display_name
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_sale_order_line__display_name
+#: model:ir.model.fields,field_description:nme_invoicing.field_res_partner__display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_invoice__state__draft
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_search
+msgid "Draft"
+msgstr "Draf"
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice.py:0
+msgid "Draft Bill"
+msgstr "Tagihan Draf"
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice.py:0
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "Draft Invoice"
+msgstr "Faktur Draf"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__invoice_date_due
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_aging_report__invoice_date_due
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_search
+msgid "Due Date"
+msgstr "Jatuh Tempo"
+
+#. module: nme_invoicing
+#: model:mail.activity.type,summary:nme_invoicing.mail_activity_type_overdue
+msgid "Follow up the payment with the customer"
+msgstr "Tindak lanjuti pembayaran dengan pelanggan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__message_follower_ids
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__message_follower_ids
+msgid "Followers"
+msgstr "Pengikut"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__message_partner_ids
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Pengikut (Mitra)"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_purchase_order__invoice_status__invoiced
+msgid "Fully Billed"
+msgstr "Sudah Ditagih"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_sale_order__invoice_status__invoiced
+msgid "Fully Invoiced"
+msgstr "Sudah Difakturkan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__has_message
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__has_message
+msgid "Has Message"
+msgstr "Memiliki Pesan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_aging_report__id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment_register__id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_purchase_order__id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_purchase_order_line__id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_sale_order__id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_sale_order_line__id
+#: model:ir.model.fields,field_description:nme_invoicing.field_res_partner__id
+msgid "ID"
+msgstr "ID"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__activity_exception_icon
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__activity_exception_icon
+msgid "Icon"
+msgstr "Ikon"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,help:nme_invoicing.field_nme_invoice__activity_exception_icon
+#: model:ir.model.fields,help:nme_invoicing.field_nme_payment__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Ikon untuk menandai aktivitas pengecualian."
+
+#. module: nme_invoicing
+#: model:ir.model.fields,help:nme_invoicing.field_nme_invoice__message_needaction
+#: model:ir.model.fields,help:nme_invoicing.field_nme_payment__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Jika dicentang, pesan baru memerlukan perhatian Anda."
+
+#. module: nme_invoicing
+#: model:ir.model.fields,help:nme_invoicing.field_nme_invoice__message_has_error
+#: model:ir.model.fields,help:nme_invoicing.field_nme_invoice__message_has_sms_error
+#: model:ir.model.fields,help:nme_invoicing.field_nme_payment__message_has_error
+#: model:ir.model.fields,help:nme_invoicing.field_nme_payment__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Jika dicentang, beberapa pesan mengalami kesalahan pengiriman."
+
+#. module: nme_invoicing
+#: model:ir.actions.report,name:nme_invoicing.action_report_nme_invoice
+#: model:ir.model,name:nme_invoicing.model_nme_invoice
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_aging_report__invoice_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__invoice_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__invoice_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment_register__invoice_id
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_form
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_search
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "Invoice"
+msgstr "Faktur"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_purchase_order__invoice_count
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_sale_order__invoice_count
+msgid "Invoice Count"
+msgstr "Jumlah Faktur"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__invoice_date
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_aging_report__invoice_date
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_search
+msgid "Invoice Date"
+msgstr "Tanggal Faktur"
+
+#. module: nme_invoicing
+#: model:ir.model,name:nme_invoicing.model_nme_invoice_line
+msgid "Invoice Line"
+msgstr "Baris Faktur"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__line_ids
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_sale_order_line__invoice_line_ids
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_form
+msgid "Invoice Lines"
+msgstr "Baris Faktur"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_sale_order__invoice_status
+msgid "Invoice Status"
+msgstr "Status Faktur"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_sale_order_line__qty_invoiced
+msgid "Invoiced"
+msgstr "Difakturkan"
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_sale_order.py:0
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_sale_order__invoice_ids
+#: model:ir.ui.menu,name:nme_invoicing.nme_invoice_menu_customer
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_list
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_search
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_sale_order_view_form
+msgid "Invoices"
+msgstr "Faktur"
+
+#. module: nme_invoicing
+#: model_terms:ir.actions.act_window,help:nme_invoicing.nme_invoice_action_customer
+msgid "Invoices are usually created from delivered sales orders."
+msgstr "Faktur biasanya dibuat dari pesanan penjualan yang telah dikirim."
+
+#. module: nme_invoicing
+#: model:ir.ui.menu,name:nme_invoicing.nme_menu_invoicing
+#: model:res.groups.privilege,name:nme_invoicing.nme_privilege_invoicing
+msgid "Invoicing"
+msgstr "Penagihan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__message_is_follower
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__message_is_follower
+msgid "Is Follower"
+msgstr "Adalah Pengikut"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__write_uid
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__write_uid
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__write_uid
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment_register__write_uid
+msgid "Last Updated by"
+msgstr "Terakhir Diperbarui oleh"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__write_date
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__write_date
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__write_date
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment_register__write_date
+msgid "Last Updated on"
+msgstr "Terakhir Diperbarui pada"
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice_line.py:0
+msgid "Lines of a posted invoice cannot be deleted."
+msgstr "Baris faktur yang sudah terposting tidak dapat dihapus."
+
+#. module: nme_invoicing
+#: model:res.groups,name:nme_invoicing.nme_group_invoicing_manager
+msgid "Manager"
+msgstr "Manajer"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,help:nme_invoicing.field_nme_invoice__activity_type_icon
+#: model:ir.model.fields,help:nme_invoicing.field_nme_payment__activity_type_icon
+msgid "Material Symbols icon e.g. checklist"
+msgstr "Ikon Material Symbols, misalnya checklist"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__memo
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment_register__memo
+msgid "Memo"
+msgstr "Memo"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__message_has_error
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__message_has_error
+msgid "Message Delivery error"
+msgstr "Kesalahan Pengiriman Pesan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__message_ids
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__message_ids
+msgid "Messages"
+msgstr "Pesan"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_payment_view_search
+msgid "Method"
+msgstr "Metode"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__my_activity_date_deadline
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Tenggat Aktivitas Saya"
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice.py:0
+msgid "New"
+msgstr "Baru"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__activity_date_deadline
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Tenggat Aktivitas Berikutnya"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__activity_summary
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__activity_summary
+msgid "Next Activity Summary"
+msgstr "Ringkasan Aktivitas Berikutnya"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__activity_type_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__activity_type_id
+msgid "Next Activity Type"
+msgstr "Jenis Aktivitas Berikutnya"
+
+#. module: nme_invoicing
+#: model:res.groups.privilege,placeholder:nme_invoicing.nme_privilege_invoicing
+msgid "No"
+msgstr "Tidak"
+
+#. module: nme_invoicing
+#: model_terms:ir.actions.act_window,help:nme_invoicing.nme_payment_action
+msgid "No payment yet"
+msgstr "Belum ada pembayaran"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_invoice_aging_report__aging_bucket__current
+msgid "Not Due"
+msgstr "Belum Jatuh Tempo"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_invoice__payment_state__not_paid
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_search
+msgid "Not Paid"
+msgstr "Belum Dibayar"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__note
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__note
+msgid "Notes"
+msgstr "Catatan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_purchase_order__invoice_status__nothing
+msgid "Nothing to Bill"
+msgstr "Tidak Ada yang Perlu Ditagih"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_sale_order__invoice_status__nothing
+msgid "Nothing to Invoice"
+msgstr "Tidak Ada yang Perlu Difakturkan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__message_needaction_counter
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Jumlah Tindakan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__message_has_error_counter
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__message_has_error_counter
+msgid "Number of errors"
+msgstr "Jumlah kesalahan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,help:nme_invoicing.field_nme_invoice__message_needaction_counter
+#: model:ir.model.fields,help:nme_invoicing.field_nme_payment__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Jumlah pesan yang memerlukan tindakan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,help:nme_invoicing.field_nme_invoice__message_has_error_counter
+#: model:ir.model.fields,help:nme_invoicing.field_nme_payment__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Jumlah pesan dengan kesalahan pengiriman"
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice.py:0
+msgid ""
+"Numbered invoices cannot be deleted: cancel them to keep the numbering "
+"without gaps."
+msgstr ""
+"Faktur yang sudah bernomor tidak dapat dihapus: batalkan faktur tersebut "
+"agar penomoran tetap tanpa celah."
+
+#. module: nme_invoicing
+#: model:ir.module.module,shortdesc:base.module_nme_invoicing
+msgid "Nusantara ERP - Invoicing"
+msgstr "Nusantara ERP - Penagihan"
+
+#. module: nme_invoicing
+#: model:ir.actions.server,name:nme_invoicing.ir_cron_update_overdue_invoices_ir_actions_server
+msgid "Nusantara ERP: Mark overdue invoices"
+msgstr "Nusantara ERP: Tandai faktur lewat jatuh tempo"
+
+#. module: nme_invoicing
+#: model:mail.template,name:nme_invoicing.mail_template_nme_invoice
+msgid "Nusantara ERP: Send Invoice"
+msgstr "Nusantara ERP: Kirim Faktur"
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice.py:0
+msgid "Only invoicing managers can %s."
+msgstr "Hanya manajer penagihan yang dapat %s."
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_payment.py:0
+msgid "Only invoicing managers can cancel payments."
+msgstr "Hanya manajer penagihan yang dapat membatalkan pembayaran."
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice.py:0
+#: code:addons/nme_invoicing/models/nme_payment.py:0
+#: code:addons/nme_invoicing/wizard/nme_payment_register.py:0
+msgid "Only posted invoices can be paid."
+msgstr "Hanya faktur terposting yang dapat dibayar."
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice_line.py:0
+msgid "Only the lines of a draft invoice can change."
+msgstr "Hanya baris faktur draf yang dapat diubah."
+
+#. module: nme_invoicing
+#: model:ir.actions.act_window,name:nme_invoicing.nme_purchase_order_action_to_bill
+#: model:ir.ui.menu,name:nme_invoicing.nme_purchase_order_menu_to_bill
+msgid "Orders to Bill"
+msgstr "Pesanan untuk Ditagih"
+
+#. module: nme_invoicing
+#: model:ir.actions.act_window,name:nme_invoicing.nme_sale_order_action_to_invoice
+#: model:ir.ui.menu,name:nme_invoicing.nme_sale_order_menu_to_invoice
+msgid "Orders to Invoice"
+msgstr "Pesanan untuk Difakturkan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_payment__method__other
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_payment_register__method__other
+msgid "Other"
+msgstr "Lainnya"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_form
+msgid "Other Information"
+msgstr "Informasi Lainnya"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_invoice_aging_report__aging_bucket__90_plus
+msgid "Over 90 Days"
+msgstr "Lebih dari 90 Hari"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__is_overdue
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_aging_report_view_search
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_search
+msgid "Overdue"
+msgstr "Lewat Jatuh Tempo"
+
+#. module: nme_invoicing
+#: model:mail.activity.type,name:nme_invoicing.mail_activity_type_overdue
+msgid "Overdue Invoice"
+msgstr "Faktur Lewat Jatuh Tempo"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_invoice__payment_state__paid
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_form
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "Paid"
+msgstr "Lunas"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_form
+msgid "Partial"
+msgstr "Sebagian"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_invoice__payment_state__partial
+msgid "Partially Paid"
+msgstr "Dibayar Sebagian"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__partner_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_aging_report__partner_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__partner_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__partner_id
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_aging_report_view_search
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_search
+msgid "Partner"
+msgstr "Mitra"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__ref
+msgid "Partner Reference"
+msgstr "Referensi Mitra"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_invoice_aging_report__move_type__in_invoice
+msgid "Payable"
+msgstr "Hutang"
+
+#. module: nme_invoicing
+#: model:ir.actions.act_window,name:nme_invoicing.nme_invoice_aging_report_action_payable
+#: model:ir.ui.menu,name:nme_invoicing.nme_invoice_aging_report_menu_payable
+msgid "Payable Aging"
+msgstr "Umur Hutang"
+
+#. module: nme_invoicing
+#: model:ir.model,name:nme_invoicing.model_nme_payment
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_payment_view_form
+msgid "Payment"
+msgstr "Pembayaran"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__payment_count
+msgid "Payment Count"
+msgstr "Jumlah Pembayaran"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__method
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment_register__method
+msgid "Payment Method"
+msgstr "Metode Pembayaran"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__payment_state
+msgid "Payment State"
+msgstr "Status Pembayaran"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_search
+msgid "Payment Status"
+msgstr "Status Pembayaran"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__payment_term_id
+msgid "Payment Terms"
+msgstr "Termin Pembayaran"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__payment_type
+msgid "Payment Type"
+msgstr "Jenis Pembayaran"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_form
+msgid "Payment instructions..."
+msgstr "Instruksi pembayaran..."
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice.py:0
+#: model:ir.actions.act_window,name:nme_invoicing.nme_payment_action
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__payment_ids
+#: model:ir.ui.menu,name:nme_invoicing.nme_payment_menu
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_form
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_payment_view_list
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_payment_view_search
+msgid "Payments"
+msgstr "Pembayaran"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "Please use"
+msgstr "Mohon gunakan"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_form
+msgid "Post"
+msgstr "Posting"
+
+#. module: nme_invoicing
+#: model:ir.actions.server,name:nme_invoicing.nme_invoice_action_post
+msgid "Post Invoices"
+msgstr "Posting Faktur"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_invoice__state__posted
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_payment__state__posted
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_search
+msgid "Posted"
+msgstr "Terposting"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,help:nme_invoicing.field_nme_invoice__is_overdue
+msgid "Posted, not fully paid and past its due date. Refreshed every day."
+msgstr ""
+"Terposting, belum lunas, dan telah melewati jatuh tempo. Diperbarui setiap "
+"hari."
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_form
+msgid "Print"
+msgstr "Cetak"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__product_id
+msgid "Product"
+msgstr "Produk"
+
+#. module: nme_invoicing
+#: model:ir.model,name:nme_invoicing.model_nme_purchase_order
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__purchase_order_id
+msgid "Purchase Order"
+msgstr "Pesanan Pembelian"
+
+#. module: nme_invoicing
+#: model:ir.model,name:nme_invoicing.model_nme_purchase_order_line
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__purchase_line_id
+msgid "Purchase Order Line"
+msgstr "Baris Pesanan Pembelian"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__quantity
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "Quantity"
+msgstr "Kuantitas"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_invoice_aging_report__move_type__out_invoice
+msgid "Receivable"
+msgstr "Piutang"
+
+#. module: nme_invoicing
+#: model:ir.actions.act_window,name:nme_invoicing.nme_invoice_aging_report_action_receivable
+#: model:ir.ui.menu,name:nme_invoicing.nme_invoice_aging_report_menu_receivable
+msgid "Receivable Aging"
+msgstr "Umur Piutang"
+
+#. module: nme_invoicing
+#: model:ir.model,name:nme_invoicing.model_nme_invoice_aging_report
+msgid "Receivable and Payable Aging"
+msgstr "Umur Piutang dan Hutang"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_payment__payment_type__inbound
+msgid "Receive Money"
+msgstr "Terima Uang"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_payment_view_search
+msgid "Received"
+msgstr "Diterima"
+
+#. module: nme_invoicing
+#: model_terms:ir.actions.act_window,help:nme_invoicing.nme_invoice_action_vendor
+msgid "Record a vendor bill"
+msgstr "Catat tagihan pemasok"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__name
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__name
+msgid "Reference"
+msgstr "Referensi"
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice.py:0
+#: model:ir.model,name:nme_invoicing.model_nme_payment_register
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_form
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_payment_register_view_form
+msgid "Register Payment"
+msgstr "Catat Pembayaran"
+
+#. module: nme_invoicing
+#: model_terms:ir.actions.act_window,help:nme_invoicing.nme_payment_action
+msgid "Register payments from the invoices."
+msgstr "Catat pembayaran langsung dari faktur."
+
+#. module: nme_invoicing
+#: model:ir.ui.menu,name:nme_invoicing.nme_menu_invoicing_reporting
+msgid "Reporting"
+msgstr "Laporan"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_form
+msgid "Reset to Draft"
+msgstr "Kembalikan ke Draf"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__user_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_aging_report__user_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__user_id
+msgid "Responsible"
+msgstr "Penanggung Jawab"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__activity_user_id
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__activity_user_id
+msgid "Responsible User"
+msgstr "Pengguna Penanggung Jawab"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__message_has_sms_error
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Kesalahan Pengiriman SMS"
+
+#. module: nme_invoicing
+#: model:ir.model,name:nme_invoicing.model_nme_sale_order
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__sale_order_id
+msgid "Sales Order"
+msgstr "Pesanan Penjualan"
+
+#. module: nme_invoicing
+#: model:ir.model,name:nme_invoicing.model_nme_sale_order_line
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__sale_line_id
+msgid "Sales Order Line"
+msgstr "Baris Pesanan Penjualan"
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice.py:0
+msgid "Send Invoice"
+msgstr "Kirim Faktur"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_payment__payment_type__outbound
+msgid "Send Money"
+msgstr "Kirim Uang"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_form
+msgid "Send by Email"
+msgstr "Kirim melalui Email"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_payment_view_search
+msgid "Sent"
+msgstr "Dikirim"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__sequence
+msgid "Sequence"
+msgstr "Urutan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,help:nme_invoicing.field_nme_invoice__invoice_date
+msgid "Set to today when the invoice is posted without a date."
+msgstr "Diisi dengan tanggal hari ini jika faktur diposting tanpa tanggal."
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__state
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__state
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_payment__state
+msgid "Status"
+msgstr "Status"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,help:nme_invoicing.field_nme_invoice__activity_state
+#: model:ir.model.fields,help:nme_invoicing.field_nme_payment__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Status berdasarkan aktivitas\n"
+"Lewat Jatuh Tempo: Tanggal jatuh tempo sudah terlewati\n"
+"Hari Ini: Tanggal aktivitas adalah hari ini\n"
+"Direncanakan: Aktivitas yang akan datang."
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__price_subtotal
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__price_tax
+msgid "Tax"
+msgstr "Pajak"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__amount_tax
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__tax_ids
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "Taxes"
+msgstr "Pajak"
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/wizard/nme_payment_register.py:0
+msgid "The amount must be positive."
+msgstr "Jumlah harus bernilai positif."
+
+#. module: nme_invoicing
+#: model:ir.model.constraint,message:nme_invoicing.constraint_nme_payment_amount_positive
+msgid "The amount of a payment must be positive."
+msgstr "Jumlah pembayaran harus bernilai positif."
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_purchase_order.py:0
+msgid "There is nothing to bill: goods are billed once received."
+msgstr "Tidak ada yang perlu ditagih: barang ditagih setelah diterima."
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_sale_order.py:0
+msgid "There is nothing to invoice: goods are invoiced once delivered."
+msgstr "Tidak ada yang perlu difakturkan: barang difakturkan setelah dikirim."
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_purchase_order_line__qty_to_invoice
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_purchase_order__invoice_status__to_invoice
+msgid "To Bill"
+msgstr "Perlu Ditagih"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_sale_order_line__qty_to_invoice
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_sale_order__invoice_status__to_invoice
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_sale_order_view_search
+msgid "To Invoice"
+msgstr "Perlu Difakturkan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__amount_total
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__price_total
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_aging_report_view_list
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_list
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_payment_view_list
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "Total"
+msgstr "Total"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.nme_invoice_view_list
+msgid "Total Untaxed"
+msgstr "Total Sebelum Pajak"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__move_type
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_aging_report__move_type
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__move_type
+msgid "Type"
+msgstr "Tipe"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,help:nme_invoicing.field_nme_invoice__activity_exception_decoration
+#: model:ir.model.fields,help:nme_invoicing.field_nme_payment__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Jenis aktivitas pengecualian pada record."
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__uom_id
+msgid "Unit"
+msgstr "Satuan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice_line__price_unit
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "Unit Price"
+msgstr "Harga Satuan"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_invoice__amount_untaxed
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "Untaxed Amount"
+msgstr "Jumlah Sebelum Pajak"
+
+#. module: nme_invoicing
+#: model:res.groups,name:nme_invoicing.nme_group_invoicing_user
+msgid "User"
+msgstr "Pengguna"
+
+#. module: nme_invoicing
+#: model:ir.model.fields.selection,name:nme_invoicing.selection__nme_invoice__move_type__in_invoice
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "Vendor Bill"
+msgstr "Tagihan Pemasok"
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_purchase_order.py:0
+#: model:ir.actions.act_window,name:nme_invoicing.nme_invoice_action_vendor
+#: model:ir.model.fields,field_description:nme_invoicing.field_nme_purchase_order__invoice_ids
+msgid "Vendor Bills"
+msgstr "Tagihan Pemasok"
+
+#. module: nme_invoicing
+#: model:ir.model.fields,help:nme_invoicing.field_nme_invoice__ref
+msgid "Vendor bill number, or order reference of the customer."
+msgstr "Nomor tagihan pemasok, atau referensi pesanan dari pelanggan."
+
+#. module: nme_invoicing
+#: model:ir.ui.menu,name:nme_invoicing.nme_menu_invoicing_vendors
+msgid "Vendors"
+msgstr "Pemasok"
+
+#. module: nme_invoicing
+#: model_terms:ir.ui.view,arch_db:nme_invoicing.report_nme_invoice_document
+msgid "as the reference of your payment."
+msgstr "sebagai referensi pembayaran Anda."
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice.py:0
+msgid "cancel posted invoices"
+msgstr "membatalkan faktur terposting"
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice.py:0
+msgid "invoice_id"
+msgstr "invoice_id"
+
+#. module: nme_invoicing
+#. odoo-python
+#: code:addons/nme_invoicing/models/nme_invoice.py:0
+msgid "reset invoices to draft"
+msgstr "mengembalikan faktur ke draf"
+
+#. module: nme_invoicing
+#: model:mail.template,subject:nme_invoicing.mail_template_nme_invoice
+msgid "{{ object.company_id.name }} Invoice (Ref {{ object.name }})"
+msgstr "Faktur {{ object.company_id.name }} (Ref {{ object.name }})"

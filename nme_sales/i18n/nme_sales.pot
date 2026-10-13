@@ -1,0 +1,920 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* nme_sales
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-13 03:01+0000\n"
+"PO-Revision-Date: 2026-10-13 03:01+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order.py:0
+msgid ""
+"%(partner)s would owe %(exposure)s, above the credit limit of %(limit)s."
+msgstr ""
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order.py:0
+msgid "%s Only a sales manager can confirm this order."
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.actions.report,print_report_name:nme_sales.action_report_nme_sale_order
+msgid ""
+"(object.state in ('draft', 'sent') and 'Quotation - %s' or 'Order - %s') % "
+"object.name.replace('/', '-')"
+msgstr ""
+
+#. module: nme_sales
+#: model:mail.template,body_html:nme_sales.mail_template_nme_sale_order
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                    Hello <t t-out=\"object.partner_id.name or ''\">Toko Makmur Jaya</t>,\n"
+"                    <br/><br/>\n"
+"                    Please find attached\n"
+"                    <t t-if=\"object.state in ('draft', 'sent')\">the quotation</t>\n"
+"                    <t t-else=\"\">the order confirmation</t>\n"
+"                    <strong t-out=\"object.name or ''\">SO/2026/00001</strong>\n"
+"                    amounting to\n"
+"                    <strong t-out=\"format_amount(object.amount_total, object.currency_id) or ''\">Rp 1.000.000</strong>.\n"
+"                    <t t-if=\"object.validity_date and object.state in ('draft', 'sent')\">\n"
+"                        <br/>This quotation is valid until\n"
+"                        <t t-out=\"format_date(object.validity_date) or ''\">01/31/2026</t>.\n"
+"                    </t>\n"
+"                    <br/><br/>\n"
+"                    Do not hesitate to contact us if you have any questions.\n"
+"                </p>\n"
+"            </div>\n"
+"        "
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "<strong>Date</strong>"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "<strong>Expiration</strong>"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "<strong>Payment Terms</strong>"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "<strong>Salesperson</strong>"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.module.module,description:base.module_nme_sales
+msgid ""
+"=========================\n"
+"Nusantara ERP - Sales\n"
+"=========================\n"
+"\n"
+"Sales flow of Nusantara Mini ERP: quotation, sales order, delivery and\n"
+"customer credit limits.\n"
+"\n"
+"**Table of contents**\n"
+"\n"
+".. contents::\n"
+"   :local:\n"
+"\n"
+"Features\n"
+"========\n"
+"\n"
+"* Quotations with per-line discounts and taxes, sent by email with the PDF\n"
+"  attached (sending marks the quotation as sent).\n"
+"* Strict state machine: Quotation, Quotation Sent, Sales Order, Cancelled.\n"
+"  Confirmed lines are locked; cancelling requires a reason.\n"
+"* Confirming an order creates the delivery of the goods (services are not\n"
+"  delivered). The delivered quantity and the delivery status are computed\n"
+"  from the stock ledger, returns included.\n"
+"* **Credit limit** per customer and company with three policies:\n"
+"\n"
+"  * *No Limit*;\n"
+"  * *Warn*: confirming above the limit is allowed and logged in the chatter;\n"
+"  * *Block*: only a sales manager can confirm above the limit.\n"
+"\n"
+"  The credit used is computed by ``res.partner._get_credit_exposure``; this\n"
+"  module counts confirmed orders and ``nme_invoicing`` refines it with\n"
+"  unpaid invoices.\n"
+"* Kanban by status, calendar of promised delivery dates, pivot and graph\n"
+"  views, mass confirmation from the list and a printable quotation/order.\n"
+"\n"
+"Configuration\n"
+"=============\n"
+"\n"
+"*Nusantara ERP > Configuration > Settings*: default quotation validity.\n"
+"Credit limits are set by sales managers on the customer form\n"
+"(*Sales & Purchase* tab).\n"
+"\n"
+"Security\n"
+"========\n"
+"\n"
+"* *Sales / User: Own Documents Only*: their own (or unassigned) orders;\n"
+"  order lines follow their order through the ``access`` domain operator of\n"
+"  ``ir.access``. They also prepare deliveries (outgoing transfers).\n"
+"* *Sales / Manager*: every order, credit limits and limit overrides.\n"
+"* Inventory users can read sales orders to prepare deliveries.\n"
+"\n"
+"Credits\n"
+"=======\n"
+"\n"
+"Author\n"
+"------\n"
+"\n"
+"* M. Fadli Kurniawan\n"
+"\n"
+"License\n"
+"-------\n"
+"\n"
+"LGPL-3\n"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_plans_ids
+msgid "Activity Plans"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order.py:0
+msgid "Add at least one line to %s."
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Amount"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_res_partner__nme_credit_exposure
+#: model:ir.model.fields,help:nme_sales.field_res_users__nme_credit_exposure
+msgid "Amount owed or committed by the customer in the current company."
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__res_partner__nme_credit_policy__block
+msgid "Block"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Cancel"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__cancel_reason
+msgid "Cancel Reason"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__nme_sale_order__state__cancel
+msgid "Cancelled"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model,name:nme_sales.model_res_company
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__company_id
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__company_id
+msgid "Company"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_res_partner__nme_company_currency_id
+#: model:ir.model.fields,field_description:nme_sales.field_res_users__nme_company_currency_id
+msgid "Company Currency"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model,name:nme_sales.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Confirm"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.actions.server,name:nme_sales.nme_sale_order_action_confirm
+msgid "Confirm Quotations"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model,name:nme_sales.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.actions.act_window,help:nme_sales.nme_sale_order_action_quotations
+msgid "Create a new quotation"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__create_uid
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__create_date
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_res_partner__nme_credit_limit
+#: model:ir.model.fields,field_description:nme_sales.field_res_users__nme_credit_limit
+msgid "Credit Limit"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_res_partner__nme_credit_policy
+#: model:ir.model.fields,field_description:nme_sales.field_res_users__nme_credit_policy
+msgid "Credit Limit Policy"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_res_partner__nme_credit_exposure
+#: model:ir.model.fields,field_description:nme_sales.field_res_users__nme_credit_exposure
+msgid "Credit Used"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__credit_warning
+msgid "Credit Warning"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__currency_id
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__partner_id
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__partner_id
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "Customer"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.ui.menu,name:nme_sales.nme_partner_menu_customers
+msgid "Customers"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_res_company__nme_quotation_validity_days
+#: model:ir.model.fields,help:nme_sales.field_res_config_settings__nme_quotation_validity_days
+msgid "Days after which a new quotation expires. 0 means no expiration."
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_res_company__nme_quotation_validity_days
+#: model:ir.model.fields,field_description:nme_sales.field_res_config_settings__nme_quotation_validity_days
+msgid "Default Quotation Validity (Days)"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.res_config_settings_view_form
+msgid "Default number of days before a quotation expires."
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__qty_delivered
+#: model:ir.model.fields.selection,name:nme_sales.selection__nme_sale_order__delivery_status__delivered
+msgid "Delivered"
+msgstr ""
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order.py:0
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__picking_ids
+msgid "Deliveries"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_calendar
+msgid "Deliveries Promised"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Delivery"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__delivery_count
+msgid "Delivery Count"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__commitment_date
+msgid "Delivery Date"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__delivery_status
+msgid "Delivery Status"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__commitment_date
+msgid "Delivery date promised to the customer."
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__name
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Description"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Disc.%"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__discount
+msgid "Discount (%)"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_picking__display_name
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__display_name
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__display_name
+#: model:ir.model.fields,field_description:nme_sales.field_nme_stock_move__display_name
+#: model:ir.model.fields,field_description:nme_sales.field_res_company__display_name
+#: model:ir.model.fields,field_description:nme_sales.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:nme_sales.field_res_partner__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__validity_date
+msgid "Expiration"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order.py:0
+msgid "Goods of %s were delivered: return them before cancelling the order."
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_picking__id
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__id
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__id
+#: model:ir.model.fields,field_description:nme_sales.field_nme_stock_move__id
+#: model:ir.model.fields,field_description:nme_sales.field_res_company__id
+#: model:ir.model.fields,field_description:nme_sales.field_res_config_settings__id
+#: model:ir.model.fields,field_description:nme_sales.field_res_partner__id
+msgid "ID"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__message_has_error
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__write_uid
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__write_date
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order_line.py:0
+msgid "Lines of a confirmed order cannot be deleted."
+msgstr ""
+
+#. module: nme_sales
+#: model:res.groups,name:nme_sales.nme_group_sales_manager
+msgid "Manager"
+msgstr ""
+
+#. module: nme_sales
+#: model:res.groups,comment:nme_sales.nme_group_sales_user
+msgid "Manages their own quotations and sales orders."
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__activity_type_icon
+msgid "Material Symbols icon e.g. checklist"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_res_partner__nme_credit_limit
+#: model:ir.model.fields,help:nme_sales.field_res_users__nme_credit_limit
+msgid "Maximum amount the customer may owe, including confirmed orders."
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "My Orders"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: nme_sales
+#: model:res.groups.privilege,placeholder:nme_sales.nme_privilege_sales
+msgid "No"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__res_partner__nme_credit_policy__none
+msgid "No Limit"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__note
+msgid "Notes"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__nme_sale_order__delivery_status__nothing
+msgid "Nothing to Deliver"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.module.module,shortdesc:base.module_nme_sales
+msgid "Nusantara ERP - Sales"
+msgstr ""
+
+#. module: nme_sales
+#: model:mail.template,name:nme_sales.mail_template_nme_sale_order
+msgid "Nusantara ERP: Send Quotation"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.actions.act_window,help:nme_sales.nme_sale_order_action_quotations
+msgid ""
+"Once confirmed, a quotation becomes a sales order and its goods are "
+"delivered."
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__order_id
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "Order"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__date_order
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "Order Date"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__line_ids
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Order Lines"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Other Information"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__nme_sale_order__delivery_status__partial
+msgid "Partially Delivered"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__payment_term_id
+msgid "Payment Terms"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Print"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__product_id
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "Product"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.ui.menu,name:nme_sales.nme_product_menu_sales
+msgid "Products"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__quantity
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Quantity"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__nme_sale_order__state__draft
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Quotation"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.actions.report,name:nme_sales.action_report_nme_sale_order
+msgid "Quotation / Order"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__nme_sale_order__state__sent
+msgid "Quotation Sent"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.res_config_settings_view_form
+msgid "Quotation Validity"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__date_order
+msgid "Quotation date, replaced by the confirmation date."
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.actions.act_window,name:nme_sales.nme_sale_order_action_quotations
+#: model:ir.ui.menu,name:nme_sales.nme_sale_order_menu_quotations
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "Quotations"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.module.module,summary:base.module_nme_sales
+msgid "Quotations, sales orders, deliveries and customer credit limits"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__name
+msgid "Reference"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__user_id
+msgid "Responsible"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.ui.menu,name:nme_sales.nme_menu_sales
+#: model:res.groups.privilege,name:nme_sales.nme_privilege_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:nme_sales.view_partner_form
+msgid "Sales"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model,name:nme_sales.model_nme_sale_order
+#: model:ir.model.fields,field_description:nme_sales.field_nme_picking__sale_id
+#: model:ir.model.fields.selection,name:nme_sales.selection__nme_sale_order__state__sale
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Sales Order"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_res_partner__nme_sale_order_count
+#: model:ir.model.fields,field_description:nme_sales.field_res_users__nme_sale_order_count
+msgid "Sales Order Count"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model,name:nme_sales.model_nme_sale_order_line
+#: model:ir.model.fields,field_description:nme_sales.field_nme_stock_move__sale_line_id
+msgid "Sales Order Line"
+msgstr ""
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/res_partner.py:0
+#: model:ir.actions.act_window,name:nme_sales.nme_sale_order_action_orders
+#: model:ir.ui.menu,name:nme_sales.nme_sale_order_menu_orders
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_graph
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_list
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_pivot
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "Sales Orders"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "Salesperson"
+msgstr ""
+
+#. module: nme_sales
+#: model:res.groups,comment:nme_sales.nme_group_sales_manager
+msgid ""
+"Sees every sales order, sets credit limits and may confirm orders above "
+"them."
+msgstr ""
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order.py:0
+msgid "Send Quotation"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Send by Email"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Set to Quotation"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__state
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__state
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "Status"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model,name:nme_sales.model_nme_stock_move
+msgid "Stock Move"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__move_ids
+msgid "Stock Moves"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__price_subtotal
+msgid "Subtotal"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__price_tax
+msgid "Tax"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__amount_tax
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__tax_ids
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Taxes"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Terms and conditions..."
+msgstr ""
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order_line.py:0
+msgid "The lines of a confirmed or cancelled order are locked."
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__nme_sale_order__delivery_status__to_deliver
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "To Deliver"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__amount_total
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__price_total
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_list
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Total"
+msgstr ""
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_list
+msgid "Total Untaxed"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model,name:nme_sales.model_nme_picking
+msgid "Transfer"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__uom_id
+msgid "Unit"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__price_unit
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Unit Price"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__amount_untaxed
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Untaxed Amount"
+msgstr ""
+
+#. module: nme_sales
+#: model:res.groups,name:nme_sales.nme_group_sales_user
+msgid "User: Own Documents Only"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__warehouse_id
+msgid "Warehouse"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__res_partner__nme_credit_policy__warning
+msgid "Warn"
+msgstr ""
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_res_partner__nme_credit_policy
+#: model:ir.model.fields,help:nme_sales.field_res_users__nme_credit_policy
+msgid ""
+"Warn: confirming above the limit is allowed but logged. Block: only a sales "
+"manager can confirm above the limit."
+msgstr ""
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/res_partner.py:0
+msgid "partner_id"
+msgstr ""
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order.py:0
+msgid "sale_id"
+msgstr ""
+
+#. module: nme_sales
+#: model:mail.template,subject:nme_sales.mail_template_nme_sale_order
+msgid ""
+"{{ object.company_id.name }} {{ object.state in ('draft', 'sent') and "
+"'Quotation' or 'Order' }} (Ref {{ object.name }})"
+msgstr ""

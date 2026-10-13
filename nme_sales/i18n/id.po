@@ -1,0 +1,1029 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* nme_sales
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-13 02:51+0000\n"
+"PO-Revision-Date: 2026-10-13 02:51+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order.py:0
+msgid ""
+"%(partner)s would owe %(exposure)s, above the credit limit of %(limit)s."
+msgstr ""
+"Total kewajiban %(partner)s akan menjadi %(exposure)s, melebihi batas kredit"
+" %(limit)s."
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order.py:0
+msgid "%s Only a sales manager can confirm this order."
+msgstr "%s Hanya manajer penjualan yang dapat mengonfirmasi pesanan ini."
+
+#. module: nme_sales
+#: model:ir.actions.report,print_report_name:nme_sales.action_report_nme_sale_order
+msgid ""
+"(object.state in ('draft', 'sent') and 'Quotation - %s' or 'Order - %s') % "
+"object.name.replace('/', '-')"
+msgstr ""
+"(object.state in ('draft', 'sent') and 'Penawaran - %s' or 'Pesanan - %s') %"
+" object.name.replace('/', '-')"
+
+#. module: nme_sales
+#: model:mail.template,body_html:nme_sales.mail_template_nme_sale_order
+msgid ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                    Hello <t t-out=\"object.partner_id.name or ''\">Toko Makmur Jaya</t>,\n"
+"                    <br/><br/>\n"
+"                    Please find attached\n"
+"                    <t t-if=\"object.state in ('draft', 'sent')\">the quotation</t>\n"
+"                    <t t-else=\"\">the order confirmation</t>\n"
+"                    <strong t-out=\"object.name or ''\">SO/2026/00001</strong>\n"
+"                    amounting to\n"
+"                    <strong t-out=\"format_amount(object.amount_total, object.currency_id) or ''\">Rp 1.000.000</strong>.\n"
+"                    <t t-if=\"object.validity_date and object.state in ('draft', 'sent')\">\n"
+"                        <br/>This quotation is valid until\n"
+"                        <t t-out=\"format_date(object.validity_date) or ''\">01/31/2026</t>.\n"
+"                    </t>\n"
+"                    <br/><br/>\n"
+"                    Do not hesitate to contact us if you have any questions.\n"
+"                </p>\n"
+"            </div>\n"
+"        "
+msgstr ""
+"<div style=\"margin: 0px; padding: 0px;\">\n"
+"                <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"                    Halo <t t-out=\"object.partner_id.name or ''\">Toko Makmur Jaya</t>,\n"
+"                    <br/><br/>\n"
+"                    Bersama email ini kami lampirkan\n"
+"                    <t t-if=\"object.state in ('draft', 'sent')\">penawaran</t>\n"
+"                    <t t-else=\"\">konfirmasi pesanan</t>\n"
+"                    <strong t-out=\"object.name or ''\">SO/2026/00001</strong>\n"
+"                    dengan total\n"
+"                    <strong t-out=\"format_amount(object.amount_total, object.currency_id) or ''\">Rp 1.000.000</strong>.\n"
+"                    <t t-if=\"object.validity_date and object.state in ('draft', 'sent')\">\n"
+"                        <br/>Penawaran ini berlaku hingga\n"
+"                        <t t-out=\"format_date(object.validity_date) or ''\">01/31/2026</t>.\n"
+"                    </t>\n"
+"                    <br/><br/>\n"
+"                    Jangan ragu untuk menghubungi kami jika ada pertanyaan.\n"
+"                </p>\n"
+"            </div>\n"
+"        "
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "<strong>Date</strong>"
+msgstr "<strong>Tanggal</strong>"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "<strong>Expiration</strong>"
+msgstr "<strong>Kedaluwarsa</strong>"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "<strong>Payment Terms</strong>"
+msgstr "<strong>Termin Pembayaran</strong>"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "<strong>Salesperson</strong>"
+msgstr "<strong>Penjual</strong>"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_needaction
+msgid "Action Needed"
+msgstr "Perlu Tindakan"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_ids
+msgid "Activities"
+msgstr "Aktivitas"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Dekorasi Pengecualian Aktivitas"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_plans_ids
+msgid "Activity Plans"
+msgstr "Rencana Aktivitas"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_state
+msgid "Activity State"
+msgstr "Status Aktivitas"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Ikon Jenis Aktivitas"
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order.py:0
+msgid "Add at least one line to %s."
+msgstr "Tambahkan minimal satu baris ke %s."
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Amount"
+msgstr "Jumlah"
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_res_partner__nme_credit_exposure
+#: model:ir.model.fields,help:nme_sales.field_res_users__nme_credit_exposure
+msgid "Amount owed or committed by the customer in the current company."
+msgstr ""
+"Jumlah yang terutang atau telah dikomitmenkan oleh pelanggan di perusahaan "
+"saat ini."
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_attachment_count
+msgid "Attachment Count"
+msgstr "Jumlah Lampiran"
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__res_partner__nme_credit_policy__block
+msgid "Block"
+msgstr "Blokir"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Cancel"
+msgstr "Batalkan"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__cancel_reason
+msgid "Cancel Reason"
+msgstr "Alasan Pembatalan"
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__nme_sale_order__state__cancel
+msgid "Cancelled"
+msgstr "Dibatalkan"
+
+#. module: nme_sales
+#: model:ir.model,name:nme_sales.model_res_company
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__company_id
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__company_id
+msgid "Company"
+msgstr "Perusahaan"
+
+#. module: nme_sales
+#: model:ir.model,name:nme_sales.model_res_config_settings
+msgid "Config Settings"
+msgstr "Pengaturan Konfigurasi"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Confirm"
+msgstr "Konfirmasi"
+
+#. module: nme_sales
+#: model:ir.actions.server,name:nme_sales.nme_sale_order_action_confirm
+msgid "Confirm Quotations"
+msgstr "Konfirmasi Penawaran"
+
+#. module: nme_sales
+#: model:ir.model,name:nme_sales.model_res_partner
+msgid "Contact"
+msgstr "Kontak"
+
+#. module: nme_sales
+#: model_terms:ir.actions.act_window,help:nme_sales.nme_sale_order_action_quotations
+msgid "Create a new quotation"
+msgstr "Buat penawaran baru"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__create_uid
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__create_date
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_res_partner__nme_credit_limit
+#: model:ir.model.fields,field_description:nme_sales.field_res_users__nme_credit_limit
+msgid "Credit Limit"
+msgstr "Batas Kredit"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_res_partner__nme_credit_policy
+#: model:ir.model.fields,field_description:nme_sales.field_res_users__nme_credit_policy
+msgid "Credit Limit Policy"
+msgstr "Kebijakan Batas Kredit"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_res_partner__nme_credit_exposure
+#: model:ir.model.fields,field_description:nme_sales.field_res_users__nme_credit_exposure
+msgid "Credit Used"
+msgstr "Kredit Terpakai"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__credit_warning
+msgid "Credit Warning"
+msgstr "Peringatan Kredit"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__currency_id
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__currency_id
+msgid "Currency"
+msgstr "Mata Uang"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__partner_id
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__partner_id
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "Customer"
+msgstr "Pelanggan"
+
+#. module: nme_sales
+#: model:ir.ui.menu,name:nme_sales.nme_partner_menu_customers
+msgid "Customers"
+msgstr "Pelanggan"
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_res_company__nme_quotation_validity_days
+#: model:ir.model.fields,help:nme_sales.field_res_config_settings__nme_quotation_validity_days
+msgid "Days after which a new quotation expires. 0 means no expiration."
+msgstr ""
+"Jumlah hari hingga penawaran baru kedaluwarsa. 0 berarti tidak ada "
+"kedaluwarsa."
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_res_company__nme_quotation_validity_days
+#: model:ir.model.fields,field_description:nme_sales.field_res_config_settings__nme_quotation_validity_days
+msgid "Default Quotation Validity (Days)"
+msgstr "Masa Berlaku Penawaran Default (Hari)"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.res_config_settings_view_form
+msgid "Default number of days before a quotation expires."
+msgstr "Jumlah hari default sebelum penawaran kedaluwarsa."
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__qty_delivered
+#: model:ir.model.fields.selection,name:nme_sales.selection__nme_sale_order__delivery_status__delivered
+msgid "Delivered"
+msgstr "Terkirim"
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order.py:0
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__picking_ids
+msgid "Deliveries"
+msgstr "Pengiriman"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_calendar
+msgid "Deliveries Promised"
+msgstr "Pengiriman yang Dijanjikan"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Delivery"
+msgstr "Pengiriman"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__delivery_count
+msgid "Delivery Count"
+msgstr "Jumlah Pengiriman"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__commitment_date
+msgid "Delivery Date"
+msgstr "Tanggal Pengiriman"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__delivery_status
+msgid "Delivery Status"
+msgstr "Status Pengiriman"
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__commitment_date
+msgid "Delivery date promised to the customer."
+msgstr "Tanggal pengiriman yang dijanjikan kepada pelanggan."
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__name
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Description"
+msgstr "Deskripsi"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Disc.%"
+msgstr "Disk.%"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__discount
+msgid "Discount (%)"
+msgstr "Diskon (%)"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_picking__display_name
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__display_name
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__display_name
+#: model:ir.model.fields,field_description:nme_sales.field_nme_stock_move__display_name
+#: model:ir.model.fields,field_description:nme_sales.field_res_company__display_name
+#: model:ir.model.fields,field_description:nme_sales.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:nme_sales.field_res_partner__display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__validity_date
+msgid "Expiration"
+msgstr "Kedaluwarsa"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_follower_ids
+msgid "Followers"
+msgstr "Pengikut"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Pengikut (Mitra)"
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order.py:0
+msgid "Goods of %s were delivered: return them before cancelling the order."
+msgstr ""
+"Barang dari %s sudah dikirim: lakukan retur atas barang tersebut sebelum "
+"membatalkan pesanan."
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__has_message
+msgid "Has Message"
+msgstr "Memiliki Pesan"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_picking__id
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__id
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__id
+#: model:ir.model.fields,field_description:nme_sales.field_nme_stock_move__id
+#: model:ir.model.fields,field_description:nme_sales.field_res_company__id
+#: model:ir.model.fields,field_description:nme_sales.field_res_config_settings__id
+#: model:ir.model.fields,field_description:nme_sales.field_res_partner__id
+msgid "ID"
+msgstr "ID"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_exception_icon
+msgid "Icon"
+msgstr "Ikon"
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Ikon untuk menandai aktivitas pengecualian."
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Jika dicentang, pesan baru memerlukan perhatian Anda."
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__message_has_error
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Jika dicentang, beberapa pesan mengalami kesalahan pengiriman."
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_is_follower
+msgid "Is Follower"
+msgstr "Adalah Pengikut"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__write_uid
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__write_uid
+msgid "Last Updated by"
+msgstr "Terakhir Diperbarui oleh"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__write_date
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__write_date
+msgid "Last Updated on"
+msgstr "Terakhir Diperbarui pada"
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order_line.py:0
+msgid "Lines of a confirmed order cannot be deleted."
+msgstr "Baris pesanan yang sudah dikonfirmasi tidak dapat dihapus."
+
+#. module: nme_sales
+#: model:res.groups,name:nme_sales.nme_group_sales_manager
+msgid "Manager"
+msgstr "Manajer"
+
+#. module: nme_sales
+#: model:res.groups,comment:nme_sales.nme_group_sales_user
+msgid "Manages their own quotations and sales orders."
+msgstr "Mengelola penawaran dan pesanan penjualan miliknya sendiri."
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__activity_type_icon
+msgid "Material Symbols icon e.g. checklist"
+msgstr "Ikon Material Symbols, misalnya checklist"
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_res_partner__nme_credit_limit
+#: model:ir.model.fields,help:nme_sales.field_res_users__nme_credit_limit
+msgid "Maximum amount the customer may owe, including confirmed orders."
+msgstr ""
+"Jumlah maksimum yang boleh terutang oleh pelanggan, termasuk pesanan yang "
+"sudah dikonfirmasi."
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_has_error
+msgid "Message Delivery error"
+msgstr "Kesalahan Pengiriman Pesan"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_ids
+msgid "Messages"
+msgstr "Pesan"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Tenggat Aktivitas Saya"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "My Orders"
+msgstr "Pesanan Saya"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Tenggat Aktivitas Berikutnya"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_summary
+msgid "Next Activity Summary"
+msgstr "Ringkasan Aktivitas Berikutnya"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_type_id
+msgid "Next Activity Type"
+msgstr "Jenis Aktivitas Berikutnya"
+
+#. module: nme_sales
+#: model:res.groups.privilege,placeholder:nme_sales.nme_privilege_sales
+msgid "No"
+msgstr "Tidak"
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__res_partner__nme_credit_policy__none
+msgid "No Limit"
+msgstr "Tanpa Batas"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__note
+msgid "Notes"
+msgstr "Catatan"
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__nme_sale_order__delivery_status__nothing
+msgid "Nothing to Deliver"
+msgstr "Tidak Ada yang Dikirim"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Jumlah Tindakan"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_has_error_counter
+msgid "Number of errors"
+msgstr "Jumlah kesalahan"
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Jumlah pesan yang memerlukan tindakan"
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Jumlah pesan dengan kesalahan pengiriman"
+
+#. module: nme_sales
+#: model:ir.module.module,shortdesc:base.module_nme_sales
+msgid "Nusantara ERP - Sales"
+msgstr "Nusantara ERP - Penjualan"
+
+#. module: nme_sales
+#: model:mail.template,name:nme_sales.mail_template_nme_sale_order
+msgid "Nusantara ERP: Send Quotation"
+msgstr "Nusantara ERP: Kirim Penawaran"
+
+#. module: nme_sales
+#: model_terms:ir.actions.act_window,help:nme_sales.nme_sale_order_action_quotations
+msgid ""
+"Once confirmed, a quotation becomes a sales order and its goods are "
+"delivered."
+msgstr ""
+"Setelah dikonfirmasi, penawaran menjadi pesanan penjualan dan barangnya akan"
+" dikirim."
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__order_id
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "Order"
+msgstr "Pesanan"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__date_order
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "Order Date"
+msgstr "Tanggal Pesanan"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__line_ids
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Order Lines"
+msgstr "Baris Pesanan"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Other Information"
+msgstr "Informasi Lainnya"
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__nme_sale_order__delivery_status__partial
+msgid "Partially Delivered"
+msgstr "Terkirim Sebagian"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__payment_term_id
+msgid "Payment Terms"
+msgstr "Termin Pembayaran"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Print"
+msgstr "Cetak"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__product_id
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "Product"
+msgstr "Produk"
+
+#. module: nme_sales
+#: model:ir.ui.menu,name:nme_sales.nme_product_menu_sales
+msgid "Products"
+msgstr "Produk"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__quantity
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Quantity"
+msgstr "Kuantitas"
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__nme_sale_order__state__draft
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Quotation"
+msgstr "Penawaran"
+
+#. module: nme_sales
+#: model:ir.actions.report,name:nme_sales.action_report_nme_sale_order
+msgid "Quotation / Order"
+msgstr "Penawaran / Pesanan"
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__nme_sale_order__state__sent
+msgid "Quotation Sent"
+msgstr "Penawaran Terkirim"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.res_config_settings_view_form
+msgid "Quotation Validity"
+msgstr "Masa Berlaku Penawaran"
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__date_order
+msgid "Quotation date, replaced by the confirmation date."
+msgstr "Tanggal penawaran, digantikan oleh tanggal konfirmasi."
+
+#. module: nme_sales
+#: model:ir.actions.act_window,name:nme_sales.nme_sale_order_action_quotations
+#: model:ir.ui.menu,name:nme_sales.nme_sale_order_menu_quotations
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "Quotations"
+msgstr "Penawaran"
+
+#. module: nme_sales
+#: model:ir.module.module,summary:base.module_nme_sales
+msgid "Quotations, sales orders, deliveries and customer credit limits"
+msgstr "Penawaran, pesanan penjualan, pengiriman, dan batas kredit pelanggan"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__name
+msgid "Reference"
+msgstr "Referensi"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__user_id
+msgid "Responsible"
+msgstr "Penanggung Jawab"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__activity_user_id
+msgid "Responsible User"
+msgstr "Pengguna Penanggung Jawab"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Kesalahan Pengiriman SMS"
+
+#. module: nme_sales
+#: model:ir.ui.menu,name:nme_sales.nme_menu_sales
+#: model:res.groups.privilege,name:nme_sales.nme_privilege_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:nme_sales.view_partner_form
+msgid "Sales"
+msgstr "Penjualan"
+
+#. module: nme_sales
+#: model:ir.model,name:nme_sales.model_nme_sale_order
+#: model:ir.model.fields,field_description:nme_sales.field_nme_picking__sale_id
+#: model:ir.model.fields.selection,name:nme_sales.selection__nme_sale_order__state__sale
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Sales Order"
+msgstr "Pesanan Penjualan"
+
+#. module: nme_sales
+#: model:ir.model,name:nme_sales.model_nme_sale_order_line
+#: model:ir.model.fields,field_description:nme_sales.field_nme_stock_move__sale_line_id
+msgid "Sales Order Line"
+msgstr "Baris Pesanan Penjualan"
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/res_partner.py:0
+#: model:ir.actions.act_window,name:nme_sales.nme_sale_order_action_orders
+#: model:ir.ui.menu,name:nme_sales.nme_sale_order_menu_orders
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_graph
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_list
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_pivot
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "Sales Orders"
+msgstr "Pesanan Penjualan"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "Salesperson"
+msgstr "Penjual"
+
+#. module: nme_sales
+#: model:res.groups,comment:nme_sales.nme_group_sales_manager
+msgid ""
+"Sees every sales order, sets credit limits and may confirm orders above "
+"them."
+msgstr ""
+"Melihat semua pesanan penjualan, mengatur batas kredit, dan dapat "
+"mengonfirmasi pesanan yang melebihi batas tersebut."
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order.py:0
+msgid "Send Quotation"
+msgstr "Kirim Penawaran"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Send by Email"
+msgstr "Kirim melalui Email"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__sequence
+msgid "Sequence"
+msgstr "Urutan"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Set to Quotation"
+msgstr "Kembalikan ke Penawaran"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__state
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__state
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "Status"
+msgstr "Status"
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Status berdasarkan aktivitas\n"
+"Lewat Jatuh Tempo: Tanggal jatuh tempo sudah terlewati\n"
+"Hari Ini: Tanggal aktivitas adalah hari ini\n"
+"Direncanakan: Aktivitas yang akan datang."
+
+#. module: nme_sales
+#: model:ir.model,name:nme_sales.model_nme_stock_move
+msgid "Stock Move"
+msgstr "Pergerakan Stok"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__move_ids
+msgid "Stock Moves"
+msgstr "Pergerakan Stok"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__price_subtotal
+msgid "Subtotal"
+msgstr "Subtotal"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__price_tax
+msgid "Tax"
+msgstr "Pajak"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__amount_tax
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__tax_ids
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Taxes"
+msgstr "Pajak"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_form
+msgid "Terms and conditions..."
+msgstr "Syarat dan ketentuan..."
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order_line.py:0
+msgid "The lines of a confirmed or cancelled order are locked."
+msgstr "Baris pesanan yang sudah dikonfirmasi atau dibatalkan dikunci."
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__nme_sale_order__delivery_status__to_deliver
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_search
+msgid "To Deliver"
+msgstr "Perlu Dikirim"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__amount_total
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__price_total
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_list
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Total"
+msgstr "Total"
+
+#. module: nme_sales
+#: model_terms:ir.ui.view,arch_db:nme_sales.nme_sale_order_view_list
+msgid "Total Untaxed"
+msgstr "Total Sebelum Pajak"
+
+#. module: nme_sales
+#: model:ir.model,name:nme_sales.model_nme_picking
+msgid "Transfer"
+msgstr "Transfer"
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_nme_sale_order__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Jenis aktivitas pengecualian pada record."
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__uom_id
+msgid "Unit"
+msgstr "Satuan"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order_line__price_unit
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Unit Price"
+msgstr "Harga Satuan"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__amount_untaxed
+#: model_terms:ir.ui.view,arch_db:nme_sales.report_nme_sale_order_document
+msgid "Untaxed Amount"
+msgstr "Jumlah Sebelum Pajak"
+
+#. module: nme_sales
+#: model:res.groups,name:nme_sales.nme_group_sales_user
+msgid "User: Own Documents Only"
+msgstr "Pengguna: Hanya Dokumen Sendiri"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_nme_sale_order__warehouse_id
+msgid "Warehouse"
+msgstr "Gudang"
+
+#. module: nme_sales
+#: model:ir.model.fields.selection,name:nme_sales.selection__res_partner__nme_credit_policy__warning
+msgid "Warn"
+msgstr "Peringatkan"
+
+#. module: nme_sales
+#: model:ir.model.fields,help:nme_sales.field_res_partner__nme_credit_policy
+#: model:ir.model.fields,help:nme_sales.field_res_users__nme_credit_policy
+msgid ""
+"Warn: confirming above the limit is allowed but logged. Block: only a sales "
+"manager can confirm above the limit."
+msgstr ""
+"Peringatkan: konfirmasi di atas batas diizinkan tetapi dicatat. Blokir: "
+"hanya manajer penjualan yang dapat mengonfirmasi di atas batas."
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/res_partner.py:0
+msgid "partner_id"
+msgstr "partner_id"
+
+#. module: nme_sales
+#. odoo-python
+#: code:addons/nme_sales/models/nme_sale_order.py:0
+msgid "sale_id"
+msgstr "sale_id"
+
+#. module: nme_sales
+#: model:mail.template,subject:nme_sales.mail_template_nme_sale_order
+msgid ""
+"{{ object.company_id.name }} {{ object.state in ('draft', 'sent') and "
+"'Quotation' or 'Order' }} (Ref {{ object.name }})"
+msgstr ""
+"{{ object.company_id.name }} {{ object.state in ('draft', 'sent') and "
+"'Penawaran' or 'Pesanan' }} (Ref {{ object.name }})"
+
+#. module: nme_sales
+#: model:ir.module.module,description:base.module_nme_sales
+msgid ""
+"=========================\n"
+"Nusantara ERP - Sales\n"
+"=========================\n"
+"\n"
+"Sales flow of Nusantara Mini ERP: quotation, sales order, delivery and\n"
+"customer credit limits.\n"
+"\n"
+"**Table of contents**\n"
+"\n"
+".. contents::\n"
+"   :local:\n"
+"\n"
+"Features\n"
+"========\n"
+"\n"
+"* Quotations with per-line discounts and taxes, sent by email with the PDF\n"
+"  attached (sending marks the quotation as sent).\n"
+"* Strict state machine: Quotation, Quotation Sent, Sales Order, Cancelled.\n"
+"  Confirmed lines are locked; cancelling requires a reason.\n"
+"* Confirming an order creates the delivery of the goods (services are not\n"
+"  delivered). The delivered quantity and the delivery status are computed\n"
+"  from the stock ledger, returns included.\n"
+"* **Credit limit** per customer and company with three policies:\n"
+"\n"
+"  * *No Limit*;\n"
+"  * *Warn*: confirming above the limit is allowed and logged in the chatter;\n"
+"  * *Block*: only a sales manager can confirm above the limit.\n"
+"\n"
+"  The credit used is computed by ``res.partner._get_credit_exposure``; this\n"
+"  module counts confirmed orders and ``nme_invoicing`` refines it with\n"
+"  unpaid invoices.\n"
+"* Kanban by status, calendar of promised delivery dates, pivot and graph\n"
+"  views, mass confirmation from the list and a printable quotation/order.\n"
+"\n"
+"Configuration\n"
+"=============\n"
+"\n"
+"*Nusantara ERP > Configuration > Settings*: default quotation validity.\n"
+"Credit limits are set by sales managers on the customer form\n"
+"(*Sales & Purchase* tab).\n"
+"\n"
+"Security\n"
+"========\n"
+"\n"
+"* *Sales / User: Own Documents Only*: their own (or unassigned) orders;\n"
+"  order lines follow their order through the ``access`` domain operator of\n"
+"  ``ir.access``. They also prepare deliveries (outgoing transfers).\n"
+"* *Sales / Manager*: every order, credit limits and limit overrides.\n"
+"* Inventory users can read sales orders to prepare deliveries.\n"
+"\n"
+"Credits\n"
+"=======\n"
+"\n"
+"Author\n"
+"------\n"
+"\n"
+"* M. Fadli Kurniawan\n"
+"\n"
+"License\n"
+"-------\n"
+"\n"
+"LGPL-3\n"
+msgstr ""
+"=============================\n"
+"Nusantara ERP - Penjualan\n"
+"=============================\n"
+"\n"
+"Alur penjualan Nusantara Mini ERP: penawaran, pesanan penjualan, pengiriman\n"
+"dan batas kredit pelanggan.\n"
+"\n"
+"**Daftar isi**\n"
+"\n"
+".. contents::\n"
+"   :local:\n"
+"\n"
+"Fitur\n"
+"=====\n"
+"\n"
+"* Penawaran dengan diskon dan pajak per baris, dikirim melalui email dengan\n"
+"  PDF terlampir (pengiriman menandai penawaran sebagai terkirim).\n"
+"* Alur status yang ketat: Penawaran, Penawaran Terkirim, Pesanan Penjualan,\n"
+"  Dibatalkan. Baris yang sudah dikonfirmasi dikunci; pembatalan wajib disertai\n"
+"  alasan.\n"
+"* Konfirmasi pesanan membuat pengiriman barang (jasa tidak dikirim). Jumlah\n"
+"  terkirim dan status pengiriman dihitung dari buku besar stok, termasuk retur.\n"
+"* **Batas kredit** per pelanggan dan perusahaan dengan tiga kebijakan:\n"
+"\n"
+"  * *Tanpa Batas*;\n"
+"  * *Peringatkan*: konfirmasi di atas batas diizinkan dan dicatat di chatter;\n"
+"  * *Blokir*: hanya manajer penjualan yang dapat mengkonfirmasi di atas batas.\n"
+"\n"
+"  Kredit terpakai dihitung oleh ``res.partner._get_credit_exposure``; modul ini\n"
+"  menghitung pesanan yang sudah dikonfirmasi dan ``nme_invoicing``\n"
+"  melengkapinya dengan faktur yang belum dibayar.\n"
+"* Kanban per status, kalender tanggal pengiriman yang dijanjikan, tampilan\n"
+"  pivot dan grafik, konfirmasi massal dari daftar, serta penawaran/pesanan\n"
+"  yang dapat dicetak.\n"
+"\n"
+"Konfigurasi\n"
+"===========\n"
+"\n"
+"*Nusantara ERP > Konfigurasi > Pengaturan*: masa berlaku penawaran default.\n"
+"Batas kredit diatur oleh manajer penjualan pada form pelanggan\n"
+"(tab *Penjualan & Pembelian*).\n"
+"\n"
+"Keamanan\n"
+"========\n"
+"\n"
+"* *Penjualan / Pengguna: Hanya Dokumen Sendiri*: pesanan miliknya sendiri\n"
+"  (atau yang belum ditugaskan); baris pesanan mengikuti pesanannya melalui\n"
+"  operator domain ``access`` pada ``ir.access``. Mereka juga menyiapkan\n"
+"  pengiriman (transfer keluar).\n"
+"* *Penjualan / Manajer*: semua pesanan, batas kredit dan pengecualian batas.\n"
+"* Pengguna persediaan dapat membaca pesanan penjualan untuk menyiapkan\n"
+"  pengiriman.\n"
+"\n"
+"Kontributor\n"
+"===========\n"
+"\n"
+"Penulis\n"
+"-------\n"
+"\n"
+"* M. Fadli Kurniawan\n"
+"\n"
+"Lisensi\n"
+"-------\n"
+"\n"
+"LGPL-3\n"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_res_partner__nme_company_currency_id
+#: model:ir.model.fields,field_description:nme_sales.field_res_users__nme_company_currency_id
+msgid "Company Currency"
+msgstr "Mata Uang Perusahaan"
+
+#. module: nme_sales
+#: model:ir.model.fields,field_description:nme_sales.field_res_partner__nme_sale_order_count
+#: model:ir.model.fields,field_description:nme_sales.field_res_users__nme_sale_order_count
+msgid "Sales Order Count"
+msgstr "Jumlah Pesanan Penjualan"

@@ -1,0 +1,1387 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* nme_inventory
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-13 03:01+0000\n"
+"PO-Revision-Date: 2026-10-13 03:01+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_product.py:0
+msgid "%(qty)s %(unit)s left, minimum %(min)s."
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_product.py:0
+msgid "%s already has stock moves and cannot become a service."
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_picking.py:0
+msgid "%s has already been returned."
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_stock_move.py:0
+msgid "%s is a service: services are not tracked in stock."
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_stock_adjustment.py:0
+msgid "%s is not a draft adjustment."
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_picking.py:0
+msgid "%s is not a draft transfer."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.actions.report,print_report_name:nme_inventory.action_report_nme_picking
+msgid "'%s' % object.name.replace('/', '-')"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_product_view_form
+msgid "<span class=\"o_stat_text\">On Hand</span>"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "<strong>From</strong>"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "<strong>Scheduled Date</strong>"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "<strong>Source Document</strong>"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "<strong>To</strong>"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.module.module,description:base.module_nme_inventory
+msgid ""
+"=============================\n"
+"Nusantara ERP - Inventory\n"
+"=============================\n"
+"\n"
+"Stock management of Nusantara Mini ERP: warehouses, transfers and a stock\n"
+"move ledger valued with the average cost method.\n"
+"\n"
+"**Table of contents**\n"
+"\n"
+".. contents::\n"
+"   :local:\n"
+"\n"
+"Features\n"
+"========\n"
+"\n"
+"* Warehouses with an automatically created stock location; every new\n"
+"  company gets its own warehouse.\n"
+"* Transfers (``nme.picking``) of three types: receipts, deliveries and\n"
+"  internal transfers between warehouses, with kanban, calendar and a\n"
+"  printable delivery slip (Surat Jalan).\n"
+"* **Stock move ledger**: the quantity on hand is never stored on the\n"
+"  product; it is computed from done moves. Done moves are immutable and\n"
+"  negative stock is refused.\n"
+"* **Average cost (AVCO)** per company, updated by every receipt; deliveries\n"
+"  and transfers are valued at the current average cost.\n"
+"* Full returns of done transfers (returned deliveries come back at their\n"
+"  original cost).\n"
+"* Stock adjustments (stock opname) with a mandatory reason, validated by an\n"
+"  inventory manager, plus a quick \"Update Quantity\" wizard on products.\n"
+"* Minimum stock per product and company, with a daily scheduled action\n"
+"  creating \"Low Stock\" activities for the inventory managers.\n"
+"\n"
+"Design notes\n"
+"============\n"
+"\n"
+"Stock follows a double-entry logic: every move goes from one location to\n"
+"another. Internal locations hold stock; virtual locations (Vendors,\n"
+"Customers, Inventory Adjustment) are the counterparts. Quantities are\n"
+"computed with grouped queries on the ledger (``_read_group``), filtered by\n"
+"the ``warehouse_id`` or ``location_id`` context keys.\n"
+"\n"
+"Security\n"
+"========\n"
+"\n"
+"* *Inventory / User*: creates and validates transfers, records stock counts.\n"
+"* *Inventory / Manager*: validates stock adjustments, manages warehouses,\n"
+"  locations and reasons.\n"
+"* Every internal user can read the ledger; records are filtered by company.\n"
+"\n"
+"Credits\n"
+"=======\n"
+"\n"
+"Author\n"
+"------\n"
+"\n"
+"* M. Fadli Kurniawan\n"
+"\n"
+"License\n"
+"-------\n"
+"\n"
+"LGPL-3\n"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.constraint,message:nme_inventory.constraint_nme_stock_adjustment_line_product_unique
+msgid "A product can only be counted once per adjustment."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_product__min_qty
+msgid "A scheduled action warns the inventory managers below this level."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.constraint,message:nme_inventory.constraint_nme_stock_move_different_locations
+msgid "A stock move must go to another location."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_needaction
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__active
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__active
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__active
+msgid "Active"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_ids
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_exception_decoration
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_plans_ids
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_plans_ids
+msgid "Activity Plans"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_state
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_type_icon
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_stock_adjustment.py:0
+msgid "Add at least one line to %s."
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_picking.py:0
+msgid "Add at least one product to %s."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__partner_id
+msgid "Address"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__adjustment_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__adjustment_id
+msgid "Adjustment"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_stock_adjustment_reason_action
+#: model:ir.ui.menu,name:nme_inventory.nme_stock_adjustment_reason_menu
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_reason_view_list
+msgid "Adjustment Reasons"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_picking_action
+msgid "All Transfers"
+msgstr ""
+
+#. module: nme_inventory
+#: model:res.groups,comment:nme_inventory.nme_group_inventory_manager
+msgid "Also validates stock adjustments and manages warehouses and locations."
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_product_quick_adjust_view_form
+msgid "Apply"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_warehouse_view_form
+msgid "Archived"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_attachment_count
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product__avg_cost
+msgid "Average Cost"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product__is_below_min
+msgid "Below Minimum"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_product_view_search
+msgid "Below Minimum Stock"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_form
+msgid "Cancel"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__cancel_reason
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__cancel_reason
+msgid "Cancel Reason"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_form
+msgid "Cancellation"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_picking__state__cancel
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_stock_adjustment__state__cancel
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_stock_move__state__cancel
+msgid "Cancelled"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_res_company
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__company_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__company_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__company_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__company_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__company_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__company_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__company_id
+msgid "Company"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__complete_name
+msgid "Complete Name"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__partner_id
+msgid "Contact"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_move__price_unit
+msgid ""
+"Cost of one unit entering the stock (purchase price, adjustment cost or "
+"original cost of a returned delivery). Outgoing moves are valued at the "
+"average cost instead."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment_line__unit_cost
+msgid "Cost of the units added to the stock when the difference is positive."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_product_quick_adjust__unit_cost
+msgid "Cost of the units added when the counted quantity is higher."
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_form
+msgid "Counted Quantities"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__counted_qty
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__counted_qty
+msgid "Counted Quantity"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_stock_adjustment_action
+msgid ""
+"Counted quantities are compared with the system and validated by a manager."
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_picking_action_deliveries
+msgid "Create a delivery"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_picking_action_receipts
+msgid "Create a receipt"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__create_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__create_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__create_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__create_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__create_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__create_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__create_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__create_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__create_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__create_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__create_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__create_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__create_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__create_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__currency_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__currency_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__current_qty
+msgid "Current Quantity"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_location__usage__customer
+msgid "Customer"
+msgstr ""
+
+#. module: nme_inventory
+#: model:nme.stock.adjustment.reason,name:nme_inventory.nme_adjustment_reason_damaged
+msgid "Damaged"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__date
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_search
+msgid "Date"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__date_done
+msgid "Date Done"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_move__date
+msgid "Date of the move, set to the validation time when it is done."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_picking_action_deliveries
+#: model:ir.ui.menu,name:nme_inventory.nme_picking_menu_deliveries
+msgid "Deliveries"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_picking_action_deliveries
+msgid "Deliveries take goods out of a warehouse to customers."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_picking__picking_type__outgoing
+msgid "Delivery"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.actions.report,name:nme_inventory.action_report_nme_picking
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Delivery Slip"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+msgid "Delivery instructions..."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__name
+msgid "Description"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_search
+msgid "Destination"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__location_dest_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__location_dest_id
+msgid "Destination Location"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__location_dest_usage
+msgid "Destination Location Type"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__warehouse_dest_id
+msgid "Destination Warehouse"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__difference_qty
+msgid "Difference"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_product_quick_adjust_view_form
+msgid "Discard"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_res_company__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_picking__state__done
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_stock_adjustment__state__done
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_stock_move__state__done
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_search
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_search
+msgid "Done"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_product__qty_available
+msgid ""
+"Done moves into internal locations minus done moves out of them. Use the "
+"warehouse_id or location_id context key to restrict it."
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_stock_move.py:0
+msgid "Done stock moves cannot be cancelled."
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_stock_move.py:0
+msgid "Done stock moves cannot be deleted."
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_stock_move.py:0
+msgid ""
+"Done stock moves cannot be modified. Create a return or a stock adjustment "
+"to correct the stock."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_picking__state__draft
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_stock_adjustment__state__draft
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_stock_move__state__draft
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_search
+msgid "Draft"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Driver"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_location__company_id
+msgid "Empty for virtual locations shared by every company."
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_stock_move_action
+msgid ""
+"Every validated receipt, delivery, transfer or adjustment appears here."
+msgstr ""
+
+#. module: nme_inventory
+#: model:nme.stock.adjustment.reason,name:nme_inventory.nme_adjustment_reason_expired
+msgid "Expired"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_follower_ids
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_partner_ids
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__has_message
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product__id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__id
+#: model:ir.model.fields,field_description:nme_inventory.field_res_company__id
+msgid "ID"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_exception_icon
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__activity_exception_icon
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__message_needaction
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__message_has_error
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_product_view_search
+msgid "In Stock"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_search
+msgid "Incoming"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__price_unit
+msgid "Incoming Unit Cost"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_location__usage__internal
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_search
+msgid "Internal"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_picking__picking_type__internal
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Internal Transfer"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_picking_action_internal
+#: model:ir.ui.menu,name:nme_inventory.nme_picking_menu_internal
+msgid "Internal Transfers"
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_location.py:0
+msgid "Internal location %s needs a warehouse and a company."
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_picking.py:0
+msgid "Internal transfer %s must go to another warehouse."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.ui.menu,name:nme_inventory.nme_menu_inventory
+#: model:res.groups.privilege,name:nme_inventory.nme_privilege_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_product_view_form
+msgid "Inventory"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_location__usage__inventory
+msgid "Inventory Adjustment"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_is_follower
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__write_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__write_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__write_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__write_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__write_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__write_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__write_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__write_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__write_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__write_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__write_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__write_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__write_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__write_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+msgid "Late"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__line_ids
+msgid "Lines"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_form
+msgid "Load Products in Stock"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_form
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_list
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_search
+msgid "Location"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__usage
+msgid "Location Type"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_location_action
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__location_ids
+#: model:ir.ui.menu,name:nme_inventory.nme_location_menu
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_list
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_search
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_warehouse_view_form
+msgid "Locations"
+msgstr ""
+
+#. module: nme_inventory
+#: model:nme.stock.adjustment.reason,name:nme_inventory.nme_adjustment_reason_lost
+msgid "Lost"
+msgstr ""
+
+#. module: nme_inventory
+#: model:mail.activity.type,name:nme_inventory.mail_activity_type_low_stock
+msgid "Low Stock"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__location_id
+#: model:ir.model.fields,help:nme_inventory.field_nme_warehouse__lot_stock_id
+msgid "Main internal location of the warehouse, created with it."
+msgstr ""
+
+#. module: nme_inventory
+#: model:res.groups,name:nme_inventory.nme_group_inventory_manager
+msgid "Manager"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__activity_type_icon
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__activity_type_icon
+msgid "Material Symbols icon e.g. checklist"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_has_error
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_ids
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product__min_qty
+msgid "Minimum Stock"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_picking_action_internal
+msgid "Move goods between warehouses"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__move_ids
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__move_ids
+msgid "Moves"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__my_activity_date_deadline
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__name
+msgid "Name"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_date_deadline
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_summary
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_type_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: nme_inventory
+#: model:res.groups.privilege,placeholder:nme_inventory.nme_privilege_inventory
+msgid "No"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_stock_move_action
+msgid "No stock move yet"
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_stock_move.py:0
+msgid ""
+"Not enough %(product)s in %(location)s: %(available)s available, %(needed)s "
+"needed."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__note
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__note
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+msgid "Notes"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_needaction_counter
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_has_error_counter
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__message_needaction_counter
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__message_has_error_counter
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.module.module,shortdesc:base.module_nme_inventory
+msgid "Nusantara ERP - Inventory"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.actions.server,name:nme_inventory.ir_cron_check_minimum_stock_ir_actions_server
+msgid "Nusantara ERP: Check minimum stock"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product__qty_available
+msgid "On Hand"
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_picking.py:0
+msgid "Only done transfers can be returned."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_location__usage
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_move__location_dest_usage
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_move__location_usage
+msgid "Only internal locations hold stock."
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_stock_adjustment.py:0
+msgid "Only inventory managers can validate stock adjustments."
+msgstr ""
+
+#. module: nme_inventory
+#: model:nme.stock.adjustment.reason,name:nme_inventory.nme_adjustment_reason_opening
+msgid "Opening Balance"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_search
+msgid "Outgoing"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_warehouse__code
+msgid "Prefix of the warehouse locations, for example SBY."
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Prepared by"
+msgstr ""
+
+#. module: nme_inventory
+#: model:res.groups,comment:nme_inventory.nme_group_inventory_user
+msgid ""
+"Prepares and validates receipts, deliveries and transfers, records stock "
+"counts."
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+msgid "Print"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_product
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__product_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__product_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__product_id
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_search
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Product"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_product_action_stock
+#: model:ir.ui.menu,name:nme_inventory.nme_product_menu_stock
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+msgid "Products"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__quantity
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Quantity"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment_line__theoretical_qty
+msgid ""
+"Quantity in the system when the line was added; refreshed at validation."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_product_quick_adjust
+msgid "Quick Stock Adjustment"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__reason_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__reason_id
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_search
+msgid "Reason"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_picking__picking_type__incoming
+msgid "Receipt"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Receipt Slip"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_picking_action_receipts
+#: model:ir.ui.menu,name:nme_inventory.nme_picking_menu_receipts
+msgid "Receipts"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_picking_action_receipts
+msgid "Receipts bring goods from vendors into a warehouse."
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Received by"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_stock_adjustment_action
+msgid "Record a stock count"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__reference
+msgid "Reference"
+msgstr ""
+
+#. module: nme_inventory
+#: model:mail.activity.type,summary:nme_inventory.mail_activity_type_low_stock
+msgid "Replenish this product"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__user_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__user_id
+msgid "Responsible"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_user_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+msgid "Return"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__return_count
+msgid "Return Count"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__return_of_id
+msgid "Return Of"
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_picking.py:0
+msgid "Return of %s"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__origin_returned_move_id
+msgid "Returned Move"
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_picking.py:0
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__return_ids
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__returned_move_ids
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+msgid "Returns"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__scheduled_date
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+msgid "Scheduled Date"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__sequence
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+msgid "Set to Draft"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__code
+msgid "Short Name"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__origin
+msgid "Source Document"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__location_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__location_id
+msgid "Source Location"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__location_usage
+msgid "Source Location Type"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__state
+msgid "State"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__state
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__state
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__state
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+msgid "Status"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__activity_state
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_warehouse.py:0
+msgid "Stock"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_stock_adjustment
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_form
+msgid "Stock Adjustment"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_stock_adjustment_line
+msgid "Stock Adjustment Line"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_stock_adjustment_reason
+msgid "Stock Adjustment Reason"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_stock_adjustment_action
+#: model:ir.ui.menu,name:nme_inventory.nme_stock_adjustment_menu
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_list
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_search
+msgid "Stock Adjustments"
+msgstr ""
+
+#. module: nme_inventory
+#: model:nme.stock.adjustment.reason,name:nme_inventory.nme_adjustment_reason_count
+msgid "Stock Count"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_stock_move_action
+#: model:ir.ui.menu,name:nme_inventory.nme_stock_move_menu
+msgid "Stock Ledger"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_location
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__location_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__lot_stock_id
+msgid "Stock Location"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_stock_move
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product__stock_move_ids
+msgid "Stock Move"
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_product.py:0
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_form
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_list
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_pivot
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_search
+msgid "Stock Moves"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product__stock_value
+msgid "Stock Value"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__theoretical_qty
+msgid "System Quantity"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.constraint,message:nme_inventory.constraint_nme_stock_adjustment_line_counted_qty_positive
+msgid "The counted quantity cannot be negative."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.constraint,message:nme_inventory.constraint_nme_stock_move_quantity_positive
+msgid "The quantity of a stock move must be positive."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.constraint,message:nme_inventory.constraint_nme_warehouse_code_company_unique
+msgid "The warehouse short name must be unique per company."
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_list
+msgid "Total"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_picking
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__picking_id
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+msgid "Transfer"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__picking_type
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+msgid "Transfer Type"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_calendar
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_list
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+msgid "Transfers"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_search
+msgid "Type"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__activity_exception_decoration
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__uom_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__uom_id
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Unit"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__unit_cost
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__unit_cost
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__unit_cost
+msgid "Unit Cost"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_product_quick_adjust_action
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_product_quick_adjust_view_form
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_product_view_form
+msgid "Update Quantity"
+msgstr ""
+
+#. module: nme_inventory
+#: model:res.groups,name:nme_inventory.nme_group_inventory_user
+msgid "User"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_form
+msgid "Validate"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.actions.server,name:nme_inventory.nme_picking_action_validate
+msgid "Validate Transfers"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__value
+msgid "Value"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_location__usage__supplier
+msgid "Vendor"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_search
+msgid "Virtual"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_warehouse
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__warehouse_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__warehouse_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__warehouse_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__warehouse_id
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_warehouse_view_form
+msgid "Warehouse"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__warehouse_dest_id
+msgid "Warehouse receiving the goods of an internal transfer."
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_warehouse_action
+#: model:ir.ui.menu,name:nme_inventory.nme_warehouse_menu
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_warehouse_view_list
+msgid "Warehouses"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.module.module,summary:base.module_nme_inventory
+msgid "Warehouses, stock move ledger, average cost, adjustments and transfers"
+msgstr ""
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_product__avg_cost
+msgid "Weighted average cost of the stock, updated by every receipt."
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_form
+msgid "e.g. Rack A"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_warehouse_view_form
+msgid "e.g. SBY"
+msgstr ""
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_warehouse_view_form
+msgid "e.g. Surabaya Main Warehouse"
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_product.py:0
+msgid "product_id"
+msgstr ""
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_picking.py:0
+msgid "return_of_id"
+msgstr ""

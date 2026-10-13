@@ -1,0 +1,1483 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* nme_inventory
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-13 02:51+0000\n"
+"PO-Revision-Date: 2026-10-13 02:51+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_product.py:0
+msgid "%(qty)s %(unit)s left, minimum %(min)s."
+msgstr "Tersisa %(qty)s %(unit)s, minimum %(min)s."
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_product.py:0
+msgid "%s already has stock moves and cannot become a service."
+msgstr ""
+"%s sudah memiliki pergerakan stok dan tidak dapat diubah menjadi jasa."
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_picking.py:0
+msgid "%s has already been returned."
+msgstr "%s sudah diretur."
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_stock_move.py:0
+msgid "%s is a service: services are not tracked in stock."
+msgstr "%s adalah jasa: jasa tidak dilacak dalam stok."
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_stock_adjustment.py:0
+msgid "%s is not a draft adjustment."
+msgstr "%s bukan penyesuaian berstatus draf."
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_picking.py:0
+msgid "%s is not a draft transfer."
+msgstr "%s bukan transfer berstatus draf."
+
+#. module: nme_inventory
+#: model:ir.actions.report,print_report_name:nme_inventory.action_report_nme_picking
+msgid "'%s' % object.name.replace('/', '-')"
+msgstr "'%s' % object.name.replace('/', '-')"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_product_view_form
+msgid "<span class=\"o_stat_text\">On Hand</span>"
+msgstr "<span class=\"o_stat_text\">Stok Tersedia</span>"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "<strong>From</strong>"
+msgstr "<strong>Dari</strong>"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "<strong>Scheduled Date</strong>"
+msgstr "<strong>Tanggal Terjadwal</strong>"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "<strong>Source Document</strong>"
+msgstr "<strong>Dokumen Sumber</strong>"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "<strong>To</strong>"
+msgstr "<strong>Ke</strong>"
+
+#. module: nme_inventory
+#: model:ir.module.module,description:base.module_nme_inventory
+msgid ""
+"=============================\n"
+"Nusantara ERP - Inventory\n"
+"=============================\n"
+"\n"
+"Stock management of Nusantara Mini ERP: warehouses, transfers and a stock\n"
+"move ledger valued with the average cost method.\n"
+"\n"
+"**Table of contents**\n"
+"\n"
+".. contents::\n"
+"   :local:\n"
+"\n"
+"Features\n"
+"========\n"
+"\n"
+"* Warehouses with an automatically created stock location; every new\n"
+"  company gets its own warehouse.\n"
+"* Transfers (``nme.picking``) of three types: receipts, deliveries and\n"
+"  internal transfers between warehouses, with kanban, calendar and a\n"
+"  printable delivery slip (Surat Jalan).\n"
+"* **Stock move ledger**: the quantity on hand is never stored on the\n"
+"  product; it is computed from done moves. Done moves are immutable and\n"
+"  negative stock is refused.\n"
+"* **Average cost (AVCO)** per company, updated by every receipt; deliveries\n"
+"  and transfers are valued at the current average cost.\n"
+"* Full returns of done transfers (returned deliveries come back at their\n"
+"  original cost).\n"
+"* Stock adjustments (stock opname) with a mandatory reason, validated by an\n"
+"  inventory manager, plus a quick \"Update Quantity\" wizard on products.\n"
+"* Minimum stock per product and company, with a daily scheduled action\n"
+"  creating \"Low Stock\" activities for the inventory managers.\n"
+"\n"
+"Design notes\n"
+"============\n"
+"\n"
+"Stock follows a double-entry logic: every move goes from one location to\n"
+"another. Internal locations hold stock; virtual locations (Vendors,\n"
+"Customers, Inventory Adjustment) are the counterparts. Quantities are\n"
+"computed with grouped queries on the ledger (``_read_group``), filtered by\n"
+"the ``warehouse_id`` or ``location_id`` context keys.\n"
+"\n"
+"Security\n"
+"========\n"
+"\n"
+"* *Inventory / User*: creates and validates transfers, records stock counts.\n"
+"* *Inventory / Manager*: validates stock adjustments, manages warehouses,\n"
+"  locations and reasons.\n"
+"* Every internal user can read the ledger; records are filtered by company.\n"
+"\n"
+"Credits\n"
+"=======\n"
+"\n"
+"Author\n"
+"------\n"
+"\n"
+"* M. Fadli Kurniawan\n"
+"\n"
+"License\n"
+"-------\n"
+"\n"
+"LGPL-3\n"
+msgstr ""
+"=============================\n"
+"Nusantara ERP - Persediaan\n"
+"=============================\n"
+"\n"
+"Manajemen stok Nusantara Mini ERP: gudang, transfer, dan buku besar\n"
+"pergerakan stok yang dinilai dengan metode biaya rata-rata.\n"
+"\n"
+"**Daftar isi**\n"
+"\n"
+".. contents::\n"
+"   :local:\n"
+"\n"
+"Fitur\n"
+"=====\n"
+"\n"
+"* Gudang dengan lokasi stok yang dibuat otomatis; setiap perusahaan baru\n"
+"  mendapatkan gudangnya sendiri.\n"
+"* Transfer (``nme.picking``) dengan tiga tipe: penerimaan, pengiriman, dan\n"
+"  transfer internal antargudang, dilengkapi tampilan kanban, kalender,\n"
+"  serta Surat Jalan yang dapat dicetak.\n"
+"* **Buku besar pergerakan stok**: kuantitas stok tersedia tidak pernah\n"
+"  disimpan pada produk; nilainya dihitung dari pergerakan yang sudah\n"
+"  selesai. Pergerakan yang sudah selesai tidak dapat diubah dan stok\n"
+"  negatif ditolak.\n"
+"* **Biaya rata-rata (AVCO)** per perusahaan, diperbarui oleh setiap\n"
+"  penerimaan; pengiriman dan transfer dinilai dengan biaya rata-rata saat\n"
+"  ini.\n"
+"* Retur penuh atas transfer yang sudah selesai (pengiriman yang diretur\n"
+"  kembali dengan biaya aslinya).\n"
+"* Penyesuaian stok (stock opname) dengan alasan wajib, divalidasi oleh\n"
+"  manajer persediaan, serta wizard cepat \"Perbarui Kuantitas\" pada\n"
+"  produk.\n"
+"* Stok minimum per produk dan perusahaan, dengan tindakan terjadwal harian\n"
+"  yang membuat aktivitas \"Stok Menipis\" untuk para manajer persediaan.\n"
+"\n"
+"Catatan Desain\n"
+"==============\n"
+"\n"
+"Stok mengikuti logika pembukuan berpasangan (double-entry): setiap\n"
+"pergerakan berpindah dari satu lokasi ke lokasi lain. Lokasi internal\n"
+"menyimpan stok; lokasi virtual (Pemasok, Pelanggan, Penyesuaian\n"
+"Persediaan) menjadi lawannya. Kuantitas dihitung dengan kueri terkelompok\n"
+"pada buku besar (``_read_group``), difilter berdasarkan kunci konteks\n"
+"``warehouse_id`` atau ``location_id``.\n"
+"\n"
+"Keamanan\n"
+"========\n"
+"\n"
+"* *Persediaan / Pengguna*: membuat dan memvalidasi transfer, mencatat\n"
+"  stock opname.\n"
+"* *Persediaan / Manajer*: memvalidasi penyesuaian stok, mengelola gudang,\n"
+"  lokasi, dan alasan.\n"
+"* Setiap pengguna internal dapat membaca buku besar; data difilter\n"
+"  berdasarkan perusahaan.\n"
+"\n"
+"Kredit\n"
+"======\n"
+"\n"
+"Penulis\n"
+"-------\n"
+"\n"
+"* M. Fadli Kurniawan\n"
+"\n"
+"Lisensi\n"
+"-------\n"
+"\n"
+"LGPL-3\n"
+
+#. module: nme_inventory
+#: model:ir.model.constraint,message:nme_inventory.constraint_nme_stock_adjustment_line_product_unique
+msgid "A product can only be counted once per adjustment."
+msgstr "Satu produk hanya dapat dihitung satu kali per penyesuaian."
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_product__min_qty
+msgid "A scheduled action warns the inventory managers below this level."
+msgstr ""
+"Tindakan terjadwal akan memperingatkan manajer persediaan jika stok berada "
+"di bawah level ini."
+
+#. module: nme_inventory
+#: model:ir.model.constraint,message:nme_inventory.constraint_nme_stock_move_different_locations
+msgid "A stock move must go to another location."
+msgstr "Pergerakan stok harus menuju lokasi lain."
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_needaction
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_needaction
+msgid "Action Needed"
+msgstr "Perlu Tindakan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__active
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__active
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__active
+msgid "Active"
+msgstr "Aktif"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_ids
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_ids
+msgid "Activities"
+msgstr "Aktivitas"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_exception_decoration
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Dekorasi Pengecualian Aktivitas"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_plans_ids
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_plans_ids
+msgid "Activity Plans"
+msgstr "Rencana Aktivitas"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_state
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_state
+msgid "Activity State"
+msgstr "Status Aktivitas"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_type_icon
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Ikon Jenis Aktivitas"
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_stock_adjustment.py:0
+msgid "Add at least one line to %s."
+msgstr "Tambahkan minimal satu baris ke %s."
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_picking.py:0
+msgid "Add at least one product to %s."
+msgstr "Tambahkan minimal satu produk ke %s."
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__partner_id
+msgid "Address"
+msgstr "Alamat"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__adjustment_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__adjustment_id
+msgid "Adjustment"
+msgstr "Penyesuaian"
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_stock_adjustment_reason_action
+#: model:ir.ui.menu,name:nme_inventory.nme_stock_adjustment_reason_menu
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_reason_view_list
+msgid "Adjustment Reasons"
+msgstr "Alasan Penyesuaian"
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_picking_action
+msgid "All Transfers"
+msgstr "Semua Transfer"
+
+#. module: nme_inventory
+#: model:res.groups,comment:nme_inventory.nme_group_inventory_manager
+msgid "Also validates stock adjustments and manages warehouses and locations."
+msgstr "Juga memvalidasi penyesuaian stok serta mengelola gudang dan lokasi."
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_product_quick_adjust_view_form
+msgid "Apply"
+msgstr "Terapkan"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_warehouse_view_form
+msgid "Archived"
+msgstr "Diarsipkan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_attachment_count
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_attachment_count
+msgid "Attachment Count"
+msgstr "Jumlah Lampiran"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product__avg_cost
+msgid "Average Cost"
+msgstr "Biaya Rata-rata"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product__is_below_min
+msgid "Below Minimum"
+msgstr "Di Bawah Minimum"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_product_view_search
+msgid "Below Minimum Stock"
+msgstr "Di Bawah Stok Minimum"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_form
+msgid "Cancel"
+msgstr "Batalkan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__cancel_reason
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__cancel_reason
+msgid "Cancel Reason"
+msgstr "Alasan Pembatalan"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_form
+msgid "Cancellation"
+msgstr "Pembatalan"
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_picking__state__cancel
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_stock_adjustment__state__cancel
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_stock_move__state__cancel
+msgid "Cancelled"
+msgstr "Dibatalkan"
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_res_company
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__company_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__company_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__company_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__company_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__company_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__company_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__company_id
+msgid "Company"
+msgstr "Perusahaan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__complete_name
+msgid "Complete Name"
+msgstr "Nama Lengkap"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__partner_id
+msgid "Contact"
+msgstr "Kontak"
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_move__price_unit
+msgid ""
+"Cost of one unit entering the stock (purchase price, adjustment cost or "
+"original cost of a returned delivery). Outgoing moves are valued at the "
+"average cost instead."
+msgstr ""
+"Biaya satu unit yang masuk ke stok (harga pembelian, biaya penyesuaian, atau"
+" biaya asli dari pengiriman yang diretur). Sebaliknya, pergerakan keluar "
+"dinilai dengan biaya rata-rata."
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment_line__unit_cost
+msgid "Cost of the units added to the stock when the difference is positive."
+msgstr "Biaya unit yang ditambahkan ke stok jika selisihnya positif."
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_product_quick_adjust__unit_cost
+msgid "Cost of the units added when the counted quantity is higher."
+msgstr "Biaya unit yang ditambahkan jika kuantitas terhitung lebih besar."
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_form
+msgid "Counted Quantities"
+msgstr "Kuantitas Terhitung"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__counted_qty
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__counted_qty
+msgid "Counted Quantity"
+msgstr "Kuantitas Terhitung"
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_stock_adjustment_action
+msgid ""
+"Counted quantities are compared with the system and validated by a manager."
+msgstr ""
+"Kuantitas terhitung dibandingkan dengan sistem dan divalidasi oleh manajer."
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_picking_action_deliveries
+msgid "Create a delivery"
+msgstr "Buat pengiriman"
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_picking_action_receipts
+msgid "Create a receipt"
+msgstr "Buat penerimaan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__create_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__create_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__create_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__create_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__create_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__create_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__create_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__create_uid
+msgid "Created by"
+msgstr "Dibuat oleh"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__create_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__create_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__create_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__create_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__create_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__create_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__create_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__create_date
+msgid "Created on"
+msgstr "Dibuat pada"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__currency_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__currency_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__currency_id
+msgid "Currency"
+msgstr "Mata Uang"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__current_qty
+msgid "Current Quantity"
+msgstr "Kuantitas Saat Ini"
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_location__usage__customer
+msgid "Customer"
+msgstr "Pelanggan"
+
+#. module: nme_inventory
+#: model:nme.stock.adjustment.reason,name:nme_inventory.nme_adjustment_reason_damaged
+msgid "Damaged"
+msgstr "Rusak"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__date
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_search
+msgid "Date"
+msgstr "Tanggal"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__date_done
+msgid "Date Done"
+msgstr "Tanggal Selesai"
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_move__date
+msgid "Date of the move, set to the validation time when it is done."
+msgstr ""
+"Tanggal pergerakan, diisi dengan waktu validasi saat pergerakan selesai."
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_picking_action_deliveries
+#: model:ir.ui.menu,name:nme_inventory.nme_picking_menu_deliveries
+msgid "Deliveries"
+msgstr "Pengiriman"
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_picking_action_deliveries
+msgid "Deliveries take goods out of a warehouse to customers."
+msgstr "Pengiriman mengeluarkan barang dari gudang ke pelanggan."
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_picking__picking_type__outgoing
+msgid "Delivery"
+msgstr "Pengiriman"
+
+#. module: nme_inventory
+#: model:ir.actions.report,name:nme_inventory.action_report_nme_picking
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Delivery Slip"
+msgstr "Surat Jalan"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+msgid "Delivery instructions..."
+msgstr "Instruksi pengiriman..."
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__name
+msgid "Description"
+msgstr "Deskripsi"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_search
+msgid "Destination"
+msgstr "Tujuan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__location_dest_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__location_dest_id
+msgid "Destination Location"
+msgstr "Lokasi Tujuan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__location_dest_usage
+msgid "Destination Location Type"
+msgstr "Tipe Lokasi Tujuan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__warehouse_dest_id
+msgid "Destination Warehouse"
+msgstr "Gudang Tujuan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__difference_qty
+msgid "Difference"
+msgstr "Selisih"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_product_quick_adjust_view_form
+msgid "Discard"
+msgstr "Buang"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__display_name
+#: model:ir.model.fields,field_description:nme_inventory.field_res_company__display_name
+msgid "Display Name"
+msgstr "Nama Tampilan"
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_picking__state__done
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_stock_adjustment__state__done
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_stock_move__state__done
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_search
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_search
+msgid "Done"
+msgstr "Selesai"
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_product__qty_available
+msgid ""
+"Done moves into internal locations minus done moves out of them. Use the "
+"warehouse_id or location_id context key to restrict it."
+msgstr ""
+"Pergerakan selesai yang masuk ke lokasi internal dikurangi pergerakan "
+"selesai yang keluar darinya. Gunakan kunci konteks warehouse_id atau "
+"location_id untuk membatasinya."
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_stock_move.py:0
+msgid "Done stock moves cannot be cancelled."
+msgstr "Pergerakan stok yang sudah selesai tidak dapat dibatalkan."
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_stock_move.py:0
+msgid "Done stock moves cannot be deleted."
+msgstr "Pergerakan stok yang sudah selesai tidak dapat dihapus."
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_stock_move.py:0
+msgid ""
+"Done stock moves cannot be modified. Create a return or a stock adjustment "
+"to correct the stock."
+msgstr ""
+"Pergerakan stok yang sudah selesai tidak dapat diubah. Buat retur atau "
+"penyesuaian stok untuk mengoreksi stok."
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_picking__state__draft
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_stock_adjustment__state__draft
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_stock_move__state__draft
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_search
+msgid "Draft"
+msgstr "Draf"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Driver"
+msgstr "Pengemudi"
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_location__company_id
+msgid "Empty for virtual locations shared by every company."
+msgstr ""
+"Kosongkan untuk lokasi virtual yang digunakan bersama oleh semua perusahaan."
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_stock_move_action
+msgid ""
+"Every validated receipt, delivery, transfer or adjustment appears here."
+msgstr ""
+"Setiap penerimaan, pengiriman, transfer, atau penyesuaian yang telah "
+"divalidasi akan muncul di sini."
+
+#. module: nme_inventory
+#: model:nme.stock.adjustment.reason,name:nme_inventory.nme_adjustment_reason_expired
+msgid "Expired"
+msgstr "Kedaluwarsa"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_follower_ids
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_follower_ids
+msgid "Followers"
+msgstr "Pengikut"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_partner_ids
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Pengikut (Mitra)"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__has_message
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__has_message
+msgid "Has Message"
+msgstr "Memiliki Pesan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product__id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__id
+#: model:ir.model.fields,field_description:nme_inventory.field_res_company__id
+msgid "ID"
+msgstr "ID"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_exception_icon
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_exception_icon
+msgid "Icon"
+msgstr "Ikon"
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__activity_exception_icon
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Ikon untuk menandai aktivitas pengecualian."
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__message_needaction
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Jika dicentang, pesan baru memerlukan perhatian Anda."
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__message_has_error
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Jika dicentang, beberapa pesan mengalami kesalahan pengiriman."
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_product_view_search
+msgid "In Stock"
+msgstr "Ada Stok"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_search
+msgid "Incoming"
+msgstr "Masuk"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__price_unit
+msgid "Incoming Unit Cost"
+msgstr "Biaya per Unit Masuk"
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_location__usage__internal
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_search
+msgid "Internal"
+msgstr "Internal"
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_picking__picking_type__internal
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Internal Transfer"
+msgstr "Transfer Internal"
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_picking_action_internal
+#: model:ir.ui.menu,name:nme_inventory.nme_picking_menu_internal
+msgid "Internal Transfers"
+msgstr "Transfer Internal"
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_location.py:0
+msgid "Internal location %s needs a warehouse and a company."
+msgstr "Lokasi internal %s memerlukan gudang dan perusahaan."
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_picking.py:0
+msgid "Internal transfer %s must go to another warehouse."
+msgstr "Transfer internal %s harus menuju gudang lain."
+
+#. module: nme_inventory
+#: model:ir.ui.menu,name:nme_inventory.nme_menu_inventory
+#: model:res.groups.privilege,name:nme_inventory.nme_privilege_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_product_view_form
+msgid "Inventory"
+msgstr "Persediaan"
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_location__usage__inventory
+msgid "Inventory Adjustment"
+msgstr "Penyesuaian Persediaan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_is_follower
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_is_follower
+msgid "Is Follower"
+msgstr "Adalah Pengikut"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__write_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__write_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__write_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__write_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__write_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__write_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__write_uid
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__write_uid
+msgid "Last Updated by"
+msgstr "Terakhir Diperbarui oleh"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__write_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__write_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__write_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__write_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__write_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__write_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__write_date
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__write_date
+msgid "Last Updated on"
+msgstr "Terakhir Diperbarui pada"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+msgid "Late"
+msgstr "Terlambat"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__line_ids
+msgid "Lines"
+msgstr "Baris"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_form
+msgid "Load Products in Stock"
+msgstr "Muat Produk yang Memiliki Stok"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_form
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_list
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_search
+msgid "Location"
+msgstr "Lokasi"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__usage
+msgid "Location Type"
+msgstr "Tipe Lokasi"
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_location_action
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__location_ids
+#: model:ir.ui.menu,name:nme_inventory.nme_location_menu
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_list
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_search
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_warehouse_view_form
+msgid "Locations"
+msgstr "Lokasi"
+
+#. module: nme_inventory
+#: model:nme.stock.adjustment.reason,name:nme_inventory.nme_adjustment_reason_lost
+msgid "Lost"
+msgstr "Hilang"
+
+#. module: nme_inventory
+#: model:mail.activity.type,name:nme_inventory.mail_activity_type_low_stock
+msgid "Low Stock"
+msgstr "Stok Menipis"
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__location_id
+#: model:ir.model.fields,help:nme_inventory.field_nme_warehouse__lot_stock_id
+msgid "Main internal location of the warehouse, created with it."
+msgstr ""
+"Lokasi internal utama gudang, dibuat bersamaan dengan gudang tersebut."
+
+#. module: nme_inventory
+#: model:res.groups,name:nme_inventory.nme_group_inventory_manager
+msgid "Manager"
+msgstr "Manajer"
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__activity_type_icon
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__activity_type_icon
+msgid "Material Symbols icon e.g. checklist"
+msgstr "Ikon Material Symbols, misalnya checklist"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_has_error
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_has_error
+msgid "Message Delivery error"
+msgstr "Kesalahan Pengiriman Pesan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_ids
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_ids
+msgid "Messages"
+msgstr "Pesan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product__min_qty
+msgid "Minimum Stock"
+msgstr "Stok Minimum"
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_picking_action_internal
+msgid "Move goods between warehouses"
+msgstr "Pindahkan barang antargudang"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__move_ids
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__move_ids
+msgid "Moves"
+msgstr "Pergerakan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__my_activity_date_deadline
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Tenggat Aktivitas Saya"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__name
+msgid "Name"
+msgstr "Nama"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_date_deadline
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Tenggat Aktivitas Berikutnya"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_summary
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_summary
+msgid "Next Activity Summary"
+msgstr "Ringkasan Aktivitas Berikutnya"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_type_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_type_id
+msgid "Next Activity Type"
+msgstr "Jenis Aktivitas Berikutnya"
+
+#. module: nme_inventory
+#: model:res.groups.privilege,placeholder:nme_inventory.nme_privilege_inventory
+msgid "No"
+msgstr "Tidak"
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_stock_move_action
+msgid "No stock move yet"
+msgstr "Belum ada pergerakan stok"
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_stock_move.py:0
+msgid ""
+"Not enough %(product)s in %(location)s: %(available)s available, %(needed)s "
+"needed."
+msgstr ""
+"Stok %(product)s di %(location)s tidak mencukupi: tersedia %(available)s, "
+"dibutuhkan %(needed)s."
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__note
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__note
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+msgid "Notes"
+msgstr "Catatan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_needaction_counter
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Jumlah Tindakan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__message_has_error_counter
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__message_has_error_counter
+msgid "Number of errors"
+msgstr "Jumlah kesalahan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__message_needaction_counter
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Jumlah pesan yang memerlukan tindakan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__message_has_error_counter
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Jumlah pesan dengan kesalahan pengiriman"
+
+#. module: nme_inventory
+#: model:ir.module.module,shortdesc:base.module_nme_inventory
+msgid "Nusantara ERP - Inventory"
+msgstr "Nusantara ERP - Persediaan"
+
+#. module: nme_inventory
+#: model:ir.actions.server,name:nme_inventory.ir_cron_check_minimum_stock_ir_actions_server
+msgid "Nusantara ERP: Check minimum stock"
+msgstr "Nusantara ERP: Periksa stok minimum"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product__qty_available
+msgid "On Hand"
+msgstr "Stok Tersedia"
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_picking.py:0
+msgid "Only done transfers can be returned."
+msgstr "Hanya transfer yang sudah selesai yang dapat diretur."
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_location__usage
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_move__location_dest_usage
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_move__location_usage
+msgid "Only internal locations hold stock."
+msgstr "Hanya lokasi internal yang menyimpan stok."
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_stock_adjustment.py:0
+msgid "Only inventory managers can validate stock adjustments."
+msgstr "Hanya manajer persediaan yang dapat memvalidasi penyesuaian stok."
+
+#. module: nme_inventory
+#: model:nme.stock.adjustment.reason,name:nme_inventory.nme_adjustment_reason_opening
+msgid "Opening Balance"
+msgstr "Saldo Awal"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_search
+msgid "Outgoing"
+msgstr "Keluar"
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_warehouse__code
+msgid "Prefix of the warehouse locations, for example SBY."
+msgstr "Prefiks untuk lokasi gudang, misalnya SBY."
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Prepared by"
+msgstr "Disiapkan oleh"
+
+#. module: nme_inventory
+#: model:res.groups,comment:nme_inventory.nme_group_inventory_user
+msgid ""
+"Prepares and validates receipts, deliveries and transfers, records stock "
+"counts."
+msgstr ""
+"Menyiapkan dan memvalidasi penerimaan, pengiriman, dan transfer, serta "
+"mencatat stock opname."
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+msgid "Print"
+msgstr "Cetak"
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_product
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__product_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__product_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__product_id
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_search
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Product"
+msgstr "Produk"
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_product_action_stock
+#: model:ir.ui.menu,name:nme_inventory.nme_product_menu_stock
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+msgid "Products"
+msgstr "Produk"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__quantity
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Quantity"
+msgstr "Kuantitas"
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment_line__theoretical_qty
+msgid ""
+"Quantity in the system when the line was added; refreshed at validation."
+msgstr "Kuantitas di sistem saat baris ditambahkan; diperbarui saat validasi."
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_product_quick_adjust
+msgid "Quick Stock Adjustment"
+msgstr "Penyesuaian Stok Cepat"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__reason_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__reason_id
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_search
+msgid "Reason"
+msgstr "Alasan"
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_picking__picking_type__incoming
+msgid "Receipt"
+msgstr "Penerimaan"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Receipt Slip"
+msgstr "Bukti Penerimaan"
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_picking_action_receipts
+#: model:ir.ui.menu,name:nme_inventory.nme_picking_menu_receipts
+msgid "Receipts"
+msgstr "Penerimaan"
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_picking_action_receipts
+msgid "Receipts bring goods from vendors into a warehouse."
+msgstr "Penerimaan memasukkan barang dari pemasok ke gudang."
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Received by"
+msgstr "Diterima oleh"
+
+#. module: nme_inventory
+#: model_terms:ir.actions.act_window,help:nme_inventory.nme_stock_adjustment_action
+msgid "Record a stock count"
+msgstr "Catat stock opname"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__name
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__reference
+msgid "Reference"
+msgstr "Referensi"
+
+#. module: nme_inventory
+#: model:mail.activity.type,summary:nme_inventory.mail_activity_type_low_stock
+msgid "Replenish this product"
+msgstr "Isi ulang stok produk ini"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__user_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__user_id
+msgid "Responsible"
+msgstr "Penanggung Jawab"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__activity_user_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__activity_user_id
+msgid "Responsible User"
+msgstr "Pengguna Penanggung Jawab"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+msgid "Return"
+msgstr "Retur"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__return_count
+msgid "Return Count"
+msgstr "Jumlah Retur"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__return_of_id
+msgid "Return Of"
+msgstr "Retur Dari"
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_picking.py:0
+msgid "Return of %s"
+msgstr "Retur dari %s"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__origin_returned_move_id
+msgid "Returned Move"
+msgstr "Pergerakan yang Diretur"
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_picking.py:0
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__return_ids
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__returned_move_ids
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+msgid "Returns"
+msgstr "Retur"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__scheduled_date
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+msgid "Scheduled Date"
+msgstr "Tanggal Terjadwal"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_reason__sequence
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__sequence
+msgid "Sequence"
+msgstr "Urutan"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+msgid "Set to Draft"
+msgstr "Kembalikan ke Draf"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__code
+msgid "Short Name"
+msgstr "Nama Singkat"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__origin
+msgid "Source Document"
+msgstr "Dokumen Sumber"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__location_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__location_id
+msgid "Source Location"
+msgstr "Lokasi Sumber"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__location_usage
+msgid "Source Location Type"
+msgstr "Tipe Lokasi Sumber"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__state
+msgid "State"
+msgstr "Status"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__state
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__state
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__state
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+msgid "Status"
+msgstr "Status"
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__activity_state
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Status berdasarkan aktivitas\n"
+"Lewat Jatuh Tempo: Jatuh tempo sudah terlewati\n"
+"Hari Ini: Tanggal aktivitas adalah hari ini\n"
+"Direncanakan: Aktivitas yang akan datang."
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_warehouse.py:0
+msgid "Stock"
+msgstr "Stok"
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_stock_adjustment
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_form
+msgid "Stock Adjustment"
+msgstr "Penyesuaian Stok"
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_stock_adjustment_line
+msgid "Stock Adjustment Line"
+msgstr "Baris Penyesuaian Stok"
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_stock_adjustment_reason
+msgid "Stock Adjustment Reason"
+msgstr "Alasan Penyesuaian Stok"
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_stock_adjustment_action
+#: model:ir.ui.menu,name:nme_inventory.nme_stock_adjustment_menu
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_list
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_search
+msgid "Stock Adjustments"
+msgstr "Penyesuaian Stok"
+
+#. module: nme_inventory
+#: model:nme.stock.adjustment.reason,name:nme_inventory.nme_adjustment_reason_count
+msgid "Stock Count"
+msgstr "Stock Opname"
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_stock_move_action
+#: model:ir.ui.menu,name:nme_inventory.nme_stock_move_menu
+msgid "Stock Ledger"
+msgstr "Buku Besar Stok"
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_location
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__location_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_warehouse__lot_stock_id
+msgid "Stock Location"
+msgstr "Lokasi Stok"
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_stock_move
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product__stock_move_ids
+msgid "Stock Move"
+msgstr "Pergerakan Stok"
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_product.py:0
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_form
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_list
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_pivot
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_search
+msgid "Stock Moves"
+msgstr "Pergerakan Stok"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product__stock_value
+msgid "Stock Value"
+msgstr "Nilai Stok"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__theoretical_qty
+msgid "System Quantity"
+msgstr "Kuantitas Sistem"
+
+#. module: nme_inventory
+#: model:ir.model.constraint,message:nme_inventory.constraint_nme_stock_adjustment_line_counted_qty_positive
+msgid "The counted quantity cannot be negative."
+msgstr "Kuantitas terhitung tidak boleh negatif."
+
+#. module: nme_inventory
+#: model:ir.model.constraint,message:nme_inventory.constraint_nme_stock_move_quantity_positive
+msgid "The quantity of a stock move must be positive."
+msgstr "Kuantitas pergerakan stok harus positif."
+
+#. module: nme_inventory
+#: model:ir.model.constraint,message:nme_inventory.constraint_nme_warehouse_code_company_unique
+msgid "The warehouse short name must be unique per company."
+msgstr "Nama singkat gudang harus unik per perusahaan."
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_move_view_list
+msgid "Total"
+msgstr "Total"
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_picking
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__picking_id
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+msgid "Transfer"
+msgstr "Transfer"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__picking_type
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+msgid "Transfer Type"
+msgstr "Tipe Transfer"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_calendar
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_list
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_search
+msgid "Transfers"
+msgstr "Transfer"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_search
+msgid "Type"
+msgstr "Tipe"
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__activity_exception_decoration
+#: model:ir.model.fields,help:nme_inventory.field_nme_stock_adjustment__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Jenis aktivitas pengecualian pada record."
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__uom_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__uom_id
+#: model_terms:ir.ui.view,arch_db:nme_inventory.report_nme_picking_document
+msgid "Unit"
+msgstr "Satuan"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__unit_cost
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment_line__unit_cost
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__unit_cost
+msgid "Unit Cost"
+msgstr "Biaya per Unit"
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_product_quick_adjust_action
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_product_quick_adjust_view_form
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_product_view_form
+msgid "Update Quantity"
+msgstr "Perbarui Kuantitas"
+
+#. module: nme_inventory
+#: model:res.groups,name:nme_inventory.nme_group_inventory_user
+msgid "User"
+msgstr "Pengguna"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_picking_view_form
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_stock_adjustment_view_form
+msgid "Validate"
+msgstr "Validasi"
+
+#. module: nme_inventory
+#: model:ir.actions.server,name:nme_inventory.nme_picking_action_validate
+msgid "Validate Transfers"
+msgstr "Validasi Transfer"
+
+#. module: nme_inventory
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_move__value
+msgid "Value"
+msgstr "Nilai"
+
+#. module: nme_inventory
+#: model:ir.model.fields.selection,name:nme_inventory.selection__nme_location__usage__supplier
+msgid "Vendor"
+msgstr "Pemasok"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_search
+msgid "Virtual"
+msgstr "Virtual"
+
+#. module: nme_inventory
+#: model:ir.model,name:nme_inventory.model_nme_warehouse
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_location__warehouse_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_picking__warehouse_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_product_quick_adjust__warehouse_id
+#: model:ir.model.fields,field_description:nme_inventory.field_nme_stock_adjustment__warehouse_id
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_warehouse_view_form
+msgid "Warehouse"
+msgstr "Gudang"
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_picking__warehouse_dest_id
+msgid "Warehouse receiving the goods of an internal transfer."
+msgstr "Gudang yang menerima barang dari transfer internal."
+
+#. module: nme_inventory
+#: model:ir.actions.act_window,name:nme_inventory.nme_warehouse_action
+#: model:ir.ui.menu,name:nme_inventory.nme_warehouse_menu
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_warehouse_view_list
+msgid "Warehouses"
+msgstr "Gudang"
+
+#. module: nme_inventory
+#: model:ir.module.module,summary:base.module_nme_inventory
+msgid "Warehouses, stock move ledger, average cost, adjustments and transfers"
+msgstr ""
+"Gudang, buku besar pergerakan stok, biaya rata-rata, penyesuaian, dan "
+"transfer"
+
+#. module: nme_inventory
+#: model:ir.model.fields,help:nme_inventory.field_nme_product__avg_cost
+msgid "Weighted average cost of the stock, updated by every receipt."
+msgstr ""
+"Biaya rata-rata tertimbang dari stok, diperbarui oleh setiap penerimaan."
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_location_view_form
+msgid "e.g. Rack A"
+msgstr "mis. Rak A"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_warehouse_view_form
+msgid "e.g. SBY"
+msgstr "mis. SBY"
+
+#. module: nme_inventory
+#: model_terms:ir.ui.view,arch_db:nme_inventory.nme_warehouse_view_form
+msgid "e.g. Surabaya Main Warehouse"
+msgstr "mis. Gudang Utama Surabaya"
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_product.py:0
+msgid "product_id"
+msgstr "product_id"
+
+#. module: nme_inventory
+#. odoo-python
+#: code:addons/nme_inventory/models/nme_picking.py:0
+msgid "return_of_id"
+msgstr "return_of_id"

@@ -25,6 +25,7 @@
         "views/nme_base_menus.xml",
     ],
     "demo": [
+        "demo/res_company_demo.xml",
         "demo/nme_product_category_demo.xml",
         "demo/nme_product_demo.xml",
         "demo/res_partner_demo.xml",
