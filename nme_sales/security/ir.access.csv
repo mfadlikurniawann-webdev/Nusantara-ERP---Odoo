@@ -1,0 +1,12 @@
+id,name,model_id,group_id/id,operation,domain
+nme_sale_order_access_user_own,nme.sale.order own documents,nme.sale.order,nme_sales.nme_group_sales_user,cru,"['|', ('user_id', '=', user.id), ('user_id', '=', False)]"
+nme_sale_order_access_manager,nme.sale.order all documents,nme.sale.order,nme_sales.nme_group_sales_manager,crud,
+nme_sale_order_access_inventory,nme.sale.order read for inventory,nme.sale.order,nme_inventory.nme_group_inventory_user,r,
+nme_sale_order_rule_company,nme.sale.order multi-company,nme.sale.order,,crud,"[('company_id', 'in', company_ids)]"
+nme_sale_order_line_access_user_read,nme.sale.order.line read,nme.sale.order.line,nme_sales.nme_group_sales_user,r,"[('order_id', 'access', 'read')]"
+nme_sale_order_line_access_user_write,nme.sale.order.line write,nme.sale.order.line,nme_sales.nme_group_sales_user,cud,"[('order_id', 'access', 'write')]"
+nme_sale_order_line_access_manager,nme.sale.order.line manager,nme.sale.order.line,nme_sales.nme_group_sales_manager,crud,
+nme_sale_order_line_access_inventory,nme.sale.order.line read for inventory,nme.sale.order.line,nme_inventory.nme_group_inventory_user,r,
+nme_sale_order_line_rule_company,nme.sale.order.line multi-company,nme.sale.order.line,,crud,"[('company_id', 'in', company_ids)]"
+nme_picking_access_sales,nme.picking deliveries of readable orders,nme.picking,nme_sales.nme_group_sales_user,cru,"[('sale_id', 'access', 'read')]"
+nme_stock_move_access_sales,nme.stock.move of readable order lines,nme.stock.move,nme_sales.nme_group_sales_user,cru,"[('sale_line_id', 'access', 'read')]"

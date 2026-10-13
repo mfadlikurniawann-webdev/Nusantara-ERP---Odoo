@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_report_nme_sale_order" model="ir.actions.report">
+        <field name="name">Quotation / Order</field>
+        <field name="model">nme.sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nme_sales.report_nme_sale_order</field>
+        <field
+            name="print_report_name"
+        >(object.state in ('draft', 'sent') and 'Quotation - %s' or 'Order - %s') % object.name.replace('/', '-')</field>
+        <field name="binding_model_id" ref="model_nme_sale_order" />
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

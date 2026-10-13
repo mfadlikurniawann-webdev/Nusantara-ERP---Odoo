@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="nme_base.nme_partner_toko_makmur" model="res.partner">
+        <field name="nme_credit_policy">warning</field>
+        <field name="nme_credit_limit">15000000</field>
+    </record>
+    <record id="nme_base.nme_partner_warung_sri" model="res.partner">
+        <field name="nme_credit_policy">block</field>
+        <field name="nme_credit_limit">2000000</field>
+    </record>
+</odoo>

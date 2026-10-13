@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Confirmed and delivered -->
+    <record id="nme_sale_order_demo_delivered" model="nme.sale.order">
+        <field name="partner_id" ref="nme_base.nme_partner_minimarket_berkah" />
+        <field name="warehouse_id" ref="nme_inventory.nme_warehouse_main" />
+        <field
+            name="commitment_date"
+            eval="(DateTime.today() - timedelta(days=3)).strftime('%Y-%m-%d 09:00:00')"
+        />
+        <field
+            name="line_ids"
+            eval="[
+                (0, 0, {'product_id': ref('nme_base.nme_product_rice_5kg'), 'quantity': 40}),
+                (0, 0, {'product_id': ref('nme_base.nme_product_oil_2l'), 'quantity': 24, 'discount': 5}),
+                (0, 0, {'product_id': ref('nme_base.nme_product_delivery_service'), 'quantity': 1}),
+            ]"
+        />
+    </record>
+    <function
+        model="nme.sale.order"
+        name="action_confirm"
+        eval="[[ref('nme_sale_order_demo_delivered')]]"
+    />
+    <function
+        model="nme.picking"
+        name="action_validate"
+        eval="[obj().env.ref('nme_sales.nme_sale_order_demo_delivered').picking_ids.ids]"
+    />
+
+    <!-- Confirmed, delivery planned in two days -->
+    <record id="nme_sale_order_demo_to_deliver" model="nme.sale.order">
+        <field name="partner_id" ref="nme_base.nme_partner_toko_makmur" />
+        <field name="warehouse_id" ref="nme_inventory.nme_warehouse_main" />
+        <field
+            name="commitment_date"
+            eval="(DateTime.today() + timedelta(days=2)).strftime('%Y-%m-%d 10:00:00')"
+        />
+        <field
+            name="line_ids"
+            eval="[
+                (0, 0, {'product_id': ref('nme_base.nme_product_sugar_1kg'), 'quantity': 100}),
+                (0, 0, {'product_id': ref('nme_base.nme_product_noodles_box'), 'quantity': 10}),
+            ]"
+        />
+    </record>
+    <function
+        model="nme.sale.order"
+        name="action_confirm"
+        eval="[[ref('nme_sale_order_demo_to_deliver')]]"
+    />
+
+    <!-- Quotation sent by email -->
+    <record id="nme_sale_order_demo_sent" model="nme.sale.order">
+        <field name="partner_id" ref="nme_base.nme_partner_warung_sri" />
+        <field name="warehouse_id" ref="nme_inventory.nme_warehouse_main" />
+        <field name="state">sent</field>
+        <field
+            name="line_ids"
+            eval="[
+                (0, 0, {'product_id': ref('nme_base.nme_product_eggs'), 'quantity': 15}),
+                (0, 0, {'product_id': ref('nme_base.nme_product_rice_5kg'), 'quantity': 10}),
+            ]"
+        />
+    </record>
+
+    <!-- Draft quotation -->
+    <record id="nme_sale_order_demo_draft" model="nme.sale.order">
+        <field name="partner_id" ref="nme_base.nme_partner_gula_manis" />
+        <field name="warehouse_id" ref="nme_inventory.nme_warehouse_main" />
+        <field
+            name="line_ids"
+            eval="[(0, 0, {'product_id': ref('nme_base.nme_product_rice_25kg'), 'quantity': 8})]"
+        />
+    </record>
+</odoo>

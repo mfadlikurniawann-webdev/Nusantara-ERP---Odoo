@@ -7,8 +7,11 @@ class NmeTradeLineMixin(models.AbstractModel):
 
     Description, unit price and taxes are stored computed fields that stay
     editable (``readonly=False``): they are proposed from the product and the
-    user can still change them. Concrete lines provide the product defaults by
-    overriding ``_get_product_price`` and ``_get_product_taxes``, and redefine
+    user can still change them. ``precompute=True`` computes them before the
+    INSERT, which the required description needs.
+
+    Concrete lines provide the product defaults by overriding
+    ``_get_product_price`` and ``_get_product_taxes``, and redefine
     ``company_id`` and ``currency_id`` as related fields of their document.
     """
 
@@ -32,6 +35,7 @@ class NmeTradeLineMixin(models.AbstractModel):
         compute="_compute_name",
         store=True,
         readonly=False,
+        precompute=True,
         required=True,
     )
     quantity = fields.Float(digits="Nusantara Quantity", required=True, default=1.0)
@@ -41,6 +45,7 @@ class NmeTradeLineMixin(models.AbstractModel):
         compute="_compute_price_unit",
         store=True,
         readonly=False,
+        precompute=True,
     )
     discount = fields.Float(string="Discount (%)", digits=(5, 2), default=0.0)
     tax_ids = fields.Many2many(
@@ -49,6 +54,7 @@ class NmeTradeLineMixin(models.AbstractModel):
         compute="_compute_tax_ids",
         store=True,
         readonly=False,
+        precompute=True,
         check_company=True,
     )
     price_subtotal = fields.Monetary(

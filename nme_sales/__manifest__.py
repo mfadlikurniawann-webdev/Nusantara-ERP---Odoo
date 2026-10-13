@@ -1,0 +1,27 @@
+{
+    "name": "Nusantara ERP - Sales",
+    "summary": "Quotations, sales orders, deliveries and customer credit limits",
+    "version": "20.0.1.0.0",
+    "category": "Nusantara ERP",
+    "author": "M. Fadli Kurniawan",
+    "website": "https://github.com/mfadlikurniawann-webdev/Nusantara-ERP---Odoo",
+    "license": "LGPL-3",
+    "depends": ["nme_inventory"],
+    "data": [
+        "security/nme_sales_security.xml",
+        "security/ir.access.csv",
+        "data/ir_sequence_data.xml",
+        "report/nme_sale_order_reports.xml",
+        "report/nme_sale_order_templates.xml",
+        "data/mail_template_data.xml",
+        "views/nme_sale_order_views.xml",
+        "views/nme_picking_views.xml",
+        "views/res_partner_views.xml",
+        "views/res_config_settings_views.xml",
+        "views/nme_sales_menus.xml",
+    ],
+    "demo": [
+        "demo/res_partner_demo.xml",
+        "demo/nme_sale_order_demo.xml",
+    ],
+}

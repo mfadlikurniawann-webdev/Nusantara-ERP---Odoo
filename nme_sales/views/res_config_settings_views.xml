@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.nme.sales</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="nme_base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <block id="nme_defaults" position="after">
+                <block title="Sales" id="nme_sales">
+                    <setting
+                        id="nme_quotation_validity"
+                        string="Quotation Validity"
+                        company_dependent="1"
+                        help="Default number of days before a quotation expires."
+                    >
+                        <field name="nme_quotation_validity_days" />
+                    </setting>
+                </block>
+            </block>
+        </field>
+    </record>
+</odoo>

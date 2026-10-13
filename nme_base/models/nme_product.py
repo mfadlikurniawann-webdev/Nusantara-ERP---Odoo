@@ -110,6 +110,8 @@ class NmeProduct(models.Model):
 
     def _get_company_taxes(self, tax_use, company):
         """Return the ``tax_use`` ("sale" or "purchase") taxes valid in ``company``."""
+        if not self:
+            return self.env["nme.tax"]
         self.ensure_one()
         taxes = self.sale_tax_ids if tax_use == "sale" else self.purchase_tax_ids
         return taxes.filtered(lambda tax: tax.company_id == company)

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem
+        id="nme_menu_sales"
+        name="Sales"
+        parent="nme_base.nme_menu_root"
+        sequence="10"
+        groups="nme_group_sales_user"
+    />
+    <menuitem
+        id="nme_sale_order_menu_quotations"
+        name="Quotations"
+        parent="nme_menu_sales"
+        action="nme_sale_order_action_quotations"
+        sequence="10"
+    />
+    <menuitem
+        id="nme_sale_order_menu_orders"
+        name="Sales Orders"
+        parent="nme_menu_sales"
+        action="nme_sale_order_action_orders"
+        sequence="20"
+    />
+    <menuitem
+        id="nme_partner_menu_customers"
+        name="Customers"
+        parent="nme_menu_sales"
+        action="nme_base.nme_partner_customer_action"
+        sequence="30"
+    />
+    <menuitem
+        id="nme_product_menu_sales"
+        name="Products"
+        parent="nme_menu_sales"
+        action="nme_base.nme_product_action"
+        sequence="40"
+    />
+</odoo>

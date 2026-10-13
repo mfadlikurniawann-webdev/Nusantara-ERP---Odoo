@@ -17,3 +17,6 @@ on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses
   immutable stock move ledger with average cost (AVCO) per company, full returns,
   stock adjustments validated by managers, quick quantity update wizard, minimum stock
   scheduled action with "Low Stock" activities and a printable delivery slip.
+- `nme_sales`: quotations and sales orders with strict states, email sending with PDF,
+  automatic deliveries, delivered quantity from the ledger (returns included),
+  per-customer credit limits (warn/block) and own-documents access for salespeople.

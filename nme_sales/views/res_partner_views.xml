@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit.nme.sales</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button
+                    name="action_view_nme_sale_orders"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-shopping-cart"
+                    groups="nme_sales.nme_group_sales_user"
+                    invisible="not nme_is_customer"
+                >
+                    <field
+                        name="nme_sale_order_count"
+                        widget="statinfo"
+                        string="Sales"
+                    />
+                </button>
+            </div>
+            <field name="nme_payment_term_id" position="after">
+                <field name="nme_company_currency_id" invisible="1" />
+                <field
+                    name="nme_credit_policy"
+                    invisible="not nme_is_customer"
+                    groups="nme_sales.nme_group_sales_manager"
+                />
+                <field
+                    name="nme_credit_limit"
+                    widget="monetary"
+                    options="{'currency_field': 'nme_company_currency_id'}"
+                    invisible="not nme_is_customer or nme_credit_policy in (False, 'none')"
+                    groups="nme_sales.nme_group_sales_manager"
+                />
+                <field
+                    name="nme_credit_exposure"
+                    widget="monetary"
+                    options="{'currency_field': 'nme_company_currency_id'}"
+                    invisible="not nme_is_customer"
+                    groups="nme_sales.nme_group_sales_user"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>
